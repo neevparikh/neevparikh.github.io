@@ -1,0 +1,4 @@
+baseURL = "http://www.neevparikh.com/"
+languageCode = "en-us"
+title = "Neev Parikh"
+theme = "academic"

@@ -1,0 +1,39 @@
+# Theme metadata
+name = "Modified Mr Robot"
+
+# Is theme light or dark?
+light = false
+
+# Primary
+primary = "#f1c40f"
+
+# Menu
+menu_primary = "#34495e"
+menu_text = "#f39c12"
+menu_text_active = "#f1c40f"
+menu_title = "#f7db63"
+
+# Home sections
+home_section_odd = "#2c3e50"
+home_section_even = "#34495e"
+
+#1abc9c
+#2ecc71
+#3498db
+#9b59b6
+#34495e
+#16a085
+#27ae60
+#2980b9
+#8e44ad
+#2c3e50
+#f1c40f
+#e67e22
+#e74c3c
+#ecf0f1
+#95a5a6
+#f39c12
+#d35400
+#c0392b
+#bdc3c7
+#7f8c8d

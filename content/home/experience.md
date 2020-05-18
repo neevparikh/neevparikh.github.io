@@ -36,7 +36,7 @@ date_format = "Jan 2006"
   company_url = "https://cs.brown.edu"
   location = "Providence, RI"
   date_start = "2020-01-17"
-  date_end = "2019-05-15"
+  date_end = "2020-05-15"
   description = """ Worked as a teaching assistant for Computer Vision (CSCI 1430), taught by Professor James Tompkin. 
 
   * Revamped Project 5 and helped update other projects for the class

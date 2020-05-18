@@ -9160,5 +9160,10 @@ div.mermaid {
 html[dir="rtl"] body {
   text-align: right; }
 
+footer {
+  margin: 1.5rem 0 0;
+  padding: 1rem 0;
+  width: 100%; }
+
 .footer-color {
   color: #95a5a6; }

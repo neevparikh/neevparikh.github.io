@@ -13,13 +13,14 @@ echo -e "\033[0;32mDeploying branch...\033[0m"
 cd public &&
     git add --all &&
     git commit -m "$(date) - updating site" &&
-    git push origin master --force && 
-    cd ..
+    git push origin master --force
+cd ..
 
 echo -e "\033[0;32mCleaning up...\033[0m"
 git worktree remove public
 
 echo -e "\033[0;32mUpdating source...\033[0m"
+pwd
 git add --all
-git commit -m "$(date) - updating site"
+git commit -m "$(date) - updating source"
 git push origin source

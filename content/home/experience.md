@@ -23,12 +23,9 @@ date_format = "Jan 2006"
   company_url = "http://irl.cs.brown.edu/"
   location = "Providence, RI"
   date_start = "2020-06-01"
-#  date_end = "2020-08-25"
   date_end = ""
   description = """Research assistant at Intelligent Robot Lab (IRL) at Brown University, led by Professor George Konidaris.
 
-  Responsibilities include:
-  
   * Working on Reinforcement Learning/Robotics research
   * Writing papers to submit to major conference venues (see publications)
   """
@@ -38,11 +35,23 @@ date_format = "Jan 2006"
   company = "Department of Computer Science, Brown University"
   company_url = "https://cs.brown.edu"
   location = "Providence, RI"
+  date_start = "2020-01-17"
+  date_end = "2019-05-15"
+  description = """ Worked as a teaching assistant for Computer Vision (CSCI 1430), taught by Professor James Tompkin. 
+
+  * Revamped Project 5 and helped update other projects for the class
+  * Hold weekly office hours to help reinforce concepts and answer questions
+  * Help administer the class, biweekly grading of projects and homeworks
+"""
+
+[[experience]]
+  title = "Teaching Assistant"
+  company = "Department of Computer Science, Brown University"
+  company_url = "https://cs.brown.edu"
+  location = "Providence, RI"
   date_start = "2019-09-04"
   date_end = "2019-12-25"
   description = """ Worked as a teaching assistant for Introduction to Reinforcement Learning (CSCI 2951F), taught by Professor Michael Littman. 
-
-Responsibilities include: 
 
   * Extend the library framework [simpleRL](https://github.com/david-abel/simple_rl), used in the course 
   * Design homeworks for the class
@@ -57,8 +66,6 @@ Responsibilities include:
   date_start = "2019-06-25"
   date_end = "2019-08-25"
   description = """ Worked on a cutting-edge, deep-learning based pipeline to augment VFX workflows. 
-
-Responsibilities include: 
 
   * Develop pipelines for rotoscoping and 3D object generation, utilizing semantic segmentation, graph convolution etc. 
   * Develop a proof-of-concept from scratch, rapidly prototyping and responding to customer needs. 

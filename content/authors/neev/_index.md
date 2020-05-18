@@ -18,7 +18,7 @@ organizations:
   url: ""
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include reinforcement learning, distributed systems and robotics
+bio: My research interests include reinforcement learning, distributed systems and robotics.
 
 interests:
 - Artificial Intelligence
@@ -65,4 +65,3 @@ email: "neev_parikh@brown.edu"
 ---
 
 Hi! I'm an undergraduate at Brown University, with research interests in reinforcement learning, robotics, distributed systems and planning. I currently work in the Intelligent Robot Lab at Brown University, led by Professor George Konidaris.
-

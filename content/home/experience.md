@@ -27,6 +27,7 @@ date_format = "Jan 2006"
   description = """Research assistant at Intelligent Robot Lab (IRL) at Brown University, led by Professor George Konidaris.
 
   * Current projects:
+
     * New mathematical framework (LOMDPs) for tasks in robot domains
     * Unsupervised representation learning for Atari task suite
     * Graph-based priors for improving multi-task performance

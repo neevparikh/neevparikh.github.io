@@ -27,7 +27,7 @@ interests:
 
 education:
   courses:
-  - course: ScB in Computer Science
+  - course: B.Sc. in Computer Science
     institution: Brown University
     year: 2022
 

@@ -71,10 +71,10 @@ date_format = "Jan 2006"
   description = """ Worked on a cutting-edge, deep-learning based pipeline to augment VFX workflows. 
 
   * Worked to develop cutting-edge, deep-learning based pipeline to augment VFX workflows for a POC product.
-  * Researched and managed a company-wide, cloud-compute platform, reducing potential monthly costs by 70\%.
+  * Researched and managed a company-wide, cloud-compute platform, reducing potential monthly costs by 70%.
   * Helped transition MLOps to Microsoft Azure. 
   * Implemented DeepLabv3+ from ECCV 2018 to develop SOTA pipelines for semantic segmentation tasks.
-  * Achieved 90\% in business-aligned metrics with reasonable inference time.
+  * Achieved 90% in business-aligned metrics with reasonable inference time.
 """
 
 +++

@@ -52,7 +52,7 @@ social:
 # To enable, copy your resume/CV to `files/cv.pdf` and uncomment the lines below.
 - icon: cv
   icon_pack: ai
-  link: files/resume.pdf
+  link: files/neev_parikh_resume.pdf
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
 email: "neev_parikh@brown.edu"

@@ -26,9 +26,12 @@ date_format = "Jan 2006"
   date_end = ""
   description = """Research assistant at Intelligent Robot Lab (IRL) at Brown University, led by Professor George Konidaris.
 
-  * Working on Reinforcement Learning/Robotics research
-  * Writing papers to submit to major conference venues (see publications)
-  """
+  * Current projects:
+    * New mathematical framework (LOMDPs) for tasks in robot domains
+    * Unsupervised representation learning for Atari task suite
+    * Graph-based priors for improving multi-task performance
+"""
+
 
 [[experience]]
   title = "Teaching Assistant"
@@ -39,9 +42,9 @@ date_format = "Jan 2006"
   date_end = "2020-05-15"
   description = """ Worked as a teaching assistant for Computer Vision (CSCI 1430), taught by Professor James Tompkin. 
 
-  * Revamped Project 5 and helped update other projects for the class
-  * Hold weekly office hours to help reinforce concepts and answer questions
-  * Help administer the class, biweekly grading of projects and homeworks
+  * Guided 3 teams in their final projects
+  * Revamped Project 5 and helped update 4 other projects for the class
+  * Held weekly office hours, biweekly grading of projects and homeworks
 """
 
 [[experience]]
@@ -53,9 +56,9 @@ date_format = "Jan 2006"
   date_end = "2019-12-25"
   description = """ Worked as a teaching assistant for Introduction to Reinforcement Learning (CSCI 2951F), taught by Professor Michael Littman. 
 
-  * Extend the library framework [simpleRL](https://github.com/david-abel/simple_rl), used in the course 
-  * Design homeworks for the class
-  * Help administer the class
+  * Extended course library framework [simpleRL](https://github.com/david-abel/simple_rl) fixing common bugs and improving example visualizations
+  * Designed 3 homeworks for the class
+  * Guided 3 teams in replicating papers from NeurIPS 2019 for the [NeurIPS 2019 Reproducibility Challenge](https://reproducibility-challenge.github.io/neurips2019)
 """
 
 [[experience]]
@@ -67,9 +70,11 @@ date_format = "Jan 2006"
   date_end = "2019-08-25"
   description = """ Worked on a cutting-edge, deep-learning based pipeline to augment VFX workflows. 
 
-  * Develop pipelines for rotoscoping and 3D object generation, utilizing semantic segmentation, graph convolution etc. 
-  * Develop a proof-of-concept from scratch, rapidly prototyping and responding to customer needs. 
-  * Work with an Agile workflow and use related tools (Jira, Aha etc.)
+  * Worked to develop cutting-edge, deep-learning based pipeline to augment VFX workflows for a POC product.
+  * Researched and managed a company-wide, cloud-compute platform, reducing potential monthly costs by 70\%.
+  * Helped transition MLOps to Microsoft Azure. 
+  * Implemented DeepLabv3+ from ECCV 2018 to develop SOTA pipelines for semantic segmentation tasks.
+  * Achieved 90\% in business-aligned metrics with reasonable inference time.
 """
 
 +++

@@ -31,8 +31,8 @@ featured: false
 links:
 - name: Workshop link
   url: https://mit-spark.github.io/PAL-ICRA2020/
-# url_pdf: http://arxiv.org/pdf/1512.04133v1
-url_video: https://mit-spark.github.io/PAL-ICRA2020/
+url_pdf: http://cs.brown.edu/people/gdk/pubs/lomdp_ws.pdf
+url_video: https://youtu.be/V1rORaPwVhw
 
 image:
   caption: 'Localities, robots, and PBJs'

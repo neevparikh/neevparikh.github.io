@@ -48,8 +48,9 @@ social:
 - icon: github
   icon_pack: fab
   link: https://github.com/neevparikh
-# Link to a PDF of your resume/CV from the About widget.
-# To enable, copy your resume/CV to `files/cv.pdf` and uncomment the lines below.
+- icon: linkedin 
+  icon_pack: fab
+  link: https://www.linkedin.com/in/neev-parikh
 - icon: cv
   icon_pack: ai
   link: files/neev_parikh_resume.pdf
@@ -64,4 +65,4 @@ email: "neev_parikh@brown.edu"
 # - Visitors
 ---
 
-Hi! I'm an undergraduate at Brown University, with research interests in reinforcement learning, robotics, distributed systems and planning. I currently work in the Intelligent Robot Lab at Brown University, led by Professor George Konidaris.
+Hi! I'm an undergraduate at Brown University, with research interests in reinforcement learning, robotics, distributed systems and planning. I currently work in the Intelligent Robot Lab at Brown University, led by Professor George Konidaris. I'm also interested in industry work, either as an internship (summer 2021) or a full-time position (2022). For a resume, please click the 'CV' icon.

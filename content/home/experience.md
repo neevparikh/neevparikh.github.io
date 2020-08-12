@@ -78,4 +78,16 @@ date_format = "Jan 2006"
   * Achieved 90% in business-aligned metrics with reasonable inference time
 """
 
+[[experience]]
+  title = "Software Engineering Intern"
+  company = "Scripbox"
+  company_url = "https://www.scripbox.com"
+  location = "Bangalore, India"
+  date_start = "2018-07-01"
+  date_end = "2019-08-25"
+  description = """  
+  * Developed integrated data visualization tool in Typescript with ReactJS and Django (Python). 
+  * Researched RFM analysis to gather business insights using Python.
+"""
+
 +++

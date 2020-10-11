@@ -25,6 +25,8 @@ summary: "We introduce a method of learning an abstract state representation for
 
 tags:
 - Markov Abstraction
+- Unsupervised learning
+- State abstraction
 
 featured: false
 

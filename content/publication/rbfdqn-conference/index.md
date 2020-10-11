@@ -25,6 +25,9 @@ summary: "We introduce deep radial-basis value functions (RBVFs): value function
 
 tags:
 - RBFDQN
+- Continuous Control 
+- Kernel methods
+- RBVF 
 
 featured: false
 

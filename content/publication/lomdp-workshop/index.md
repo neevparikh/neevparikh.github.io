@@ -25,6 +25,10 @@ summary: "We introduce a novel structured formulation, the *Locally Observable M
 
 tags:
 - LOMDP
+- POMDP
+- Planning
+- Robotics
+- PBJ domain
 
 featured: false
 

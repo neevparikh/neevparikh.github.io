@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RBVF | Neev Parikh</title>
+    <link>https://www.neevparikh.com/tag/rbvf/</link>
+      <atom:link href="https://www.neevparikh.com/tag/rbvf/index.xml" rel="self" type="application/rss+xml" />
+    <description>RBVF</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020 Neev Parikh</copyright><lastBuildDate>Tue, 08 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://www.neevparikh.com/images/icon_hue4027f3826e53473d49236ac3fce29fd_12515_512x512_fill_lanczos_center_2.png</url>
+      <title>RBVF</title>
+      <link>https://www.neevparikh.com/tag/rbvf/</link>
+    </image>
+    
+    <item>
+      <title>Deep Radial-Basis Value Functions for Continuous Control</title>
+      <link>https://www.neevparikh.com/publication/rbfdqn-conference/</link>
+      <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.neevparikh.com/publication/rbfdqn-conference/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

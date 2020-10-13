@@ -1,7 +1,7 @@
 ---
 title: "Graph Embedding Priors for Multi-task Deep Reinforcement Learning"
 authors:
-- Naveen Srinivasan*, Neev Parikh*, Zachary Horvitz*, Aansh Shah, George Konidaris
+- Neev Parikh*, Zachary Horvitz*, Naveen Srinivasan*, Aansh Shah, George Konidaris
 date: "2020-10-12"
 doi: ""
 

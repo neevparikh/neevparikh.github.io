@@ -15,8 +15,8 @@ publishDate: "2020-10-06T00:00:00Z"
 publication_types: ["3"]
 
 # Publication name and optional abbreviated publication name.
-publication: "Under review"
-publication_short: "Under review"
+publication: "NeurIPS 2020. Workshop on Deep Reinforcement Learning"
+publication_short: "DRL Workshop, NeurIPS 2020"
 
 abstract: "We introduce a method of learning an abstract state representation for Markov Decision Processes (MDPs) with rich observations. We begin by proving that a combination of three conditions is sufficient for a learned state abstraction to retain the Markov property. We then describe a practical training procedure that combines inverse model estimation and temporal contrastive learning to learn an abstraction that approximately satisfies these conditions. We evaluate our approach with a proof-of-concept visual gridworld experiment, where the learned representation captures the underlying structure of the domain and enables substantially improved learning performance over end-to-end deep RL, matching the performance achieved with hand-designed compact state information."
 

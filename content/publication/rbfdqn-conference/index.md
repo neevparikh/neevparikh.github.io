@@ -2,7 +2,7 @@
 title: "Deep Radial-Basis Value Functions for Continuous Control"
 authors:
 - Kavosh Asadi, Neev Parikh, Ron Parr, George Konidaris, Michael Littman
-date: "2020-09-08"
+date: "2021-02-02"
 doi: ""
 
 # Schedule page publish date (NOT publication's date).

@@ -2,7 +2,7 @@
 title: "Learning Markov State Abstractions for Deep Reinforcement Learning"
 authors:
 - Cameron Allen, Neev Parikh, George Konidaris
-date: "2020-10-06"
+date: "2020-12-11"
 doi: ""
 
 # Schedule page publish date (NOT publication's date).

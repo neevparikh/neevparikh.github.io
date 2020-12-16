@@ -2,7 +2,7 @@
 title: "Locally Observable Markov Decision Process"
 authors:
 - Max Merlin, Neev Parikh, Eric Rosen, George Konidaris
-date: "2020-04-13"
+date: "2020-06-15"
 doi: ""
 
 # Schedule page publish date (NOT publication's date).

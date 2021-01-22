@@ -32,6 +32,11 @@ tags:
 featured: false
 
 links:
+- name: Workshop link
+  url: https://kr2ml.github.io/2020/papers/
+url_pdf: https://kr2ml.github.io/2020/papers/KR2ML_20_paper.pdf
+- name: Poster
+  url: https://kr2ml.github.io/2020/papers/KR2ML_20_poster.pdf
 
 image:
   caption: 'Architecture'

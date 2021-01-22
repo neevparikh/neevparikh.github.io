@@ -31,6 +31,11 @@ tags:
 featured: false
 
 links:
+- name: Workshop link
+  url: https://sites.google.com/view/deep-rl-workshop-neurips2020/home
+
+url_video: https://www.google.com/url?q=https%3A%2F%2Fslideslive.com%2F38941284%2Flearning-markov-state-abstractions-for-deep-reinforcement-learning%3Fref%3Daccount-folder-62083-folders&sa=D&sntz=1&usg=AFQjCNFXjMCQoNvrGqUjNlnhoVqJXK0jnA
+url_pdf: https://drive.google.com/file/d/1aAqAKqLHxokjhJDtEQYdpsTpaeIKEdFv/view?usp=sharing
 
 image:
   caption: 'Learned Markov Abstraction'

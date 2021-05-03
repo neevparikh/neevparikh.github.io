@@ -41,7 +41,7 @@ date_format = "Jan 2006"
   location = "Boston, MA"
   date_start = "2021-05-10"
   date_end = ""
-  description = """ Working on large-scale machine learning models (seq2seq, CV, etc.) for converting video to 3D models
+  description = """Working on large-scale machine learning models (Seq2seq, CV, etc.) for converting video to 3D models
 """
 
 [[experience]]

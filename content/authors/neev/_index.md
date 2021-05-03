@@ -27,12 +27,12 @@ interests:
 
 education:
   courses:
-  - course: M.Sc. in Computer Science (Concurrent)
+  - course: M.Sc. in Computer Science 
     institution: Brown University
-    year: 2022
-  - course: B.Sc. in Computer Science (Concurrent)
+    year: 2022 (Concurrent)
+  - course: B.Sc. in Computer Science
     institution: Brown University
-    year: 2022
+    year: 2022 (Concurrent)
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons

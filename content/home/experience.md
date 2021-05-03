@@ -19,19 +19,19 @@ date_format = "Jan 2006"
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 
 [[experience]]
-  title = "research assistant"
-  company = "intelligent robot lab"
+  title = "Research assistant"
+  company = "Intelligent Robot Lab"
   company_url = "http://irl.cs.brown.edu/"
-  location = "providence, ri"
+  location = "Providence, RI"
   date_start = "2020-06-01"
   date_end = ""
-  description = """research assistant at intelligent robot lab (irl) at brown university, led by professor george konidaris.
+  description = """Research assistant at Intelligent Robot Lab (irl) at Brown University, led by professor George Konidaris.
 
-  * current projects:
+  * Current projects:
 
-    * new mathematical framework (lomdps) for tasks in robot domains
-    * unsupervised representation learning for atari task suite
-    * graph-based priors for improving multi-task performance
+    * New mathematical framework (LOMDPs) for tasks in robot domains
+    * Unsupervised representation learning for Atari task suite
+    * Graph-based priors for improving multi-task performance
 """
 
 [[experience]]
@@ -40,8 +40,8 @@ date_format = "Jan 2006"
   company_url = "https://www.csm.ai/"
   location = "Boston, MA"
   date_start = "2021-05-10"
-  date_end = "2021-08-27"
-  description = """ 
+  date_end = ""
+  description = """ Working on large-scale machine learning models (seq2seq, CV, etc.) for converting video to 3D models
 """
 
 [[experience]]

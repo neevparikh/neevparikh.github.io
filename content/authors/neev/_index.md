@@ -10,7 +10,7 @@ authors:
 superuser: true
 
 # Role/position
-role: Undergraduate Student
+role: Graduate/Undergraduate Student
 
 # Organizations/Affiliations
 organizations:
@@ -22,12 +22,15 @@ bio: My research interests include reinforcement learning, distributed systems a
 
 interests:
 - Artificial Intelligence
-- Distributed Systems
+- Distributed RL
 - Planning, Robotics
 
 education:
   courses:
-  - course: B.Sc. in Computer Science
+  - course: M.Sc. in Computer Science (Concurrent)
+    institution: Brown University
+    year: 2022
+  - course: B.Sc. in Computer Science (Concurrent)
     institution: Brown University
     year: 2022
 
@@ -65,4 +68,4 @@ email: "neev_parikh@brown.edu"
 # - Visitors
 ---
 
-Hi! I'm an undergraduate at Brown University, with research interests in reinforcement learning, robotics, distributed systems and planning. I currently work in the Intelligent Robot Lab at Brown University, led by Professor George Konidaris. I'm also interested in industry work for a full-time position (2022). For a resume, please click [here](files/neev_parikh_resume.pdf).
+Hi! I'm a concurrent graduate/undergraduate student at Brown University, with research interests in reinforcement learning, robotics, distributed RL and planning. I currently work in the Intelligent Robot Lab at Brown University, led by Professor George Konidaris. I'm also interested in industry work for a full-time position (2022). For a resume, please click [here](files/neev_parikh_resume.pdf).

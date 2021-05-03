@@ -17,22 +17,32 @@ date_format = "Jan 2006"
 #   Required fields are `title`, `company`, and `date_start`.
 #   Leave `date_end` empty if it's your current employer.
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
+
 [[experience]]
-  title = "Research Assistant"
-  company = "Intelligent Robot Lab"
+  title = "research assistant"
+  company = "intelligent robot lab"
   company_url = "http://irl.cs.brown.edu/"
-  location = "Providence, RI"
+  location = "providence, ri"
   date_start = "2020-06-01"
   date_end = ""
-  description = """Research assistant at Intelligent Robot Lab (IRL) at Brown University, led by Professor George Konidaris.
+  description = """research assistant at intelligent robot lab (irl) at brown university, led by professor george konidaris.
 
-  * Current projects:
+  * current projects:
 
-    * New mathematical framework (LOMDPs) for tasks in robot domains
-    * Unsupervised representation learning for Atari task suite
-    * Graph-based priors for improving multi-task performance
+    * new mathematical framework (lomdps) for tasks in robot domains
+    * unsupervised representation learning for atari task suite
+    * graph-based priors for improving multi-task performance
 """
 
+[[experience]]
+  title = "Artificial Intelligence Intern"
+  company = "Common Sense Machines"
+  company_url = "https://www.csm.ai/"
+  location = "Boston, MA"
+  date_start = "2021-05-10"
+  date_end = "2021-08-27"
+  description = """ 
+"""
 
 [[experience]]
   title = "Teaching Assistant"

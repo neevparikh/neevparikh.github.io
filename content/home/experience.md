@@ -35,7 +35,7 @@ date_format = "Jan 2006"
 """
 
 [[experience]]
-  title = "Artificial Intelligence Intern"
+  title = "Research Engineering Intern"
   company = "Common Sense Machines"
   company_url = "https://www.csm.ai/"
   location = "Boston, MA"

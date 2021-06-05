@@ -33,6 +33,8 @@ featured: false
 
 links:
 
+url_pdf: https://ojs.aaai.org/index.php/AAAI/article/view/16828/16635
+
 image:
   caption: 'RBFDQN architecture'
   focal_point: ""

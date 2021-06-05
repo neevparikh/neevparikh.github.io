@@ -1,175 +1,105 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://www.neevparikh.com/publication-type/3/</loc>
     <lastmod>2021-02-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/authors/</loc>
     <lastmod>2021-02-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/tag/continuous-control/</loc>
     <lastmod>2021-02-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/publication/rbfdqn-conference/</loc>
     <lastmod>2021-02-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/author/kavosh-asadi-neev-parikh-ron-parr-george-konidaris-michael-littman/</loc>
     <lastmod>2021-02-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/tag/kernel-methods/</loc>
     <lastmod>2021-02-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/</loc>
     <lastmod>2021-02-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/publication_types/</loc>
     <lastmod>2021-02-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/publication/</loc>
     <lastmod>2021-02-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/tag/rbfdqn/</loc>
     <lastmod>2021-02-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/tag/rbvf/</loc>
     <lastmod>2021-02-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/tags/</loc>
     <lastmod>2021-02-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/author/cameron-allen-neev-parikh-george-konidaris/</loc>
     <lastmod>2020-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/tag/gcn/</loc>
     <lastmod>2020-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/tag/graph-embedding/</loc>
     <lastmod>2020-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/publication/graph-priors-workshop/</loc>
     <lastmod>2020-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/publication/markov-abs-workshop/</loc>
     <lastmod>2020-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/tag/markov-abstraction/</loc>
     <lastmod>2020-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/tag/multi-task-rl/</loc>
     <lastmod>2020-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/author/neev-parikh-zachary-horvitz-naveen-srinivasan-aansh-shah-george-konidaris/</loc>
     <lastmod>2020-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/tag/priors/</loc>
     <lastmod>2020-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/tag/state-abstraction/</loc>
     <lastmod>2020-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/tag/unsupervised-learning/</loc>
     <lastmod>2020-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/publication/lomdp-workshop/</loc>
     <lastmod>2020-06-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/tag/lomdp/</loc>
     <lastmod>2020-06-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/author/max-merlin-neev-parikh-eric-rosen-george-konidaris/</loc>
     <lastmod>2020-06-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/tag/pbj-domain/</loc>
     <lastmod>2020-06-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/tag/planning/</loc>
     <lastmod>2020-06-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/tag/pomdp/</loc>
     <lastmod>2020-06-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/tag/robotics/</loc>
     <lastmod>2020-06-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/categories/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/courses/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/author/neev-parikh/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/post/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.neevparikh.com/talk/</loc>
   </url>
-  
 </urlset>

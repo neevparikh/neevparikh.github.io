@@ -41,12 +41,9 @@ date_format = "Jan 2006"
   location = "Boston, MA"
   date_start = "2021-05-10"
   date_end = ""
-  description = """ * Implemented large-scale, auto-regressive Seq2Seq models for working
-    with 3D geometry from images.
-    * Worked with Deepspeed to explore scaling options for 500M+ param
-    models to feasibly scale existing sequence-based models.
-    * Implemented a graphics algorithm to find surface patches in a 3D wire-
-    frame (Zhang et. al., 2013 )
+  description = """ * Implemented large-scale, auto-regressive Seq2Seq models for working with 3D geometry from images.
+    * Worked with Deepspeed to explore scaling options for 500M+ param models to feasibly scale existing sequence-based models.
+    * Implemented a graphics algorithm to find surface patches in a 3D wire-frame (Zhang et. al., 2013 )
     * Dockerized AWS pipeline to create cloud-independent dev/production
 """
 

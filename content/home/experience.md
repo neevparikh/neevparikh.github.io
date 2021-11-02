@@ -19,6 +19,17 @@ date_format = "Jan 2006"
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 
 [[experience]]
+  title = "Software Engineer"
+  company = "Stripe"
+  company_url = "https://stripe.com/"
+  location = "San Francisco, CA"
+  date_start = "2022-07-25"
+  date_end = ""
+  description = """ * Incoming SWE for Stripe SF.
+"""
+
+
+[[experience]]
   title = "Research assistant"
   company = "Intelligent Robot Lab"
   company_url = "http://irl.cs.brown.edu/"

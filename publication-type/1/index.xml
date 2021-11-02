@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>1 | Neev Parikh</title>
+    <link>https://www.neevparikh.com/publication-type/1/</link>
+      <atom:link href="https://www.neevparikh.com/publication-type/1/index.xml" rel="self" type="application/rss+xml" />
+    <description>1</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2021 Neev Parikh</copyright><lastBuildDate>Mon, 06 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://www.neevparikh.com/images/icon_hue4027f3826e53473d49236ac3fce29fd_12515_512x512_fill_lanczos_center_3.png</url>
+      <title>1</title>
+      <link>https://www.neevparikh.com/publication-type/1/</link>
+    </image>
+    
+    <item>
+      <title>Learning Markov State Abstractions for Deep Reinforcement Learning</title>
+      <link>https://www.neevparikh.com/publication/markov-abs-workshop/</link>
+      <pubDate>Mon, 06 Dec 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.neevparikh.com/publication/markov-abs-workshop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Deep Radial-Basis Value Functions for Continuous Control</title>
+      <link>https://www.neevparikh.com/publication/rbfdqn-conference/</link>
+      <pubDate>Tue, 02 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.neevparikh.com/publication/rbfdqn-conference/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

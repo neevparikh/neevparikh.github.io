@@ -15,7 +15,7 @@ role: Software Engineer
 # Organizations/Affiliations
 organizations:
 - name: Stripe, Inc.
-  url: "https://stripe.com/"
+  url: "https://stripe.com"
 
 # Short bio (displayed in user profile at end of posts)
 bio: My interests include large-scale machine learning models, multimodal systems, reinforcement learning, distributed systems.

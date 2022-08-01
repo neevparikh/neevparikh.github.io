@@ -25,7 +25,7 @@ date_format = "Jan 2006"
   location = "San Francisco, CA"
   date_start = "2022-07-25"
   date_end = ""
-  description = """ * Incoming SWE for Stripe SF.
+  description = """ * SWE in the Financial Data team.
 """
 
 
@@ -35,7 +35,7 @@ date_format = "Jan 2006"
   company_url = "http://irl.cs.brown.edu/"
   location = "Providence, RI"
   date_start = "2020-06-01"
-  date_end = ""
+  date_end = "2022-05-28"
   description = """Research assistant at Intelligent Robot Lab (irl) at Brown University, led by professor George Konidaris.
 
   * Current projects:

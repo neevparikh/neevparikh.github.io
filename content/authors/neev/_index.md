@@ -10,20 +10,21 @@ authors:
 superuser: true
 
 # Role/position
-role: Graduate/Undergraduate Student
+role: Software Engineer
 
 # Organizations/Affiliations
 organizations:
-- name: Brown University
-  url: ""
+- name: Stripe, Inc.
+  url: "https://stripe.com/"
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include reinforcement learning, distributed systems and robotics.
+bio: My interests include large-scale machine learning models, multimodal systems, reinforcement learning, distributed systems.
 
 interests:
+- Large-scale machine learning
+- Multi-modal models
+- Distributed reinforcement learning
 - Artificial Intelligence
-- Distributed RL
-- Planning, Robotics
 
 education:
   courses:
@@ -41,10 +42,10 @@ education:
 social:
 - icon: envelope
   icon_pack: fas
-  link: '#contact'  # For a direct email link, use "mailto:test@example.org".
-# - icon: twitter
-#   icon_pack: fab
-#   link: https://twitter.com/neev_parikh
+  link: mailto:test@example.org
+- icon: twitter
+  icon_pack: fab
+  link: https://twitter.com/neev_parikh
 - icon: google-scholar
   icon_pack: ai
   link: https://scholar.google.com/citations?user=GUopQmgAAAAJ
@@ -59,7 +60,7 @@ social:
   link: files/neev_parikh_resume.pdf
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
-email: "neev_parikh@brown.edu"
+email: "neev.v.parikh@gmail.com"
 
 # Organizational groups that you belong to (for People widget)
 #   Set this to `[]` or comment out if you are not using People widget.
@@ -68,4 +69,6 @@ email: "neev_parikh@brown.edu"
 # - Visitors
 ---
 
-Hi! I'm a concurrent graduate/undergraduate student at Brown University, with research interests in reinforcement learning, robotics, distributed RL and planning. I currently work in the Intelligent Robot Lab at Brown University, led by Professor George Konidaris. For a resume, please click [here](files/neev_parikh_resume.pdf).
+Currently, I'm a software engineer at Stripe, Inc. on the financial data team. I graduated from Brown University with a masters (advised by Professor George Konidaris) in Computer Sciecne, with research interests in reinforcement learning and distributed, multi-modal machine learning systems. 
+
+For a resume, please click [here](files/neev_parikh_resume.pdf). Get in touch via [email](mailto:test@example.org). Other links: [github](https://github.com/neevparikh), [google scholar](https://scholar.google.com/citations?user=GUopQmgAAAAJ), [linkedin](https://www.linkedin.com/in/neev-parikh).

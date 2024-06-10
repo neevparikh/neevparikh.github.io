@@ -69,6 +69,6 @@ email: "neev.v.parikh@gmail.com"
 # - Visitors
 ---
 
-Currently, I'm a software engineer at Stripe, Inc. on the financial data team. I graduated from Brown University with a masters (advised by Professor George Konidaris) in Computer Sciecne, with research interests in reinforcement learning and distributed, multi-modal machine learning systems. 
+Currently, I'm a software engineer at Stripe, Inc. I graduated from Brown University with a masters (advised by Professor George Konidaris) in Computer Sciecne, with research interests in reinforcement learning and distributed, multi-modal machine learning systems. 
 
-For a resume, please click [here](files/neev_parikh_resume.pdf). Get in touch via [email](mailto:test@example.org). Other links: [github](https://github.com/neevparikh), [google scholar](https://scholar.google.com/citations?user=GUopQmgAAAAJ), [linkedin](https://www.linkedin.com/in/neev-parikh).
+For a resume, please click [here](files/neev_parikh_resume.pdf). Get in touch via [email](mailto:neev.v.parikh@gmail.com). Other links: [github](https://github.com/neevparikh), [google scholar](https://scholar.google.com/citations?user=GUopQmgAAAAJ), [linkedin](https://www.linkedin.com/in/neev-parikh).

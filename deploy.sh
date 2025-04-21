@@ -2,14 +2,14 @@
 set -eo pipefail
 
 echo -e "\033[0;32mGenerating site...\033[0m"
-npx @tailwindcss/cli --input ./src/app.css --output ./src/styles.css
+npx @tailwindcss/cli --input ./site/app.css --output ./site/styles.css
 
 echo -e "\033[0;32mChecking out branch...\033[0m"
 git worktree add public master
 
-cp src/*.html public/
-cp -r assets/ public/assets/
-cp src/styles.css public/
+cp site/*.html public/
+cp -r site/assets/ public/assets/
+cp site/styles.css public/
 
 echo -e "\033[0;32mDeploying branch...\033[0m"
 cd public &&

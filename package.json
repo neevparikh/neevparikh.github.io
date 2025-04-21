@@ -1,0 +1,18 @@
+{
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.4",
+    "@tailwindcss/typography": "^0.5.16",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.4"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": false
+  },
+  "dependencies": {
+    "@donovanglover/base16-tailwind": "npm:@jsr/donovanglover__base16-tailwind@^1.0.0"
+  }
+}

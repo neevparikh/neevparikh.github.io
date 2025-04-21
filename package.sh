@@ -9,6 +9,7 @@ echo -e "\033[0;32mChecking out branch...\033[0m"
 git worktree add public master
 
 cp src/*.html public/
+cp -r assets/ public/assets/
 cp src/styles.css public/styles.css/
 
 echo -e "\033[0;32mDeploying branch...\033[0m"

@@ -1,0 +1,13 @@
+{% extends 'base.jinja' %}
+{% block main %}
+      <ul>
+      {% for item in posts %}
+        <li>
+          <span class="text-l text-base16-600">{{ item.date }}</span>
+          <a href="posts/{{ item.slug }}" class="text-l text-base16-600 underline underline-offset-2">
+            {{ item.title }}
+          </a>
+        </li>
+      {% endfor %}
+      </ul>
+{% endblock %}

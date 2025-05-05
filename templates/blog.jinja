@@ -1,10 +1,11 @@
 {% extends 'base.jinja' %}
+
 {% block main %}
       <ul>
       {% for item in posts %}
-        <li>
-          <span class="text-l text-base16-600">{{ item.date }}</span>
-          <a href="posts/{{ item.slug }}" class="text-l text-base16-600 underline underline-offset-2">
+        <li class="flex flex-col items-start mb-8 md:block">
+          <span class="text-base md:text-lg font-bold text-base16-orange/90">{{ item.date }} </span>
+          <a href="posts/{{ item.slug }}.html" class="text-base md:text-lg text-base16-orange/75 underline underline-offset-2">
             {{ item.title }}
           </a>
         </li>

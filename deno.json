@@ -1,0 +1,19 @@
+{
+  "imports": {
+    "colord": "npm:colord@^2.9.3",
+    "glob": "npm:glob@^11.0.2",
+    "lume/": "https://deno.land/x/lume@v2.5.3/",
+    "slug": "npm:slug@^10.0.0",
+    "tailwindcss": "npm:tailwindcss@3.4.17",
+    "yaml": "npm:yaml@^2.7.1"
+  },
+  "tasks": {
+    "lume": "echo \"import 'lume/cli.ts'\" | deno run -A -",
+    "build": "deno task lume",
+    "serve": "deno task lume -s"
+  },
+  "compilerOptions": {
+    "types": ["lume/types.ts"]
+  },
+  "nodeModulesDir": "auto"
+}

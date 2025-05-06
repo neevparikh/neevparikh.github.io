@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en" class="base16-atelier-dune-light dark:base16-atelier-dune font-mono scroll-smooth">
+  {{ include "layouts/head.vto" }}
+
+  <body class="{{ bodyStyle }}">
+    {{ include "layouts/header.vto" }}
+    <main class="{{ mainStyle }}">
+      {{ content }}
+    </main>
+    {{ include "layouts/footer.vto" }}
+  </body>
+</html>

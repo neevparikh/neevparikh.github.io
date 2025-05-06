@@ -1,0 +1,15 @@
+---
+title: Blog | Neev Parikh
+--- 
+{{ layout "layouts/base.vto" }}
+      <ul>
+        {{ for page of search.pages("post", "date=desc") }}
+        <li class="flex flex-col items-start mb-8 md:block">
+          <span class="text-base text-base16-orange/90 font-bold font-stretch-semi-condensed">{{ page.date |> date('dd MMM, yyyy') }} </span>
+          <a href="/posts/{{ page.basename }}/" class="text-base text-base16-orange/75 underline underline-offset-2">
+            {{ page.title }}
+          </a>
+        </li>
+        {{ /for }}
+      </ul>
+{{ /layout }}

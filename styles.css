@@ -1031,6 +1031,32 @@ video {
 .underline-offset-2 {
   text-underline-offset: 2px;
 }
+.base16-gruvbox-material-light-hard {
+  --color-base16-100: 249 245 215;
+  --color-base16-200: 251 241 199;
+  --color-base16-300: 224 207 169;
+  --color-base16-400: 168 153 132;
+  --color-base16-500: 201 185 154;
+  --color-base16-600: 101 71 53;
+  --color-base16-700: 60 56 54;
+  --color-base16-800: 40 40 40;
+  --color-base16-red: 193 74 74;
+  --color-base16-orange: 195 94 10;
+  --color-base16-yellow: 180 113 9;
+  --color-base16-green: 108 120 46;
+  --color-base16-cyan: 76 122 93;
+  --color-base16-blue: 69 112 122;
+  --color-base16-purple: 148 94 128;
+  --color-base16-pink: 231 138 78;
+  --color-base16-100-lighter: 249 245 215;
+  --color-base16-100-lightest: 249 245 215;
+  --color-base16-red-bright: 193 74 74;
+  --color-base16-yellow-bright: 180 113 9;
+  --color-base16-green-bright: 108 120 46;
+  --color-base16-cyan-bright: 76 122 93;
+  --color-base16-blue-bright: 69 112 122;
+  --color-base16-purple-bright: 148 94 128;
+}
 /*!
   Theme: Gruvbox dark, hard
   Author: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)

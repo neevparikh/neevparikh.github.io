@@ -6,7 +6,8 @@ import readingInfo from "lume/plugins/reading_info.ts";
 import date from "lume/plugins/date.ts";
 import { base16Tailwind } from "./src/base16-tailwind/lib.ts";
 import typography from "npm:@tailwindcss/typography";
-import footnote from "lume/mod.ts";
+import footnote from "npm:markdown-it-footnote";
+import katex from "lume/plugins/katex.ts";
 
 // Configure the markdown plugin
 const markdown = {
@@ -63,16 +64,32 @@ site.use(
 );
 site.use(readingInfo());
 site.use(date());
+site.use(katex());
 
 site.ignore("base16-tailwind/schemes");
 
 site.data(
+  "overallSiteStyle",
+  "base16-atelier-gruvbox-material-light-hard dark:base16-gruvbox-material-dark-medium font-mono scroll-smooth",
+);
+site.data(
   "bodyStyle",
-  "flex flex-col m-auto p-6 max-w-6xl bg-base16-100 text-base16-700 min-h-screen",
+  "flex flex-col m-auto p-6 max-w-5xl bg-base16-100 text-base16-700 min-h-screen",
 );
 site.data(
   "mainStyle",
-  "flex flex-col basis-auto flex-auto bg-base16-200 my-6 rounded-2xl p-8 md:p-12",
+  "flex flex-col basis-auto flex-auto bg-base16-200/20 my-6 rounded-2xl p-8 md:py-12 md:px-32",
+);
+site.data(
+  "contentStyle",
+  "grow basis-full text-base16-700 max-w-none leading-6 " +
+    "prose dark:prose-invert " +
+    "prose-code:rounded-xl prose-pre:bg-base16-200/0 " +
+    "prose-p:text-base16-700 prose-p:mb-10 " +
+    "prose-a:text-base16-cyan/90 " +
+    "prose-ul:-mt-8 prose-ul:mb-10 " +
+    "prose-ol:-mt-4 prose-ol:mb-10 " +
+    "prose-li:marker:text-base16-blue/90",
 );
 
 site.copy("assets");

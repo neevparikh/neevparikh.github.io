@@ -1,5 +1,6 @@
 {
   "imports": {
+    "@shikijs/markdown-it": "npm:@shikijs/markdown-it@^3.3.0",
     "colord": "npm:colord@^2.9.3",
     "glob": "npm:glob@^11.0.2",
     "lume/": "https://deno.land/x/lume@v2.5.3/",

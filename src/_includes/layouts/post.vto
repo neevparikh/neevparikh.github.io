@@ -1,22 +1,17 @@
 <!doctype html>
-<html lang="en" class="base16-atelier-dune-light dark:base16-atelier-dune font-mono scroll-smooth">
+<html lang="en" class="{{ overallSiteStyle }}">
   {{ include "layouts/head.vto" }}
 
   <body class="{{ bodyStyle }}">
     {{ include "layouts/header.vto" }}
-    <div class="flex-none basis-xs text-xs md:text-sm text-base16-500">
-      <p>{{ readingInfo.minutes }} min read</p>
-    </div>
     <main class="{{ mainStyle }}">
-      <div class="mb-12 text-base16-700 flex-none basis-sm">
+      <div class="mb-8 text-base16-700 flex-none basis-sm">
         <h1 class="text-3xl font-semibold mb-2">{{ title }}</h1>
-        <p class="text-sm md:text-base italic text-base16-500">{{ date |> date('MM/dd/yyyy') }}</p>
+        <h3 class="text-[12px] md:text-[14px] mb-4 text-base16-500">{{ description }}</h3>
+        <p class="text-[10px] md:text-[12px] font-bold text-base16-yellow/70 mb-2">{{ date |> date('dd MMM, yyyy') }} | {{ readingInfo.minutes }} min</p>
       </div>
-      <div class="grow basis-full prose max-w-none prose-code:rounded-xl "> 
+      <div class="{{ contentStyle }}"> 
         {{ content }}
-      </div>
-      <div>
-        {{ footnotes }} 
       </div>
     </main>
     {{ include "layouts/footer.vto" }}

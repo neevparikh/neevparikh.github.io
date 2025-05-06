@@ -70,7 +70,7 @@ site.ignore("base16-tailwind/schemes");
 
 site.data(
   "overallSiteStyle",
-  "base16-atelier-gruvbox-material-light-hard dark:base16-gruvbox-material-dark-medium font-mono scroll-smooth",
+  "base16-gruvbox-material-light-hard dark:base16-gruvbox-material-dark-medium font-mono scroll-smooth",
 );
 site.data(
   "bodyStyle",

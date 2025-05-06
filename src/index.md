@@ -10,7 +10,7 @@ frontier models at METR.
 I've worked at Stripe and CSM in the past. I went to Brown for a concurrent BSc/MSc in Computer Science.
 
 Here's some research that I'm especially proud of:
-* [RE-Bench](https://arxiv.org/abs/2411.15114): Frontier AI R&D evaluations
+* [RE-Bench](https://arxiv.org/abs/2411.15114): Frontier AI R&D evaluations (ICML spotlight)
 * [Learning Markov State Abstractions for Deep Reinforcement Learning](https://arxiv.org/abs/2106.04379): Markovian abstractions for deep RL
 
 Here's some fun projects I did:

@@ -13,7 +13,7 @@ echo -e "\033[0;32mDeploying branch...\033[0m"
 cd public &&
     git add --all &&
     git commit -m "$(date) - updating site" &&
-    git push origin master --force
+    git push origin master
 cd ..
 
 echo -e "\033[0;32mCleaning up...\033[0m"

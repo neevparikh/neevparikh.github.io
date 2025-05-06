@@ -3,3 +3,4 @@ _cache
 .fdignore
 .DS_Store
 node_modules
+public/

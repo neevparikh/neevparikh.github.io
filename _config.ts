@@ -76,5 +76,6 @@ site.data(
 );
 
 site.copy("assets");
+site.copy("CNAME");
 
 export default site;

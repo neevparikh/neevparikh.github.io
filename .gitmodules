@@ -1,3 +1,3 @@
 [submodule "src/base16-tailwind/schemes"]
 	path = src/base16-tailwind/schemes
-	url = https://github.com/tinted-theming/schemes
+	url = git@github.com:neevparikh/schemes.git

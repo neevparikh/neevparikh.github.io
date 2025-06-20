@@ -499,6 +499,39 @@ video {
 [hidden]:where(:not([hidden="until-found"])) {
   display: none;
 }
+.container {
+  width: 100%;
+}
+@media (min-width: 640px) {
+
+  .container {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+
+  .container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+
+  .container {
+    max-width: 1024px;
+  }
+}
+@media (min-width: 1280px) {
+
+  .container {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1536px) {
+
+  .container {
+    max-width: 1536px;
+  }
+}
 .prose {
   color: var(--tw-prose-body);
   max-width: 65ch;
@@ -926,6 +959,12 @@ video {
 .mb-2 {
   margin-bottom: 0.5rem;
 }
+.mb-4 {
+  margin-bottom: 1rem;
+}
+.mb-8 {
+  margin-bottom: 2rem;
+}
 .flex {
   display: flex;
 }
@@ -959,6 +998,9 @@ video {
 .place-content-center {
   place-content: center;
 }
+.items-start {
+  align-items: flex-start;
+}
 .items-center {
   align-items: center;
 }
@@ -969,6 +1011,9 @@ video {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.25rem * var(--tw-space-x-reverse));
   margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse)));
+}
+.overflow-y-auto {
+  overflow-y: auto;
 }
 .scroll-smooth {
   scroll-behavior: smooth;
@@ -995,6 +1040,20 @@ video {
 .font-mono {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+.text-\[10px\] {
+  font-size: 10px;
+}
+.text-\[12px\] {
+  font-size: 12px;
+}
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
@@ -1006,12 +1065,19 @@ video {
 .font-bold {
   font-weight: 700;
 }
+.font-semibold {
+  font-weight: 600;
+}
 .leading-6 {
   line-height: 1.5rem;
 }
 .text-base16-300 {
   --tw-text-opacity: 1;
   color: rgb(var(--color-base16-300) / var(--tw-text-opacity, 1));
+}
+.text-base16-500 {
+  --tw-text-opacity: 1;
+  color: rgb(var(--color-base16-500) / var(--tw-text-opacity, 1));
 }
 .text-base16-600 {
   --tw-text-opacity: 1;
@@ -1025,20 +1091,29 @@ video {
   --tw-text-opacity: 1;
   color: rgb(var(--color-base16-800) / var(--tw-text-opacity, 1));
 }
+.text-base16-orange\/75 {
+  color: rgb(var(--color-base16-orange) / 0.75);
+}
+.text-base16-orange\/90 {
+  color: rgb(var(--color-base16-orange) / 0.9);
+}
+.text-base16-yellow\/70 {
+  color: rgb(var(--color-base16-yellow) / 0.7);
+}
 .underline {
   text-decoration-line: underline;
 }
 .underline-offset-2 {
   text-underline-offset: 2px;
 }
-.base16-gruvbox-material-light-hard {
-  --color-base16-100: 249 245 215;
-  --color-base16-200: 251 241 199;
-  --color-base16-300: 224 207 169;
-  --color-base16-400: 168 153 132;
-  --color-base16-500: 201 185 154;
-  --color-base16-600: 101 71 53;
-  --color-base16-700: 60 56 54;
+.base24-softstack-light {
+  --color-base16-100: 251 247 232;
+  --color-base16-200: 248 242 219;
+  --color-base16-300: 244 235 209;
+  --color-base16-400: 239 227 193;
+  --color-base16-500: 101 82 68;
+  --color-base16-600: 60 54 49;
+  --color-base16-700: 50 47 45;
   --color-base16-800: 40 40 40;
   --color-base16-red: 193 74 74;
   --color-base16-orange: 195 94 10;
@@ -1048,63 +1123,29 @@ video {
   --color-base16-blue: 69 112 122;
   --color-base16-purple: 148 94 128;
   --color-base16-pink: 231 138 78;
-  --color-base16-100-lighter: 249 245 215;
-  --color-base16-100-lightest: 249 245 215;
-  --color-base16-red-bright: 193 74 74;
-  --color-base16-yellow-bright: 180 113 9;
-  --color-base16-green-bright: 108 120 46;
-  --color-base16-cyan-bright: 76 122 93;
-  --color-base16-blue-bright: 69 112 122;
-  --color-base16-purple-bright: 148 94 128;
+  --color-base16-100-lighter: 253 251 239;
+  --color-base16-100-lightest: 255 255 247;
+  --color-base16-red-bright: 208 59 59;
+  --color-base16-yellow-bright: 250 134 59;
+  --color-base16-green-bright: 189 115 0;
+  --color-base16-cyan-bright: 114 129 37;
+  --color-base16-blue-bright: 70 128 92;
+  --color-base16-purple-bright: 62 116 129;
 }
-/*!
-  Theme: Gruvbox dark, hard
-  Author: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
-  License: ~ MIT (or more permissive) [via base16-schemes-source]
-  Maintainer: @highlightjs/core-team
-  Version: 2021.09.0
-*/
-pre code.hljs{display:block;overflow-x:auto;padding:1em}
-code.hljs{padding:3px 5px}
-.hljs{color:#d5c4a1;background:#1d2021}
-.hljs ::-moz-selection, .hljs::-moz-selection{background-color:#504945;color:#d5c4a1}
-.hljs ::selection,.hljs::selection{background-color:#504945;color:#d5c4a1}
-.hljs-comment{color:#665c54}
-.hljs-tag{color:#bdae93}
-.hljs-operator,.hljs-punctuation,.hljs-subst{color:#d5c4a1}
-.hljs-operator{opacity:.7}
-.hljs-bullet,.hljs-deletion,.hljs-name,.hljs-selector-tag,.hljs-template-variable,.hljs-variable{color:#fb4934}
-.hljs-attr,.hljs-link,.hljs-literal,.hljs-number,.hljs-symbol,.hljs-variable.constant_{color:#fe8019}
-.hljs-class .hljs-title,.hljs-title,.hljs-title.class_{color:#fabd2f}
-.hljs-strong{font-weight:700;color:#fabd2f}
-.hljs-addition,.hljs-code,.hljs-string,.hljs-title.class_.inherited__{color:#b8bb26}
-.hljs-built_in,.hljs-doctag,.hljs-keyword.hljs-atrule,.hljs-quote,.hljs-regexp{color:#8ec07c}
-.hljs-attribute,.hljs-function .hljs-title,.hljs-section,.hljs-title.function_,.ruby .hljs-property{color:#83a598}
-.diff .hljs-meta,.hljs-keyword,.hljs-template-tag,.hljs-type{color:#d3869b}
-.hljs-emphasis{color:#d3869b;font-style:italic}
-.hljs-meta,.hljs-meta .hljs-keyword,.hljs-meta .hljs-string{color:#d65d0e}
-.hljs-meta .hljs-keyword,.hljs-meta-keyword{font-weight:700}
+.footnotes {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
 @media (prefers-color-scheme: dark) {
-
-  .dark\:prose-invert {
-    --tw-prose-body: var(--tw-prose-invert-body);
-    --tw-prose-headings: var(--tw-prose-invert-headings);
-    --tw-prose-lead: var(--tw-prose-invert-lead);
-    --tw-prose-links: var(--tw-prose-invert-links);
-    --tw-prose-bold: var(--tw-prose-invert-bold);
-    --tw-prose-counters: var(--tw-prose-invert-counters);
-    --tw-prose-bullets: var(--tw-prose-invert-bullets);
-    --tw-prose-hr: var(--tw-prose-invert-hr);
-    --tw-prose-quotes: var(--tw-prose-invert-quotes);
-    --tw-prose-quote-borders: var(--tw-prose-invert-quote-borders);
-    --tw-prose-captions: var(--tw-prose-invert-captions);
-    --tw-prose-kbd: var(--tw-prose-invert-kbd);
-    --tw-prose-kbd-shadows: var(--tw-prose-invert-kbd-shadows);
-    --tw-prose-code: var(--tw-prose-invert-code);
-    --tw-prose-pre-code: var(--tw-prose-invert-pre-code);
-    --tw-prose-pre-bg: var(--tw-prose-invert-pre-bg);
-    --tw-prose-th-borders: var(--tw-prose-invert-th-borders);
-    --tw-prose-td-borders: var(--tw-prose-invert-td-borders);
+  .shiki,
+  .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+    /* Optional, if you also want font styles */
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    -webkit-text-decoration: var(--shiki-dark-text-decoration) !important;
+            text-decoration: var(--shiki-dark-text-decoration) !important;
   }
 }
 .prose-p\:mb-10 :is(:where(p):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
@@ -1143,6 +1184,10 @@ code.hljs{padding:3px 5px}
 }
 @media (min-width: 768px) {
 
+  .md\:block {
+    display: block;
+  }
+
   .md\:space-x-3 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-x-reverse: 0;
     margin-right: calc(0.75rem * var(--tw-space-x-reverse));
@@ -1164,6 +1209,14 @@ code.hljs{padding:3px 5px}
     line-height: 2.25rem;
   }
 
+  .md\:text-\[12px\] {
+    font-size: 12px;
+  }
+
+  .md\:text-\[14px\] {
+    font-size: 14px;
+  }
+
   .md\:text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
@@ -1171,7 +1224,7 @@ code.hljs{padding:3px 5px}
 }
 @media (prefers-color-scheme: dark) {
 
-  .dark\:base16-gruvbox-material-dark-medium {
+  .dark\:base24-softstack-dark {
     --color-base16-100: 41 40 40;
     --color-base16-200: 50 48 47;
     --color-base16-300: 80 73 69;
@@ -1188,13 +1241,13 @@ code.hljs{padding:3px 5px}
     --color-base16-blue: 125 174 163;
     --color-base16-purple: 211 134 155;
     --color-base16-pink: 189 111 62;
-    --color-base16-100-lighter: 41 40 40;
-    --color-base16-100-lightest: 41 40 40;
-    --color-base16-red-bright: 234 105 98;
-    --color-base16-yellow-bright: 216 166 87;
-    --color-base16-green-bright: 169 182 101;
-    --color-base16-cyan-bright: 137 180 130;
-    --color-base16-blue-bright: 125 174 163;
-    --color-base16-purple-bright: 211 134 155;
+    --color-base16-100-lighter: 33 33 33;
+    --color-base16-100-lightest: 20 22 23;
+    --color-base16-red-bright: 244 175 171;
+    --color-base16-yellow-bright: 207 146 107;
+    --color-base16-green-bright: 230 199 148;
+    --color-base16-cyan-bright: 196 205 149;
+    --color-base16-blue-bright: 183 209 178;
+    --color-base16-purple-bright: 171 203 196;
   }
 }

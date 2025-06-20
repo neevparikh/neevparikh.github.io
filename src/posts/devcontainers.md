@@ -42,8 +42,10 @@ RUN paru -S --noconfirm \
    gosu
 RUN uv tool install llm 
 RUN mkdir -p -m 700 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts 
-RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended 
-RUN git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions 
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
+   "" --unattended 
+RUN git clone https://github.com/zsh-users/zsh-autosuggestions \
+   ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions 
 COPY <<EOF ./entrypoint.sh
 #!/bin/bash
 
@@ -53,7 +55,9 @@ EOF
 ENTRYPOINT ["/bin/bash", "./entrypoint.sh"]
 
 FROM unfetched AS prefetched
-RUN --mount=type=ssh,uid=1000 yadm clone git@github.com:<dotfiles-repo>.git && yadm alt && yadm checkout -- ~/ 
+RUN --mount=type=ssh,uid=1000 yadm clone git@github.com:<dotfiles-repo>.git \
+   && yadm alt \
+   && yadm checkout -- ~/ 
 ENTRYPOINT ["/bin/zsh"]
 ```
 
@@ -64,7 +68,13 @@ SSH), I have a prefetched image that bakes in the dotfiles.
 
 I tend to use a command like this to mount my server's working home directory in the container (NVIDIA runtime optional). 
 ```bash
-docker run --rm -it --platform linux/amd64  --runtime=nvidia --mount type=bind,src=$SSH_AUTH_SOCK,dst=/agent.sock -e SSH_AUTH_SOCK=/agent.sock --mount type=bind,src=$HOME/,dst=/home/<username>/host-dir <image>
+docker run --rm -it \
+   --platform linux/amd64 \
+   --runtime=nvidia \
+   --mount type=bind,src=$SSH_AUTH_SOCK,dst=/agent.sock \
+   -e SSH_AUTH_SOCK=/agent.sock \
+   --mount type=bind,src=$HOME/,dst=/home/<username>/host-dir \
+   <image>
 ```
 
 A great workflow has been to detach from the container once I've launched a long-lived data job or training run and follow logs via `docker logs <container id>`. I can

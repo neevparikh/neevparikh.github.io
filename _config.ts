@@ -74,7 +74,7 @@ site.data(
 );
 site.data(
   "bodyStyle",
-  "flex flex-col m-auto p-6 max-w-5xl bg-base16-100 text-base16-700 min-h-screen",
+  "flex flex-col m-auto p-6 max-w-7xl bg-base16-100 text-base16-700 min-h-screen",
 );
 site.data(
   "mainStyle",
@@ -82,7 +82,7 @@ site.data(
 );
 site.data(
   "contentStyle",
-  "grow basis-full text-base16-700 max-w-none leading-6 " +
+  "grow basis-full text-base16-700 max-w-none leading-6 hyphens-auto " +
     "underline-offset-2 " +
     "prose " +
     "prose-code:rounded-xl prose-pre:bg-base16-200/0 " +

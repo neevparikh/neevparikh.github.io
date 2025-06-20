@@ -971,8 +971,8 @@ video {
 .min-h-screen {
   min-height: 100vh;
 }
-.max-w-5xl {
-  max-width: 64rem;
+.max-w-7xl {
+  max-width: 80rem;
 }
 .max-w-none {
   max-width: none;
@@ -1014,6 +1014,10 @@ video {
 }
 .scroll-smooth {
   scroll-behavior: smooth;
+}
+.hyphens-auto {
+  -webkit-hyphens: auto;
+          hyphens: auto;
 }
 .rounded-2xl {
   border-radius: 1rem;

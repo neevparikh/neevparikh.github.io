@@ -73,8 +73,8 @@ docker run --rm -it \
    --runtime=nvidia \
    --mount type=bind,src=$SSH_AUTH_SOCK,dst=/agent.sock \
    -e SSH_AUTH_SOCK=/agent.sock \
-   --mount type=bind,src=$HOME/,dst=/home/<username>/host-dir \
-   <image>
+   --mount type=bind,src=$HOME/,dst=/home/$USER/host-dir \
+   $IMAGE
 ```
 
 A great workflow has been to detach from the container once I've launched a long-lived data job or training run and follow logs via `docker logs <container id>`. I can

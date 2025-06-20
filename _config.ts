@@ -70,7 +70,7 @@ site.ignore("base16-tailwind/schemes");
 
 site.data(
   "overallSiteStyle",
-  "base24-softstack-light dark:base24-softstack-dark font-mono scroll-smooth overflow-y-auto scrollbar-rounded",
+  "base24-softstack-light dark:base24-softstack-dark font-mono scroll-smooth",
 );
 site.data(
   "bodyStyle",

@@ -29,7 +29,7 @@
     "jsr:@std/yaml@1.0.5": "1.0.5",
     "jsr:@std/yaml@^1.0.5": "1.0.5",
     "npm:@js-temporal/polyfill@0.4.4": "0.4.4",
-    "npm:@shikijs/markdown-it@^3.3.0": "3.3.0",
+    "npm:@shikijs/markdown-it@^3.4.0": "3.4.0",
     "npm:@tailwindcss/typography@*": "0.5.16_tailwindcss@4.1.5",
     "npm:autoprefixer@10.4.21": "10.4.21_postcss@8.5.3",
     "npm:colord@^2.9.3": "2.9.3",
@@ -209,8 +209,8 @@
         "@types/hast"
       ]
     },
-    "@shikijs/core@3.3.0": {
-      "integrity": "sha512-CovkFL2WVaHk6PCrwv6ctlmD4SS1qtIfN8yEyDXDYWh4ONvomdM9MaFw20qHuqJOcb8/xrkqoWQRJ//X10phOQ==",
+    "@shikijs/core@3.4.0": {
+      "integrity": "sha512-0YOzTSRDn/IAfQWtK791gs1u8v87HNGToU6IwcA3K7nPoVOrS2Dh6X6A6YfXgPTSkTwR5y6myk0MnI0htjnwrA==",
       "dependencies": [
         "@shikijs/types",
         "@shikijs/vscode-textmate",
@@ -218,42 +218,42 @@
         "hast-util-to-html"
       ]
     },
-    "@shikijs/engine-javascript@3.3.0": {
-      "integrity": "sha512-XlhnFGv0glq7pfsoN0KyBCz9FJU678LZdQ2LqlIdAj6JKsg5xpYKay3DkazXWExp3DTJJK9rMOuGzU2911pg7Q==",
+    "@shikijs/engine-javascript@3.4.0": {
+      "integrity": "sha512-1ywDoe+z/TPQKj9Jw0eU61B003J9DqUFRfH+DVSzdwPUFhR7yOmfyLzUrFz0yw8JxFg/NgzXoQyyykXgO21n5Q==",
       "dependencies": [
         "@shikijs/types",
         "@shikijs/vscode-textmate",
         "oniguruma-to-es"
       ]
     },
-    "@shikijs/engine-oniguruma@3.3.0": {
-      "integrity": "sha512-l0vIw+GxeNU7uGnsu6B+Crpeqf+WTQ2Va71cHb5ZYWEVEPdfYwY5kXwYqRJwHrxz9WH+pjSpXQz+TJgAsrkA5A==",
+    "@shikijs/engine-oniguruma@3.4.0": {
+      "integrity": "sha512-zwcWlZ4OQuJ/+1t32ClTtyTU1AiDkK1lhtviRWoq/hFqPjCNyLj22bIg9rB7BfoZKOEOfrsGz7No33BPCf+WlQ==",
       "dependencies": [
         "@shikijs/types",
         "@shikijs/vscode-textmate"
       ]
     },
-    "@shikijs/langs@3.3.0": {
-      "integrity": "sha512-zt6Kf/7XpBQKSI9eqku+arLkAcDQ3NHJO6zFjiChI8w0Oz6Jjjay7pToottjQGjSDCFk++R85643WbyINcuL+g==",
+    "@shikijs/langs@3.4.0": {
+      "integrity": "sha512-bQkR+8LllaM2duU9BBRQU0GqFTx7TuF5kKlw/7uiGKoK140n1xlLAwCgXwSxAjJ7Htk9tXTFwnnsJTCU5nDPXQ==",
       "dependencies": [
         "@shikijs/types"
       ]
     },
-    "@shikijs/markdown-it@3.3.0": {
-      "integrity": "sha512-8cBI+tmDwIOAL+mSI3nU0rhyyvf4Qy3WoPIyZXVnRm1UJNyybxK+h+b0Zwa58UylBGXlw/eMLhKaYVztlgvkYw==",
+    "@shikijs/markdown-it@3.4.0": {
+      "integrity": "sha512-OIIuH14+wvhfs2emhNIoAvqWGm4PJLaShSFYXreApc0fze62t5bWjh2sQos7/PEMLd0xoQ6P+z8oMd/WiFUqUQ==",
       "dependencies": [
         "markdown-it",
-        "shiki@3.3.0"
+        "shiki@3.4.0"
       ]
     },
-    "@shikijs/themes@3.3.0": {
-      "integrity": "sha512-tXeCvLXBnqq34B0YZUEaAD1lD4lmN6TOHAhnHacj4Owh7Ptb/rf5XCDeROZt2rEOk5yuka3OOW2zLqClV7/SOg==",
+    "@shikijs/themes@3.4.0": {
+      "integrity": "sha512-YPP4PKNFcFGLxItpbU0ZW1Osyuk8AyZ24YEFaq04CFsuCbcqydMvMUTi40V2dkc0qs1U2uZFrnU6s5zI6IH+uA==",
       "dependencies": [
         "@shikijs/types"
       ]
     },
-    "@shikijs/types@3.3.0": {
-      "integrity": "sha512-KPCGnHG6k06QG/2pnYGbFtFvpVJmC3uIpXrAiPrawETifujPBv0Se2oUxm5qYgjCvGJS9InKvjytOdN+bGuX+Q==",
+    "@shikijs/types@3.4.0": {
+      "integrity": "sha512-EUT/0lGiE//7j5N/yTMNMT3eCWNcHJLrRKxT0NDXWIfdfSmFJKfPX7nMmRBrQnWboAzIsUziCThrYMMhjbMS1A==",
       "dependencies": [
         "@shikijs/vscode-textmate",
         "@types/hast"
@@ -900,8 +900,8 @@
         "source-map-js"
       ]
     },
-    "property-information@7.0.0": {
-      "integrity": "sha512-7D/qOz/+Y4X/rzSB6jKxKUsQnphO046ei8qxG59mtM3RG3DHgTK81HrxrmoDVINJb8NKT5ZsRbwHvQ6B68Iyhg=="
+    "property-information@7.1.0": {
+      "integrity": "sha512-TwEZ+X+yCJmYfL7TPUOcvBZ4QfoT5YenQiJuX//0th53DE6w0xxLEtfK3iyryQFddXuvkIk51EEgrJQ0WJkOmQ=="
     },
     "punycode.js@2.3.1": {
       "integrity": "sha512-uxFIHU0YlHYhDQtV4R9J6a52SLx28BCjT+4ieh7IGbgwVJWO+km431c4yRlREUAsAmt/uMjQUyQHNEPf0M39CA=="
@@ -970,10 +970,10 @@
         "@types/hast"
       ]
     },
-    "shiki@3.3.0": {
-      "integrity": "sha512-j0Z1tG5vlOFGW8JVj0Cpuatzvshes7VJy5ncDmmMaYcmnGW0Js1N81TOW98ivTFNZfKRn9uwEg/aIm638o368g==",
+    "shiki@3.4.0": {
+      "integrity": "sha512-Ni80XHcqhOEXv5mmDAvf5p6PAJqbUc/RzFeaOqk+zP5DLvTPS3j0ckvA+MI87qoxTQ5RGJDVTbdl/ENLSyyAnQ==",
       "dependencies": [
-        "@shikijs/core@3.3.0",
+        "@shikijs/core@3.4.0",
         "@shikijs/engine-javascript",
         "@shikijs/engine-oniguruma",
         "@shikijs/langs",
@@ -1448,7 +1448,7 @@
   },
   "workspace": {
     "dependencies": [
-      "npm:@shikijs/markdown-it@^3.3.0",
+      "npm:@shikijs/markdown-it@^3.4.0",
       "npm:colord@^2.9.3",
       "npm:glob@^11.0.2",
       "npm:slug@10",

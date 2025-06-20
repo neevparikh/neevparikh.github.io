@@ -1,11 +1,11 @@
 import lume from "lume/mod.ts";
 import tailwindcss from "lume/plugins/tailwindcss.ts";
 import postcss from "lume/plugins/postcss.ts";
-import codeHighlight from "lume/plugins/code_highlight.ts";
 import readingInfo from "lume/plugins/reading_info.ts";
 import date from "lume/plugins/date.ts";
 import { base16Tailwind } from "./src/base16-tailwind/lib.ts";
 import typography from "npm:@tailwindcss/typography";
+import Shiki from "@shikijs/markdown-it";
 import footnote from "npm:markdown-it-footnote";
 import katex from "lume/plugins/katex.ts";
 
@@ -16,7 +16,15 @@ const markdown = {
     html: true,
     typographer: true,
   },
-  plugins: [footnote],
+  plugins: [
+    footnote,
+    await Shiki({
+      themes: {
+        dark: "gruvbox-dark-hard",
+        light: "gruvbox-light-soft",
+      },
+    }),
+  ],
   keepDefaultPlugins: true,
 };
 
@@ -54,14 +62,6 @@ site.use(
   }),
 );
 site.use(postcss());
-site.use(
-  codeHighlight({
-    theme: {
-      name: "base16/gruvbox-dark-hard",
-      cssFile: "/styles.css",
-    },
-  }),
-);
 site.use(readingInfo());
 site.use(date());
 site.use(katex());
@@ -70,7 +70,7 @@ site.ignore("base16-tailwind/schemes");
 
 site.data(
   "overallSiteStyle",
-  "base16-gruvbox-material-light-hard dark:base16-gruvbox-material-dark-medium font-mono scroll-smooth",
+  "base24-softstack-light dark:base24-softstack-dark font-mono scroll-smooth overflow-y-auto scrollbar-rounded",
 );
 site.data(
   "bodyStyle",
@@ -83,7 +83,8 @@ site.data(
 site.data(
   "contentStyle",
   "grow basis-full text-base16-700 max-w-none leading-6 " +
-    "prose dark:prose-invert " +
+    "underline-offset-2 " +
+    "prose " +
     "prose-code:rounded-xl prose-pre:bg-base16-200/0 " +
     "prose-p:text-base16-700 prose-p:mb-10 " +
     "prose-a:text-base16-cyan/90 " +

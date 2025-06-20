@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" class="base24-softstack-light dark:base24-softstack-dark font-mono scroll-smooth overflow-y-auto scrollbar-rounded"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker images for consistent, persistent SSH sessions</title>
+    <link href="/styles.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/assets/images/icon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.css">
+  </head>
+
+
+  <body class="flex flex-col m-auto p-6 max-w-5xl bg-base16-100 text-base16-700 min-h-screen">
+        <header class="flex-none basis-sm mb-2">
+      <div class="flex justify-between items-center mb-2">
+        <h1 class="text-lg md:text-3xl text-base16-800 font-bold">Neev Parikh</h1>
+        <nav class="text-sm md:text-lg space-x-1 md:space-x-3">
+          <a href="/" class="text-base16-600 underline underline-offset-2">home</a>
+          <a href="/blog/" class="text-base16-600 underline underline-offset-2">blog</a>
+          <a href="/assets/files/neev_parikh_resume.pdf" class="text-base16-600 underline underline-offset-2">resume</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="flex flex-col basis-auto flex-auto bg-base16-200/20 my-6 rounded-2xl p-8 md:py-12 md:px-32">
+      <div class="mb-8 text-base16-700 flex-none basis-sm">
+        <h1 class="text-3xl font-semibold mb-2">Docker images for consistent, persistent SSH sessions</h1>
+        <h3 class="text-[12px] md:text-[14px] mb-4 text-base16-500">Devcontainer-ish</h3>
+        <p class="text-[10px] md:text-[12px] font-bold text-base16-yellow/70 mb-2">20 Jun, 2025 | 2 min</p>
+      </div>
+      <div class="grow basis-full text-base16-700 max-w-none leading-6 underline-offset-2 prose prose-code:rounded-xl prose-pre:bg-base16-200/0 prose-p:text-base16-700 prose-p:mb-10 prose-a:text-base16-cyan/90 prose-ul:-mt-8 prose-ul:mb-10 prose-ol:-mt-4 prose-ol:mb-10 prose-li:marker:text-base16-blue/90"> 
+        <p>I’ve finally got around to setting up a personal Docker image for my personal development environment. Interestingly, I thought it’d be substantially more effort than it
+ended up being. I’ve briefly tried to do this several years ago and did not love the experience. The largest breakthrough was integrating proper dotfiles management via
+<a href="https://yadm.io/">YADM</a> and correctly setting configurations up in different OS environments.</p>
+<p>The Dockerfile is surprisingly short:</p>
+<pre class="shiki shiki-themes gruvbox-light-soft gruvbox-dark-hard" style="background-color:#f2e5bc;--shiki-dark-bg:#1d2021;color:#3c3836;--shiki-dark:#ebdbb2" tabindex="0"><code class="language-dockerfile"><span class="line"><span style="color:#9D0006;--shiki-dark:#FB4934">FROM</span><span style="color:#3C3836;--shiki-dark:#EBDBB2"> archlinux:multilib-devel </span><span style="color:#9D0006;--shiki-dark:#FB4934">AS</span><span style="color:#3C3836;--shiki-dark:#EBDBB2"> unfetched </span></span>
+<span class="line"><span style="color:#9D0006;--shiki-dark:#FB4934">RUN</span><span style="color:#3C3836;--shiki-dark:#EBDBB2"> pacman -Syu --noconfirm git cargo inetutils zsh </span></span>
+<span class="line"><span style="color:#9D0006;--shiki-dark:#FB4934">ARG</span><span style="color:#3C3836;--shiki-dark:#EBDBB2"> username</span></span>
+<span class="line"><span style="color:#9D0006;--shiki-dark:#FB4934">RUN</span><span style="color:#3C3836;--shiki-dark:#EBDBB2"> useradd -m -G wheel -s /bin/zsh $username \</span></span>
+<span class="line"><span style="color:#3C3836;--shiki-dark:#EBDBB2">    &amp;&amp; echo </span><span style="color:#79740E;--shiki-dark:#B8BB26">"$username ALL=(ALL) NOPASSWD: ALL"</span><span style="color:#3C3836;--shiki-dark:#EBDBB2"> &gt;&gt; /etc/sudoers </span></span>
+<span class="line"><span style="color:#9D0006;--shiki-dark:#FB4934">USER</span><span style="color:#3C3836;--shiki-dark:#EBDBB2"> $username</span></span>
+<span class="line"><span style="color:#9D0006;--shiki-dark:#FB4934">WORKDIR</span><span style="color:#3C3836;--shiki-dark:#EBDBB2"> /home/$username</span></span>
+<span class="line"><span style="color:#9D0006;--shiki-dark:#FB4934">RUN</span><span style="color:#3C3836;--shiki-dark:#EBDBB2"> cd /tmp \</span></span>
+<span class="line"><span style="color:#3C3836;--shiki-dark:#EBDBB2">   &amp;&amp; git clone https://aur.archlinux.org/paru.git \</span></span>
+<span class="line"><span style="color:#3C3836;--shiki-dark:#EBDBB2">   &amp;&amp; cd paru \</span></span>
+<span class="line"><span style="color:#3C3836;--shiki-dark:#EBDBB2">   &amp;&amp; makepkg -si --noconfirm </span></span>
+<span class="line"><span style="color:#9D0006;--shiki-dark:#FB4934">RUN</span><span style="color:#3C3836;--shiki-dark:#EBDBB2"> paru -S --noconfirm \</span></span>
+<span class="line"><span style="color:#3C3836;--shiki-dark:#EBDBB2">   neovim \</span></span>
+<span class="line"><span style="color:#3C3836;--shiki-dark:#EBDBB2">   yadm \</span></span>
+<span class="line"><span style="color:#3C3836;--shiki-dark:#EBDBB2">   fzf \</span></span>
+<span class="line"><span style="color:#3C3836;--shiki-dark:#EBDBB2">   ripgrep \</span></span>
+<span class="line"><span style="color:#3C3836;--shiki-dark:#EBDBB2">   fd \</span></span>
+<span class="line"><span style="color:#3C3836;--shiki-dark:#EBDBB2">   bat \</span></span>
+<span class="line"><span style="color:#3C3836;--shiki-dark:#EBDBB2">   htop \</span></span>
+<span class="line"><span style="color:#3C3836;--shiki-dark:#EBDBB2">   uv \</span></span>
+<span class="line"><span style="color:#3C3836;--shiki-dark:#EBDBB2">   jujutsu \</span></span>
+<span class="line"><span style="color:#3C3836;--shiki-dark:#EBDBB2">   neovim-remote \</span></span>
+<span class="line"><span style="color:#3C3836;--shiki-dark:#EBDBB2">   tailscale \</span></span>
+<span class="line"><span style="color:#3C3836;--shiki-dark:#EBDBB2">   openssh \</span></span>
+<span class="line"><span style="color:#3C3836;--shiki-dark:#EBDBB2">   luarocks \</span></span>
+<span class="line"><span style="color:#3C3836;--shiki-dark:#EBDBB2">   nvidia-open \</span></span>
+<span class="line"><span style="color:#3C3836;--shiki-dark:#EBDBB2">   gosu</span></span>
+<span class="line"><span style="color:#9D0006;--shiki-dark:#FB4934">RUN</span><span style="color:#3C3836;--shiki-dark:#EBDBB2"> uv tool install llm </span></span>
+<span class="line"><span style="color:#9D0006;--shiki-dark:#FB4934">RUN</span><span style="color:#3C3836;--shiki-dark:#EBDBB2"> mkdir -p -m 700 ~/.ssh &amp;&amp; ssh-keyscan github.com &gt;&gt; ~/.ssh/known_hosts </span></span>
+<span class="line"><span style="color:#9D0006;--shiki-dark:#FB4934">RUN</span><span style="color:#3C3836;--shiki-dark:#EBDBB2"> sh -c </span><span style="color:#79740E;--shiki-dark:#B8BB26">"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"</span><span style="color:#79740E;--shiki-dark:#B8BB26"> ""</span><span style="color:#3C3836;--shiki-dark:#EBDBB2"> --unattended </span></span>
+<span class="line"><span style="color:#9D0006;--shiki-dark:#FB4934">RUN</span><span style="color:#3C3836;--shiki-dark:#EBDBB2"> git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions </span></span>
+<span class="line"><span style="color:#9D0006;--shiki-dark:#FB4934">COPY</span><span style="color:#3C3836;--shiki-dark:#EBDBB2"> &lt;&lt;EOF ./entrypoint.sh</span></span>
+<span class="line"><span style="color:#928374;font-style:italic;--shiki-dark:#928374;--shiki-dark-font-style:italic">#!/bin/bash</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#3C3836;--shiki-dark:#EBDBB2">yadm clone git@github.com:&lt;dotfiles-repo&gt;.git &amp;&amp; yadm alt &amp;&amp; yadm checkout -- ~/</span></span>
+<span class="line"><span style="color:#3C3836;--shiki-dark:#EBDBB2">exec zsh</span></span>
+<span class="line"><span style="color:#3C3836;--shiki-dark:#EBDBB2">EOF</span></span>
+<span class="line"><span style="color:#9D0006;--shiki-dark:#FB4934">ENTRYPOINT</span><span style="color:#3C3836;--shiki-dark:#EBDBB2"> [</span><span style="color:#79740E;--shiki-dark:#B8BB26">"/bin/bash"</span><span style="color:#3C3836;--shiki-dark:#EBDBB2">, </span><span style="color:#79740E;--shiki-dark:#B8BB26">"./entrypoint.sh"</span><span style="color:#3C3836;--shiki-dark:#EBDBB2">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#9D0006;--shiki-dark:#FB4934">FROM</span><span style="color:#3C3836;--shiki-dark:#EBDBB2"> unfetched </span><span style="color:#9D0006;--shiki-dark:#FB4934">AS</span><span style="color:#3C3836;--shiki-dark:#EBDBB2"> prefetched</span></span>
+<span class="line"><span style="color:#9D0006;--shiki-dark:#FB4934">RUN</span><span style="color:#3C3836;--shiki-dark:#EBDBB2"> --mount=type=ssh,uid=1000 yadm clone git@github.com:&lt;dotfiles-repo&gt;.git &amp;&amp; yadm alt &amp;&amp; yadm checkout -- ~/ </span></span>
+<span class="line"><span style="color:#9D0006;--shiki-dark:#FB4934">ENTRYPOINT</span><span style="color:#3C3836;--shiki-dark:#EBDBB2"> [</span><span style="color:#79740E;--shiki-dark:#B8BB26">"/bin/zsh"</span><span style="color:#3C3836;--shiki-dark:#EBDBB2">]</span></span></code></pre>
+<p>Based of off Arch Linux, this replicates my Linux desktop experience, with all my development tools and configurations. This approach uses SSH agent forwarding to handle
+authentication for both updating dotfiles when starting the container and for interacting with repos and the like during development. Sometimes, I’ve had issues with
+cloud providers having weird virtualization that affects SSH agent forwarding into the container. For those settings (or more generally, ones where I can’t or don’t need
+SSH), I have a prefetched image that bakes in the dotfiles.</p>
+<p>I tend to use a command like this to mount my server’s working home directory in the container (NVIDIA runtime optional).</p>
+<pre class="shiki shiki-themes gruvbox-light-soft gruvbox-dark-hard" style="background-color:#f2e5bc;--shiki-dark-bg:#1d2021;color:#3c3836;--shiki-dark:#ebdbb2" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#B57614;--shiki-dark:#FABD2F">docker</span><span style="color:#79740E;--shiki-dark:#B8BB26"> run</span><span style="color:#8F3F71;--shiki-dark:#D3869B"> --rm</span><span style="color:#8F3F71;--shiki-dark:#D3869B"> -it</span><span style="color:#8F3F71;--shiki-dark:#D3869B"> --platform</span><span style="color:#79740E;--shiki-dark:#B8BB26"> linux/amd64</span><span style="color:#8F3F71;--shiki-dark:#D3869B">  --runtime=nvidia</span><span style="color:#8F3F71;--shiki-dark:#D3869B"> --mount</span><span style="color:#79740E;--shiki-dark:#B8BB26"> type=bind,src=</span><span style="color:#076678;--shiki-dark:#83A598">$SSH_AUTH_SOCK</span><span style="color:#79740E;--shiki-dark:#B8BB26">,dst=/agent.sock</span><span style="color:#8F3F71;--shiki-dark:#D3869B"> -e</span><span style="color:#79740E;--shiki-dark:#B8BB26"> SSH_AUTH_SOCK=/agent.sock</span><span style="color:#8F3F71;--shiki-dark:#D3869B"> --mount</span><span style="color:#79740E;--shiki-dark:#B8BB26"> type=bind,src=</span><span style="color:#076678;--shiki-dark:#83A598">$HOME</span><span style="color:#79740E;--shiki-dark:#B8BB26">/,dst=/home/</span><span style="color:#427B58;--shiki-dark:#8EC07C">&lt;</span><span style="color:#79740E;--shiki-dark:#B8BB26">usernam</span><span style="color:#3C3836;--shiki-dark:#EBDBB2">e</span><span style="color:#427B58;--shiki-dark:#8EC07C">&gt;</span><span style="color:#79740E;--shiki-dark:#B8BB26">/host-dir</span><span style="color:#427B58;--shiki-dark:#8EC07C"> &lt;</span><span style="color:#79740E;--shiki-dark:#B8BB26">imag</span><span style="color:#3C3836;--shiki-dark:#EBDBB2">e</span><span style="color:#427B58;--shiki-dark:#8EC07C">&gt;</span></span></code></pre>
+<p>A great workflow has been to detach from the container once I’ve launched a long-lived data job or training run and follow logs via <code>docker logs &lt;container id&gt;</code>. I can
+safely handle disconnecting from the instance while also having all my preferred configuration and tooling.</p>
+
+      </div>
+    </main>
+    
+    <footer class="basis-sm flex-none place-content-center text-center">
+      <span class="text-base16-300 text-sm text-center">© 2025 Neev Parikh</span>
+    </footer>
+
+  
+
+</body></html>

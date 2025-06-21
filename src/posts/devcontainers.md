@@ -70,9 +70,11 @@ I tend to use a command like this to mount my server's working home directory in
 ```bash
 docker run --rm -it \
    --platform linux/amd64 \
-   --runtime=nvidia \
+   # --runtime=nvidia \
    --mount type=bind,src=$SSH_AUTH_SOCK,dst=/agent.sock \
    -e SSH_AUTH_SOCK=/agent.sock \
+   -e TERM=$TERM \
+   -e SHELL=/bin/zsh \
    --mount type=bind,src=$HOME/,dst=/home/$USER/host-dir \
    $IMAGE
 ```

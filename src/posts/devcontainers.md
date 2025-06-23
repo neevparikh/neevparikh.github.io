@@ -71,7 +71,7 @@ I tend to use a command like this to mount my server's working home directory in
 docker run --rm -it \
    --platform linux/amd64 \
    # --runtime=nvidia \
-   --mount type=bind,src=$SSH_AUTH_SOCK,dst=/agent.sock \
+   --mount type=bind,src=$HOME/.ssh/agent.sock,dst=/agent.sock \
    -e SSH_AUTH_SOCK=/agent.sock \
    -e TERM=$TERM \
    -e SHELL=/bin/zsh \
@@ -81,3 +81,6 @@ docker run --rm -it \
 
 A great workflow has been to detach from the container once I've launched a long-lived data job or training run and follow logs via `docker logs <container id>`. I can
 safely handle disconnecting from the instance while also having all my preferred configuration and tooling. 
+
+Note that `$SSH_AUTH_SOCK` can change every time you login. This means if you have a long-running container, and SSH in several times, the container's mount path will
+break. In order to avoid this, I create a symlink from the actual path to a fixed path on login on the host, and then mount that to the container. 

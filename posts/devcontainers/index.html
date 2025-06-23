@@ -86,7 +86,7 @@ SSH), I have a prefetched image that bakes in the dotfiles.</p>
 <pre class="shiki shiki-themes gruvbox-light-soft gruvbox-dark-hard" style="background-color:#f2e5bc;--shiki-dark-bg:#1d2021;color:#3c3836;--shiki-dark:#ebdbb2" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#B57614;--shiki-dark:#FABD2F">docker</span><span style="color:#79740E;--shiki-dark:#B8BB26"> run</span><span style="color:#8F3F71;--shiki-dark:#D3869B"> --rm</span><span style="color:#8F3F71;--shiki-dark:#D3869B"> -it</span><span style="color:#8F3F71;--shiki-dark:#D3869B"> \</span></span>
 <span class="line"><span style="color:#8F3F71;--shiki-dark:#D3869B">   --platform</span><span style="color:#79740E;--shiki-dark:#B8BB26"> linux/amd64</span><span style="color:#8F3F71;--shiki-dark:#D3869B"> \</span></span>
 <span class="line"><span style="color:#928374;font-style:italic;--shiki-dark:#928374;--shiki-dark-font-style:italic">   # --runtime=nvidia \</span></span>
-<span class="line"><span style="color:#B57614;--shiki-dark:#FABD2F">   --mount</span><span style="color:#79740E;--shiki-dark:#B8BB26"> type=bind,src=</span><span style="color:#076678;--shiki-dark:#83A598">$SSH_AUTH_SOCK</span><span style="color:#79740E;--shiki-dark:#B8BB26">,dst=/agent.sock</span><span style="color:#8F3F71;--shiki-dark:#D3869B"> \</span></span>
+<span class="line"><span style="color:#B57614;--shiki-dark:#FABD2F">   --mount</span><span style="color:#79740E;--shiki-dark:#B8BB26"> type=bind,src=</span><span style="color:#076678;--shiki-dark:#83A598">$HOME</span><span style="color:#79740E;--shiki-dark:#B8BB26">/.ssh/agent.sock,dst=/agent.sock</span><span style="color:#8F3F71;--shiki-dark:#D3869B"> \</span></span>
 <span class="line"><span style="color:#8F3F71;--shiki-dark:#D3869B">   -e</span><span style="color:#79740E;--shiki-dark:#B8BB26"> SSH_AUTH_SOCK=/agent.sock</span><span style="color:#8F3F71;--shiki-dark:#D3869B"> \</span></span>
 <span class="line"><span style="color:#8F3F71;--shiki-dark:#D3869B">   -e</span><span style="color:#79740E;--shiki-dark:#B8BB26"> TERM=</span><span style="color:#076678;--shiki-dark:#83A598">$TERM</span><span style="color:#8F3F71;--shiki-dark:#D3869B"> \</span></span>
 <span class="line"><span style="color:#8F3F71;--shiki-dark:#D3869B">   -e</span><span style="color:#79740E;--shiki-dark:#B8BB26"> SHELL=/bin/zsh</span><span style="color:#8F3F71;--shiki-dark:#D3869B"> \</span></span>
@@ -94,6 +94,8 @@ SSH), I have a prefetched image that bakes in the dotfiles.</p>
 <span class="line"><span style="color:#076678;--shiki-dark:#83A598">   $IMAGE</span></span></code></pre>
 <p>A great workflow has been to detach from the container once I’ve launched a long-lived data job or training run and follow logs via <code>docker logs &lt;container id&gt;</code>. I can
 safely handle disconnecting from the instance while also having all my preferred configuration and tooling.</p>
+<p>Note that <code>$SSH_AUTH_SOCK</code> can change every time you login. This means if you have a long-running container, and SSH in several times, the container’s mount path will
+break. In order to avoid this, I create a symlink from the actual path to a fixed path on login on the host, and then mount that to the container.</p>
 
       </div>
     </main>

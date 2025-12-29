@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" class="base24-softstack-light dark:base24-softstack-dark font-mono scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Assistants, A Retrospective</title>
+    <link href="/styles.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/assets/images/icon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.css">
+  </head>
+
+
+  <body class="flex flex-col m-auto p-6 max-w-7xl bg-base16-100 text-base16-700 min-h-screen">
+        <header class="flex-none basis-sm mb-2">
+      <div class="flex justify-between items-center mb-2">
+        <h1 class="text-lg md:text-3xl text-base16-800 font-bold">Neev Parikh</h1>
+        <nav class="text-sm md:text-lg space-x-1 md:space-x-3">
+          <a href="/" class="text-base16-600 underline underline-offset-2">home</a>
+          <a href="/blog/" class="text-base16-600 underline underline-offset-2">blog</a>
+          <a href="/assets/files/neev_parikh_resume.pdf" class="text-base16-600 underline underline-offset-2">resume</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="flex flex-col basis-auto flex-auto bg-base16-200/20 my-6 rounded-2xl p-8 md:py-12 md:px-32">
+      <div class="mb-8 text-base16-700 flex-none basis-sm">
+        <h1 class="text-3xl font-semibold mb-2">Coding Assistants, A Retrospective</h1>
+        <h3 class="text-[12px] md:text-[14px] mb-4 text-base16-500">What design features matter?</h3>
+        <p class="text-[10px] md:text-[12px] font-bold text-base16-yellow/70 mb-2">06 May, 2025 | 4 min</p>
+      </div>
+      <div class="grow basis-full text-base16-700 max-w-none leading-6 hyphens-auto underline-offset-2 prose prose-code:rounded-xl prose-pre:bg-base16-200/0 prose-p:text-base16-700 prose-p:mb-10 prose-a:text-base16-cyan/90 prose-ul:-mt-8 prose-ul:mb-10 prose-ol:-mt-4 prose-ol:mb-10 prose-li:marker:text-base16-blue/90"> 
+        <p>Last July, I wrote an unpublished draft post that described why I thought coding assistants were going to look more like autonomous code-monkeys and less like IDE integrations.<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> I had two basic reasons:</p>
+<ol>
+<li>You’re going to want to run <em>many</em> instances at a time.</li>
+<li>Autonomous agents scale better with model capabilities.</li>
+</ol>
+<p>I never ended up finishing that draft, and I thought it would be interesting to revisit this idea now, as 2025 comes to a close.</p>
+<h3>You’re using just one?</h3>
+<p>My main reasoning here was that, by far, the greatest promise of AI agents compared to humans (at least in the near term before they’re wildly superintelligent) would arise from being able to run many simultaneous copies at increased serial speed. Multiple agents can explore different ideas in parallel, combining and searching over what works similar to classic best-of-N approaches. Compare this to older coding assistant UXs that were integrated into the IDE and were fundamentally designed to be used in close collaboration with the developer. Users would focus on developing one feature at a time, akin to how one would pair-program with a colleague. AI edits required frequent interaction. If you wanted to parallelize, you would need to open multiple IDE instances and constantly context switch, a much less compelling user experience.</p>
+<p>I think this mostly ended up being true, with the rise of git-worktree-based solutions (like <a href="https://cursor.com/docs/configuration/worktrees">Cursor’s</a> or the guide in <a href="https://code.claude.com/docs/en/common-workflows">Claude Code</a>). People did parallelize Cursor by manually opening many instances but this was clunky and has mostly gone away now. Multi-agent workflows are burgeoning in popularity now, with Claude Code’s subagent design pattern.</p>
+<h3>Look they’re much better!</h3>
+<p>As AI models get more capable, they are able to perform longer, increasingly complex tasks. The maximum length of task (as measured by how long it takes a capable-but-unfamiliar expert human) has been <a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/">growing exponentially</a> for many years (and may have recently sped up). This means that coding agent designs that are unconstrained in the “length” of tasks that they can handle will scale better as the underlying models improve.</p>
+<p>For example, coding assistant interfaces that design for frequent developer interaction points are constrained by this feedback cycle. The entire point of having an IDE-centric UX is that I can frequently interact with the agent’s changes and co-develop, but this means that the “length” of the tasks that the agent does autonomously is bounded by this feedback cycle. As you delegate more and more work to the agent, in order to take advantage of the model being able to complete longer tasks, an IDE-like UX makes increasingly less sense. This is easier to see in the limit; if my agents are doing week-long tasks, I want to see a Linear or Jira-style dashboard, not an IDE!</p>
+<p>A key selling point of a tight interaction loop is you, as the developer, get to review and course-correct AI work. As agents get more reliable and competent, this is going to be less necessary. In certain workloads, this still makes sense, where the task is particularly underdetermined and you, as the developer, don’t exactly know what the solution should look like.</p>
+<p>I think this also mostly ended up being true. The trend <em>has</em> continued, and models like Claude Opus 4.5 are indeed more reliable and competent at tasks where many people feel comfortable orchestrating at a higher level of abstraction. Claude Code has experienced a <a href="https://x.com/bcherny/status/2004887829252317325?s=20">meteoric rise in popularity</a>, and people have started talking about <a href="https://x.com/AndrewCurran_/status/2004896859954053303?s=20">Claude Code moments</a> for other fields besides software engineering. Cursor has recently shipped several new features to support this kind of workflow, with <a href="https://cursor.com/docs/cloud-agent">cloud</a> and <a href="https://cursor.com/docs/cli/overview">cli</a>.</p>
+<p>However, I think I missed the rise of fast, moderately intelligent agents, like <a href="https://cursor.com/blog/composer">Composer</a>. I also underestimated how useful having your IDE and agent in one place is, with the ability to cross-reference things where needed and leverage shared tooling.</p>
+<h3>What seems to be next?</h3>
+<p>I think a key missing UX element is effective control over orchestration. We’re beginning to see examples of this kind of thing with multi-agent setups, where you have an orchestrator or “lead-agent”. However, this likely doesn’t transfer nicely to other task distributions, where it’s harder to specify what delegation or coordination should look like. At least in the short-term, I’d expect developers to want greater insight and control over subagents, e.g. what ideas they’re pursuing, cost, searching over solutions, etc.</p>
+<p>I also think Cursor et. al.'s will stick around for a while. The features it provides are still useful when you want to tackle problems in partly manual way. You may want to do this for a whole host of reasons, even as models get increasingly better, such as learning a new concept, tackling a problem where it’s hard to write a good spec, etc.</p>
+<p>I do think 2026 is the year we’ll see more tooling around reviewing outputs and orchestrating tasks and interacting less with the underlying codebase manually as much, similar to what Andrej describes <a href="https://x.com/karpathy/status/2005421816110862601?s=20">here</a>. The best UX for this is likely not a terminal or an IDE, but something else.</p>
+<p>I’ll revisit this sometime next year, to see how this evolves.</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>I’m not talking about AI-assisted <em>autocomplete</em>. I think that provides a different type of value and
+will stick around. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+      </div>
+    </main>
+    
+    <footer class="basis-sm flex-none place-content-center text-center">
+      <span class="text-base16-300 text-sm text-center">© 2025 Neev Parikh</span>
+    </footer>
+
+  
+
+</body></html>

@@ -1110,12 +1110,6 @@ video {
 .text-base16-yellow\/70 {
   color: rgb(var(--color-base16-yellow) / 0.7);
 }
-.underline {
-  text-decoration-line: underline;
-}
-.underline-offset-2 {
-  text-underline-offset: 2px;
-}
 .base24-softstack-light {
   --color-base16-100: 251 247 232;
   --color-base16-200: 248 242 219;
@@ -1181,11 +1175,11 @@ video {
 .prose-a\:text-base16-cyan\/90 :is(:where(a):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   color: rgb(var(--color-base16-cyan) / 0.9);
 }
+.prose-a\:no-underline :is(:where(a):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  text-decoration-line: none;
+}
 .prose-code\:rounded-xl :is(:where(code):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   border-radius: 0.75rem;
-}
-.prose-pre\:bg-base16-200\/0 :is(:where(pre):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
-  background-color: rgb(var(--color-base16-200) / 0);
 }
 .prose-ol\:-ml-4 :is(:where(ol):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   margin-left: -1rem;
@@ -1199,8 +1193,8 @@ video {
 .prose-ol\:list-inside :is(:where(ol):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   list-style-position: inside;
 }
-.prose-ol\:leading-5 :is(:where(ol):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
-  line-height: 1.25rem;
+.prose-ol\:leading-6 :is(:where(ol):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  line-height: 1.5rem;
 }
 .prose-ul\:-ml-4 :is(:where(ul):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   margin-left: -1rem;
@@ -1214,8 +1208,8 @@ video {
 .prose-ul\:list-inside :is(:where(ul):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   list-style-position: inside;
 }
-.prose-ul\:leading-5 :is(:where(ul):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
-  line-height: 1.25rem;
+.prose-ul\:leading-6 :is(:where(ul):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  line-height: 1.5rem;
 }
 .prose-li\:marker\:text-base16-blue\/90 * :is(:where(li):not(:where([class~="not-prose"],[class~="not-prose"] *)))::marker {
   color: rgb(var(--color-base16-blue) / 0.9);

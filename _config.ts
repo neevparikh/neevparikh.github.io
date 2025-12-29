@@ -70,26 +70,28 @@ site.ignore("base16-tailwind/schemes");
 
 site.data(
   "overallSiteStyle",
-  "base24-softstack-light dark:base24-softstack-dark font-mono scroll-smooth",
+  "base24-softstack-light dark:base24-softstack-dark font-mono scroll-smooth [scrollbar-width:thin] [scrollbar-color:rgb(var(--color-base16-300))_transparent]",
 );
 site.data(
   "bodyStyle",
-  "flex flex-col m-auto p-6 max-w-7xl bg-base16-100 text-base16-700 min-h-screen",
+  "flex flex-col m-auto p-6 max-w-4xl bg-base16-100 text-base16-700 min-h-screen",
 );
 site.data(
   "mainStyle",
-  "flex flex-col basis-auto flex-auto bg-base16-200/20 my-6 rounded-2xl p-8 md:py-12 md:px-32",
+  "flex flex-col basis-auto flex-auto bg-base16-200/20 my-6 rounded-2xl p-2 md:p-8 md:py-12 md:px-10",
 );
 site.data(
   "contentStyle",
-  "grow basis-full text-base16-700 max-w-none leading-6 hyphens-auto " +
+  "grow basis-full text-base16-700 max-w-none leading-7 hyphens-manual " +
     "underline-offset-2 " +
     "prose " +
     "prose-code:rounded-xl prose-pre:bg-base16-200/0 " +
-    "prose-p:text-base16-700 prose-p:mb-10 " +
+    "prose-p:text-base16-700/90 prose-p:mb-10 " +
     "prose-a:text-base16-cyan/90 " +
-    "prose-ul:-mt-8 prose-ul:mb-10 " +
-    "prose-ol:-mt-4 prose-ol:mb-10 " +
+    "prose-ul:-ml-4 prose-ul:list-inside " +
+    "prose-ol:-ml-4 prose-ol:list-inside " +
+    "prose-ul:-mt-8 prose-ul:mb-8 prose-ul:leading-5 " +
+    "prose-ol:-mt-4 prose-ol:mb-4 prose-ol:leading-5 " +
     "prose-li:marker:text-base16-blue/90",
 );
 

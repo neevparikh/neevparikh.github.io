@@ -968,14 +968,20 @@ video {
 .mb-8 {
   margin-bottom: 2rem;
 }
+.ml-2 {
+  margin-left: 0.5rem;
+}
+.mr-2 {
+  margin-right: 0.5rem;
+}
 .flex {
   display: flex;
 }
 .min-h-screen {
   min-height: 100vh;
 }
-.max-w-7xl {
-  max-width: 80rem;
+.max-w-4xl {
+  max-width: 56rem;
 }
 .max-w-none {
   max-width: none;
@@ -1018,9 +1024,9 @@ video {
 .scroll-smooth {
   scroll-behavior: smooth;
 }
-.hyphens-auto {
-  -webkit-hyphens: auto;
-          hyphens: auto;
+.hyphens-manual {
+  -webkit-hyphens: manual;
+          hyphens: manual;
 }
 .rounded-2xl {
   border-radius: 1rem;
@@ -1032,21 +1038,17 @@ video {
 .bg-base16-200\/20 {
   background-color: rgb(var(--color-base16-200) / 0.2);
 }
+.p-2 {
+  padding: 0.5rem;
+}
 .p-6 {
   padding: 1.5rem;
-}
-.p-8 {
-  padding: 2rem;
 }
 .text-center {
   text-align: center;
 }
 .font-mono {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
 }
 .text-\[10px\] {
   font-size: 10px;
@@ -1066,14 +1068,18 @@ video {
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
 .font-bold {
   font-weight: 700;
 }
 .font-semibold {
   font-weight: 600;
 }
-.leading-6 {
-  line-height: 1.5rem;
+.leading-7 {
+  line-height: 1.75rem;
 }
 .text-base16-300 {
   --tw-text-opacity: 1;
@@ -1136,9 +1142,23 @@ video {
   --color-base16-blue-bright: 70 128 92;
   --color-base16-purple-bright: 62 116 129;
 }
+.\[scrollbar-color\:rgb\(var\(--color-base16-300\)\)_transparent\] {
+  scrollbar-color: rgb(var(--color-base16-300)) transparent;
+}
+.\[scrollbar-width\:thin\] {
+  scrollbar-width: thin;
+}
 .footnotes {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+.footnotes-list {
+  margin-left: 0px !important;
+  list-style-position: outside !important;
+}
+.footnotes-sep {
+  --tw-text-opacity: 1;
+  color: rgb(var(--color-base16-400) / var(--tw-text-opacity, 1));
 }
 @media (prefers-color-scheme: dark) {
   .shiki,
@@ -1155,9 +1175,8 @@ video {
 .prose-p\:mb-10 :is(:where(p):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   margin-bottom: 2.5rem;
 }
-.prose-p\:text-base16-700 :is(:where(p):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
-  --tw-text-opacity: 1;
-  color: rgb(var(--color-base16-700) / var(--tw-text-opacity, 1));
+.prose-p\:text-base16-700\/90 :is(:where(p):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  color: rgb(var(--color-base16-700) / 0.9);
 }
 .prose-a\:text-base16-cyan\/90 :is(:where(a):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   color: rgb(var(--color-base16-cyan) / 0.9);
@@ -1168,17 +1187,35 @@ video {
 .prose-pre\:bg-base16-200\/0 :is(:where(pre):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   background-color: rgb(var(--color-base16-200) / 0);
 }
+.prose-ol\:-ml-4 :is(:where(ol):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  margin-left: -1rem;
+}
 .prose-ol\:-mt-4 :is(:where(ol):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   margin-top: -1rem;
 }
-.prose-ol\:mb-10 :is(:where(ol):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
-  margin-bottom: 2.5rem;
+.prose-ol\:mb-4 :is(:where(ol):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  margin-bottom: 1rem;
+}
+.prose-ol\:list-inside :is(:where(ol):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  list-style-position: inside;
+}
+.prose-ol\:leading-5 :is(:where(ol):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  line-height: 1.25rem;
+}
+.prose-ul\:-ml-4 :is(:where(ul):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  margin-left: -1rem;
 }
 .prose-ul\:-mt-8 :is(:where(ul):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   margin-top: -2rem;
 }
-.prose-ul\:mb-10 :is(:where(ul):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
-  margin-bottom: 2.5rem;
+.prose-ul\:mb-8 :is(:where(ul):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  margin-bottom: 2rem;
+}
+.prose-ul\:list-inside :is(:where(ul):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  list-style-position: inside;
+}
+.prose-ul\:leading-5 :is(:where(ul):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  line-height: 1.25rem;
 }
 .prose-li\:marker\:text-base16-blue\/90 * :is(:where(li):not(:where([class~="not-prose"],[class~="not-prose"] *)))::marker {
   color: rgb(var(--color-base16-blue) / 0.9);
@@ -1187,6 +1224,14 @@ video {
   color: rgb(var(--color-base16-blue) / 0.9);
 }
 @media (min-width: 768px) {
+
+  .md\:ml-10 {
+    margin-left: 2.5rem;
+  }
+
+  .md\:mr-10 {
+    margin-right: 2.5rem;
+  }
 
   .md\:block {
     display: block;
@@ -1198,9 +1243,13 @@ video {
     margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
-  .md\:px-32 {
-    padding-left: 8rem;
-    padding-right: 8rem;
+  .md\:p-8 {
+    padding: 2rem;
+  }
+
+  .md\:px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
 
   .md\:py-12 {
@@ -1208,17 +1257,22 @@ video {
     padding-bottom: 3rem;
   }
 
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
   .md\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
   }
 
-  .md\:text-\[12px\] {
-    font-size: 12px;
-  }
-
   .md\:text-\[14px\] {
     font-size: 14px;
+  }
+
+  .md\:text-\[16px\] {
+    font-size: 16px;
   }
 
   .md\:text-lg {

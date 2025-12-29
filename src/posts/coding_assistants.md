@@ -1,6 +1,6 @@
 ---
-title: Coding Assistants, A Retrospective
-date: Git Created
+title: Coding assistants, a retrospective
+date: 2025-12-29
 description: What design features matter?
 draft: false
 tags: 
@@ -8,9 +8,8 @@ tags:
 ---
 
 Last July, I wrote an unpublished draft post that described why I thought coding assistants were going to look more like autonomous code-monkeys and less like IDE integrations.[^1] I had two basic reasons:
-
-1. You're going to want to run *many* instances at a time. 
-2. Autonomous agents scale better with model capabilities. 
+  1. You're going to want to run *many* instances at a time. 
+  2. Autonomous agents scale better with model capabilities. 
 
 I never ended up finishing that draft, and I thought it would be interesting to revisit this idea now, as 2025 comes to a close.
 
@@ -42,5 +41,4 @@ I do think 2026 is the year we'll see more tooling around reviewing outputs and 
 
 I'll revisit this sometime next year, to see how this evolves. 
 
-[^1]: I'm not talking about AI-assisted *autocomplete*. I think that provides a different type of value and
-    will stick around. 
+[^1]: I'm not talking about AI-assisted *autocomplete*. I think that provides a different type of value and will stick around. 

@@ -2,7 +2,7 @@
 title: Coding Assistants, A Retrospective
 date: Git Created
 description: What design features matter?
-draft: true
+draft: false
 tags: 
  - post
 ---

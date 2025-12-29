@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" class="{{ overallSiteStyle }}">
+  {{ include "layouts/head.vto" }}
+  <body class="{{ bodyStyle }}">
+    {{ include "layouts/header.vto" }}
+    <main class="{{ mainStyle }}">
+      <div class="{{ contentStyle }}"> 
+        {{ content }}
+      </div>
+      <ul>
+        {{ for page of search.pages("post", "date=desc") }}
+        <li class="flex flex-col items-start mb-8 md:block">
+          <span class="text-base text-base16-orange/90 font-bold font-stretch-semi-condensed">{{ page.date |> date('dd MMM, yyyy') }} </span>
+          <a href="/posts/{{ page.basename }}/" class="text-base text-base16-orange/75">
+            {{ page.title }}
+          </a>
+        </li>
+        {{ /for }}
+      </ul>
+    </main>
+    {{ include "layouts/footer.vto" }}
+  </body>
+</html>

@@ -82,16 +82,15 @@ site.data(
 );
 site.data(
   "contentStyle",
-  "grow basis-full text-base16-700 max-w-none leading-7 hyphens-manual " +
-    "underline-offset-2 " +
+  "basis-full text-base16-700 max-w-none leading-7 hyphens-manual " +
     "prose " +
-    "prose-code:rounded-xl prose-pre:bg-base16-200/0 " +
+    "prose-code:rounded-xl " +
     "prose-p:text-base16-700/90 prose-p:mb-10 " +
-    "prose-a:text-base16-cyan/90 " +
+    "prose-a:text-base16-cyan/90 prose-a:no-underline " +
     "prose-ul:-ml-4 prose-ul:list-inside " +
     "prose-ol:-ml-4 prose-ol:list-inside " +
-    "prose-ul:-mt-8 prose-ul:mb-8 prose-ul:leading-5 " +
-    "prose-ol:-mt-4 prose-ol:mb-4 prose-ol:leading-5 " +
+    "prose-ul:-mt-8 prose-ul:mb-8 prose-ul:leading-6 " +
+    "prose-ol:-mt-4 prose-ol:mb-4 prose-ol:leading-6 " +
     "prose-li:marker:text-base16-blue/90",
 );
 

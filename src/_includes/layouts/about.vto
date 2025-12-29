@@ -5,7 +5,9 @@
   <body class="{{ bodyStyle }}">
     {{ include "layouts/header.vto" }}
     <main class="{{ mainStyle }}">
-      {{ content }}
+      <div class="{{ contentStyle }}"> 
+          {{ content }}
+      </div>
     </main>
     {{ include "layouts/footer.vto" }}
   </body>

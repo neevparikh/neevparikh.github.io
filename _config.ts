@@ -27,19 +27,29 @@ const base16Options = {
   prefix: "base16",
 };
 
-// Get all available themes, sorted by variant (dark first) then name
-const themes = base16Schemes(base16Options)
-  .map((scheme) => ({
-    name: scheme.name,
-    slug: scheme.slug,
-    variant: scheme.variant,
-  }))
-  .sort((a, b) => {
-    if (a.variant !== b.variant) {
-      return a.variant === "dark" ? -1 : 1;
-    }
-    return a.name.localeCompare(b.name);
-  });
+// Get all available themes, deduplicate (prefer base24), sort by variant then name
+const allSchemes = base16Schemes(base16Options).map((scheme) => ({
+  name: scheme.name,
+  slug: scheme.slug,
+  variant: scheme.variant,
+}));
+
+// Deduplicate by name+variant, preferring base24 over base16
+const themeMap = new Map<string, (typeof allSchemes)[0]>();
+for (const scheme of allSchemes) {
+  const key = `${scheme.name.toLowerCase()}-${scheme.variant}`;
+  const existing = themeMap.get(key);
+  if (!existing || scheme.slug.startsWith("base24-")) {
+    themeMap.set(key, scheme);
+  }
+}
+
+const themes = [...themeMap.values()].sort((a, b) => {
+  if (a.variant !== b.variant) {
+    return a.variant === "dark" ? -1 : 1;
+  }
+  return a.name.localeCompare(b.name);
+});
 
 // Configure the markdown plugin
 const markdown = {

@@ -1,48 +1,1975 @@
 <!DOCTYPE html>
-<html lang="en" class="base24-softstack-light dark:base24-softstack-dark font-mono scroll-smooth [scrollbar-width:thin] [scrollbar-color:rgb(var(--color-base16-300))_transparent]"><head>
+<html lang="en" class="font-mono scroll-smooth [scrollbar-width:thin] [scrollbar-gutter:stable] [scrollbar-color:rgb(var(--color-base16-300))_transparent]"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neev Parikh</title>
     <link href="/styles.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/assets/images/icon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.css">
+    <script>
+      (function() {
+        const defaultLight = "base24-softstack-light";
+        const defaultDark = "base24-softstack-dark";
+        const html = document.documentElement;
+
+        // Get saved preferences
+        const savedLight = localStorage.getItem("theme-light") || defaultLight;
+        const savedDark = localStorage.getItem("theme-dark") || defaultDark;
+        const savedMode = localStorage.getItem("theme-mode") || "system";
+
+        // Determine if we should use dark mode
+        let isDark;
+        if (savedMode === "system") {
+          isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        } else {
+          isDark = savedMode === "dark";
+        }
+
+        // Apply the appropriate theme
+        html.classList.add(isDark ? savedDark : savedLight);
+      })();
+    </script>
   </head>
 
   <body class="flex flex-col m-auto p-6 max-w-4xl bg-base16-100 text-base16-700 min-h-screen">
-        <header class="flex-none basis-sm mb-2">
-      <div class="flex justify-between items-center mb-2">
-        <h1 class="text-lg md:text-2xl ml-2 md:ml-10 text-base16-800 font-bold">Neev Parikh</h1>
-        <nav class="text-sm md:text-lg space-x-1 md:space-x-3 mr-2 md:mr-10">
-          <a href="/" class="text-base16-600">posts</a>
-          <a href="/about/" class="text-base16-600">about</a>
-          <a href="/assets/files/neev_parikh_resume.pdf" class="text-base16-600">resume</a>
-        </nav>
-      </div>
+        <header class="flex-none basis-sm bg-base16-200/45 rounded-2xl p-4 md:py-6 md:px-10">
+      <div class="flex justify-between items-baseline">
+        <div class="flex flex-col min-w-0">
+          <h1 class="text-xl md:text-2xl text-base16-600 font-bold">Neev Parikh</h1>
+          <nav class="text-xs md:text-xs flex flex-col md:flex-row italic text-base16-blue/80 space-y-2 md:space-y-0 md:space-x-3 mt-2">
+            <a href="https://github.com/neevparikh">github</a>
+            <a href="https://x.com/neev_parikh">twitter</a>
+            <a href="https://linkedin.com/in/neev-parikh">linkedin</a>
+            <a href="https://scholar.google.com/citations?user=GUopQmgAAAAJ&amp;hl=en">scholar</a>
+            <a href="mailto:neev.v.parikh@gmail.com">email</a>
+          </nav>
+        </div>
+        <nav class="text-base md:text-lg flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-3 shrink-0 items-end">
+          <a href="/" class="text-base16-cyan">posts</a>
+          <a href="/about/" class="text-base16-cyan">about</a>
+          <a href="/assets/files/neev_parikh_resume.pdf" class="text-base16-cyan">resume</a>
+          <div class="relative">
+            <button id="theme-btn" class="text-base16-red hover:text-base16-purple/70 cursor-pointer" title="Change theme">theme</button>
+            <div id="theme-picker" class="hidden absolute right-0 top-full mt-2 w-64 bg-base16-100 border border-base16-300 rounded-lg shadow-lg z-50 max-h-80 overflow-hidden flex flex-col">
+              <input id="theme-search" type="text" placeholder="search themes..." class="w-full px-3 py-2 text-sm bg-base16-200 border-b border-base16-300 text-base16-700 placeholder-base16-500/50 outline-none">
+              <button id="theme-reset" class="w-full px-3 py-1.5 text-left text-sm hover:bg-base16-200 text-base16-purple border-b border-base16-300" k="" system="" preference="" <="" button="">
+              <div id="theme-list" class="overflow-y-auto flex-1">
+                </div></button><button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-atelier-estuary-light" data-variant="light">
+                  <span class="mr-2">Atelier Estuary Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-atelier-estuary" data-variant="dark">
+                  <span class="mr-2">Atelier Estuary</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-deep-oceanic-next" data-variant="dark">
+                  <span class="mr-2">Deep Oceanic Next</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-ayu-light" data-variant="light">
+                  <span class="mr-2">Ayu Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-eighties" data-variant="dark">
+                  <span class="mr-2">Eighties</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-atelier-forest-light" data-variant="light">
+                  <span class="mr-2">Atelier Forest Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-github" data-variant="light">
+                  <span class="mr-2">Github</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-blueish" data-variant="dark">
+                  <span class="mr-2">Blueish</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-material" data-variant="dark">
+                  <span class="mr-2">Material</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-shapeshifter" data-variant="light">
+                  <span class="mr-2">Shapeshifter</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-oceanicnext" data-variant="dark">
+                  <span class="mr-2">OceanicNext</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-still-alive" data-variant="light">
+                  <span class="mr-2">Still Alive</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-da-one-paper" data-variant="light">
+                  <span class="mr-2">Da One Paper</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-atelier-sulphurpool-light" data-variant="light">
+                  <span class="mr-2">Atelier Sulphurpool Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-materia" data-variant="dark">
+                  <span class="mr-2">Materia</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-gruvbox-material-dark-soft" data-variant="dark">
+                  <span class="mr-2">Gruvbox Material Dark, Soft</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-horizon-dark" data-variant="dark">
+                  <span class="mr-2">Horizon Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-atelier-plateau" data-variant="dark">
+                  <span class="mr-2">Atelier Plateau</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-espresso" data-variant="dark">
+                  <span class="mr-2">Espresso</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-tokyo-night-terminal-dark" data-variant="dark">
+                  <span class="mr-2">Tokyo Night Terminal Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-atelier-savanna-light" data-variant="light">
+                  <span class="mr-2">Atelier Savanna Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-atelier-seaside" data-variant="dark">
+                  <span class="mr-2">Atelier Seaside</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-snazzy" data-variant="dark">
+                  <span class="mr-2">Snazzy</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-tokyo-night-storm" data-variant="dark">
+                  <span class="mr-2">Tokyo Night Storm</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-summerfruit-light" data-variant="light">
+                  <span class="mr-2">Summerfruit Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-atelier-cave" data-variant="dark">
+                  <span class="mr-2">Atelier Cave</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-solarflare-light" data-variant="light">
+                  <span class="mr-2">Solar Flare Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-atelier-forest" data-variant="dark">
+                  <span class="mr-2">Atelier Forest</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-tokyo-city-terminal-dark" data-variant="dark">
+                  <span class="mr-2">Tokyo City Terminal Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-ayu-mirage" data-variant="dark">
+                  <span class="mr-2">Ayu Mirage</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-da-one-gray" data-variant="dark">
+                  <span class="mr-2">Da One Gray</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-pop" data-variant="dark">
+                  <span class="mr-2">Pop</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-selenized-dark" data-variant="dark">
+                  <span class="mr-2">selenized-dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-tokyo-night-light" data-variant="light">
+                  <span class="mr-2">Tokyo Night Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-papercolor-light" data-variant="light">
+                  <span class="mr-2">PaperColor Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-tokyo-night-moon" data-variant="dark">
+                  <span class="mr-2">Tokyo Night Moon</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-humanoid-light" data-variant="light">
+                  <span class="mr-2">Humanoid light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-terracotta" data-variant="light">
+                  <span class="mr-2">Terracotta</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-darkviolet" data-variant="dark">
+                  <span class="mr-2">Dark Violet</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-synth-midnight-light" data-variant="light">
+                  <span class="mr-2">Synth Midnight Terminal Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-brewer" data-variant="dark">
+                  <span class="mr-2">Brewer</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-aztec" data-variant="dark">
+                  <span class="mr-2">Aztec</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-shadesmear-dark" data-variant="dark">
+                  <span class="mr-2">ShadeSmear Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-windows-nt-light" data-variant="light">
+                  <span class="mr-2">Windows NT Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-equilibrium-light" data-variant="light">
+                  <span class="mr-2">Equilibrium Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-onedark-dark" data-variant="dark">
+                  <span class="mr-2">OneDark Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-unikitty-dark" data-variant="dark">
+                  <span class="mr-2">Unikitty Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-harmonic16-light" data-variant="light">
+                  <span class="mr-2">Harmonic16 Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-synth-midnight-dark" data-variant="dark">
+                  <span class="mr-2">Synth Midnight Terminal Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-pico" data-variant="dark">
+                  <span class="mr-2">Pico</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-windows-highcontrast" data-variant="dark">
+                  <span class="mr-2">Windows High Contrast</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-windows-10" data-variant="dark">
+                  <span class="mr-2">Windows 10</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-selenized-white" data-variant="light">
+                  <span class="mr-2">selenized-white</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-classic-dark" data-variant="dark">
+                  <span class="mr-2">Classic Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-jabuti" data-variant="dark">
+                  <span class="mr-2">Jabuti</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-woodland" data-variant="dark">
+                  <span class="mr-2">Woodland</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-gotham" data-variant="dark">
+                  <span class="mr-2">Gotham</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-brushtrees-dark" data-variant="dark">
+                  <span class="mr-2">Brush Trees Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-black-metal-dark-funeral" data-variant="dark">
+                  <span class="mr-2">Black Metal (Dark Funeral)</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-porple" data-variant="dark">
+                  <span class="mr-2">Porple</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-atelier-savanna" data-variant="dark">
+                  <span class="mr-2">Atelier Savanna</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-embers-light" data-variant="light">
+                  <span class="mr-2">Embers Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-harmonic16-dark" data-variant="dark">
+                  <span class="mr-2">Harmonic16 Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-measured-dark" data-variant="dark">
+                  <span class="mr-2">Measured Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-catppuccin-latte" data-variant="light">
+                  <span class="mr-2">Catppuccin Latte</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-selenized-light" data-variant="light">
+                  <span class="mr-2">selenized-light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-atlas" data-variant="dark">
+                  <span class="mr-2">Atlas</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-darkmoss" data-variant="dark">
+                  <span class="mr-2">darkmoss</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-gruvbox-material-light-soft" data-variant="light">
+                  <span class="mr-2">Gruvbox Material Light, Soft</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-atelier-lakeside-light" data-variant="light">
+                  <span class="mr-2">Atelier Lakeside Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-colors" data-variant="dark">
+                  <span class="mr-2">Colors</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-nova" data-variant="dark">
+                  <span class="mr-2">Nova</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-twilight" data-variant="dark">
+                  <span class="mr-2">Twilight</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-eva" data-variant="dark">
+                  <span class="mr-2">Eva</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-solarflare" data-variant="dark">
+                  <span class="mr-2">Solar Flare</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-standardized-dark" data-variant="dark">
+                  <span class="mr-2">standardized-dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-shades-of-purple" data-variant="dark">
+                  <span class="mr-2">Shades of Purple</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-precious-dark-eleven" data-variant="dark">
+                  <span class="mr-2">Precious Dark Eleven</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-edge-dark" data-variant="dark">
+                  <span class="mr-2">Edge Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-pasque" data-variant="dark">
+                  <span class="mr-2">Pasque</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-da-one-ocean" data-variant="dark">
+                  <span class="mr-2">Da One Ocean</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-flat" data-variant="dark">
+                  <span class="mr-2">Flat</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-unikitty-light" data-variant="light">
+                  <span class="mr-2">Unikitty Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-atelier-sulphurpool" data-variant="dark">
+                  <span class="mr-2">Atelier Sulphurpool</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-unikitty-reversible" data-variant="dark">
+                  <span class="mr-2">Unikitty Reversible</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-standardized-light" data-variant="light">
+                  <span class="mr-2">standardized-light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-evenok-dark" data-variant="dark">
+                  <span class="mr-2">Evenok Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-tokyo-city-dark" data-variant="dark">
+                  <span class="mr-2">Tokyo City Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-windows-10-light" data-variant="light">
+                  <span class="mr-2">Windows 10 Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-pinky" data-variant="dark">
+                  <span class="mr-2">pinky</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-tokyo-night-terminal-light" data-variant="light">
+                  <span class="mr-2">Tokyo Night Terminal Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-atelier-lakeside" data-variant="dark">
+                  <span class="mr-2">Atelier Lakeside</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-tomorrow-night-eighties" data-variant="dark">
+                  <span class="mr-2">Tomorrow Night Eighties</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-zenbones" data-variant="dark">
+                  <span class="mr-2">Zenbones</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-apprentice" data-variant="dark">
+                  <span class="mr-2">Apprentice</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-windows-95" data-variant="dark">
+                  <span class="mr-2">Windows 95</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-bright" data-variant="dark">
+                  <span class="mr-2">Bright</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-ia-dark" data-variant="dark">
+                  <span class="mr-2">iA Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-da-one-black" data-variant="dark">
+                  <span class="mr-2">Da One Black</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-circus" data-variant="dark">
+                  <span class="mr-2">Circus</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-gruvbox-dark-hard" data-variant="dark">
+                  <span class="mr-2">Gruvbox dark, hard</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-equilibrium-gray-light" data-variant="light">
+                  <span class="mr-2">Equilibrium Gray Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-material-lighter" data-variant="light">
+                  <span class="mr-2">Material Lighter</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-phd" data-variant="dark">
+                  <span class="mr-2">PhD</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-mountain" data-variant="dark">
+                  <span class="mr-2">Mountain</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-irblack" data-variant="dark">
+                  <span class="mr-2">IR Black</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-bespin" data-variant="dark">
+                  <span class="mr-2">Bespin</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-gruvbox-light-soft" data-variant="light">
+                  <span class="mr-2">Gruvbox light, soft</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-tomorrow" data-variant="light">
+                  <span class="mr-2">Tomorrow</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-mexico-light" data-variant="light">
+                  <span class="mr-2">Mexico Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-horizon-terminal-light" data-variant="light">
+                  <span class="mr-2">Horizon Terminal Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-sagelight" data-variant="light">
+                  <span class="mr-2">Sagelight</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-tomorrow-night" data-variant="dark">
+                  <span class="mr-2">Tomorrow Night</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-primer-dark-dimmed" data-variant="dark">
+                  <span class="mr-2">Primer Dark Dimmed</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-black-metal-mayhem" data-variant="dark">
+                  <span class="mr-2">Black Metal (Mayhem)</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-cupertino" data-variant="light">
+                  <span class="mr-2">Cupertino</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-everforest" data-variant="dark">
+                  <span class="mr-2">Everforest</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-silk-dark" data-variant="dark">
+                  <span class="mr-2">Silk Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-vesper" data-variant="dark">
+                  <span class="mr-2">Vesper</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-emil" data-variant="light">
+                  <span class="mr-2">emil</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-paraiso" data-variant="dark">
+                  <span class="mr-2">Paraiso</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-brogrammer" data-variant="dark">
+                  <span class="mr-2">Brogrammer</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-helios" data-variant="dark">
+                  <span class="mr-2">Helios</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-humanoid-dark" data-variant="dark">
+                  <span class="mr-2">Humanoid dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-atelier-dune-light" data-variant="light">
+                  <span class="mr-2">Atelier Dune Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-black-metal-burzum" data-variant="dark">
+                  <span class="mr-2">Black Metal (Burzum)</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-embers" data-variant="dark">
+                  <span class="mr-2">Embers</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-zenburn" data-variant="dark">
+                  <span class="mr-2">Zenburn</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-terracotta-dark" data-variant="dark">
+                  <span class="mr-2">Terracotta Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-sandcastle" data-variant="dark">
+                  <span class="mr-2">Sandcastle</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-tokyo-night-terminal-storm" data-variant="dark">
+                  <span class="mr-2">Tokyo Night Terminal Storm</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-valua" data-variant="dark">
+                  <span class="mr-2">Valua</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-solarized-dark" data-variant="dark">
+                  <span class="mr-2">Solarized Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-da-one-sea" data-variant="dark">
+                  <span class="mr-2">Da One Sea</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-eva-dim" data-variant="dark">
+                  <span class="mr-2">Eva Dim</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-blueforest" data-variant="dark">
+                  <span class="mr-2">Blue Forest</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-windows-nt" data-variant="dark">
+                  <span class="mr-2">Windows NT</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-framer" data-variant="dark">
+                  <span class="mr-2">Framer</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-codeschool" data-variant="dark">
+                  <span class="mr-2">Codeschool</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-everforest-dark-hard" data-variant="dark">
+                  <span class="mr-2">Everforest Dark Hard</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-decaf" data-variant="dark">
+                  <span class="mr-2">Decaf</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-dracula" data-variant="dark">
+                  <span class="mr-2">Dracula</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-nebula" data-variant="dark">
+                  <span class="mr-2">Nebula</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-primer-light" data-variant="light">
+                  <span class="mr-2">Primer Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-tokyo-night-dark" data-variant="dark">
+                  <span class="mr-2">Tokyo Night Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-black-metal-immortal" data-variant="dark">
+                  <span class="mr-2">Black Metal (Immortal)</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-gruvbox-material-dark-medium" data-variant="dark">
+                  <span class="mr-2">Gruvbox Material Dark, Medium</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-chalk" data-variant="dark">
+                  <span class="mr-2">Chalk</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-rose-pine" data-variant="dark">
+                  <span class="mr-2">Rosé Pine</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-marrakesh" data-variant="dark">
+                  <span class="mr-2">Marrakesh</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-hopscotch" data-variant="dark">
+                  <span class="mr-2">Hopscotch</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-atelier-heath" data-variant="dark">
+                  <span class="mr-2">Atelier Heath</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-cupcake" data-variant="light">
+                  <span class="mr-2">Cupcake</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-stella" data-variant="dark">
+                  <span class="mr-2">Stella</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-tube" data-variant="dark">
+                  <span class="mr-2">London Tube</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-fruit-soda" data-variant="light">
+                  <span class="mr-2">Fruit Soda</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-default-dark" data-variant="dark">
+                  <span class="mr-2">Default Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-sparky" data-variant="dark">
+                  <span class="mr-2">Sparky</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-primer-dark" data-variant="dark">
+                  <span class="mr-2">Primer Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-purpledream" data-variant="dark">
+                  <span class="mr-2">Purpledream</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-onedark" data-variant="dark">
+                  <span class="mr-2">OneDark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-summercamp" data-variant="dark">
+                  <span class="mr-2">summercamp</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-spaceduck" data-variant="dark">
+                  <span class="mr-2">Spaceduck</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-mocha" data-variant="dark">
+                  <span class="mr-2">Mocha</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-github-dark" data-variant="dark">
+                  <span class="mr-2">Github Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-brushtrees" data-variant="light">
+                  <span class="mr-2">Brush Trees</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-tokyo-city-terminal-light" data-variant="light">
+                  <span class="mr-2">Tokyo City Terminal Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-rose-pine-dawn" data-variant="light">
+                  <span class="mr-2">Rosé Pine Dawn</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-precious-light-white" data-variant="light">
+                  <span class="mr-2">Precious Light White</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-vulcan" data-variant="dark">
+                  <span class="mr-2">vulcan</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-uwunicorn" data-variant="dark">
+                  <span class="mr-2">UwUnicorn</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-gruvbox-dark-medium" data-variant="dark">
+                  <span class="mr-2">Gruvbox dark, medium</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-gruvbox-material-light-hard" data-variant="light">
+                  <span class="mr-2">Gruvbox Material Light, Hard</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-selenized-black" data-variant="dark">
+                  <span class="mr-2">selenized-black</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-lime" data-variant="dark">
+                  <span class="mr-2">lime</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-qualia" data-variant="dark">
+                  <span class="mr-2">Qualia</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-ayu-dark" data-variant="dark">
+                  <span class="mr-2">Ayu Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-gigavolt" data-variant="dark">
+                  <span class="mr-2">Gigavolt</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-gruber" data-variant="dark">
+                  <span class="mr-2">Gruber</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-heetch-light" data-variant="light">
+                  <span class="mr-2">Heetch Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-monokai" data-variant="dark">
+                  <span class="mr-2">Monokai</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-gruvbox-light" data-variant="light">
+                  <span class="mr-2">Gruvbox Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-spacemacs" data-variant="dark">
+                  <span class="mr-2">Spacemacs</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-isotope" data-variant="dark">
+                  <span class="mr-2">Isotope</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-nord" data-variant="dark">
+                  <span class="mr-2">Nord</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-tokyodark-terminal" data-variant="dark">
+                  <span class="mr-2">Tokyodark Terminal</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-gruvbox-material-dark-hard" data-variant="dark">
+                  <span class="mr-2">Gruvbox Material Dark, Hard</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-caroline" data-variant="dark">
+                  <span class="mr-2">caroline</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-black-metal-nile" data-variant="dark">
+                  <span class="mr-2">Black Metal (Nile)</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-darktooth" data-variant="dark">
+                  <span class="mr-2">Darktooth</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-catppuccin-frappe" data-variant="dark">
+                  <span class="mr-2">Catppuccin Frappe</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-heetch" data-variant="dark">
+                  <span class="mr-2">Heetch Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-tokyodark" data-variant="dark">
+                  <span class="mr-2">Tokyodark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-black-metal" data-variant="dark">
+                  <span class="mr-2">Black Metal</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-outrun-dark" data-variant="dark">
+                  <span class="mr-2">Outrun Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-moonlight" data-variant="dark">
+                  <span class="mr-2">Moonlight</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-3024" data-variant="dark">
+                  <span class="mr-2">3024</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-google-light" data-variant="light">
+                  <span class="mr-2">Google Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-silk-light" data-variant="light">
+                  <span class="mr-2">Silk Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-danqing-light" data-variant="light">
+                  <span class="mr-2">DanQing Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-shadesmear-light" data-variant="light">
+                  <span class="mr-2">ShadeSmear Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-kanagawa-dragon" data-variant="dark">
+                  <span class="mr-2">Kanagawa Dragon</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-rebecca" data-variant="dark">
+                  <span class="mr-2">Rebecca</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-papercolor-dark" data-variant="dark">
+                  <span class="mr-2">PaperColor Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-tango" data-variant="dark">
+                  <span class="mr-2">Tango</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-dirtysea" data-variant="light">
+                  <span class="mr-2">dirtysea</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-material-palenight" data-variant="dark">
+                  <span class="mr-2">Material Palenight</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-solarized-light" data-variant="light">
+                  <span class="mr-2">Solarized Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-black-metal-marduk" data-variant="dark">
+                  <span class="mr-2">Black Metal (Marduk)</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-gruvbox-light-hard" data-variant="light">
+                  <span class="mr-2">Gruvbox light, hard</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-vice" data-variant="dark">
+                  <span class="mr-2">vice</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-grayscale-dark" data-variant="dark">
+                  <span class="mr-2">Grayscale Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-atelier-dune" data-variant="dark">
+                  <span class="mr-2">Atelier Dune</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-kimber" data-variant="dark">
+                  <span class="mr-2">Kimber</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-oxocarbon-light" data-variant="light">
+                  <span class="mr-2">Oxocarbon Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-material-vivid" data-variant="dark">
+                  <span class="mr-2">Material Vivid</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-nord-light" data-variant="light">
+                  <span class="mr-2">Nord Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-equilibrium-dark" data-variant="dark">
+                  <span class="mr-2">Equilibrium Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-ia-light" data-variant="light">
+                  <span class="mr-2">iA Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-katy" data-variant="dark">
+                  <span class="mr-2">Katy</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-tender" data-variant="dark">
+                  <span class="mr-2">tender</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-tarot" data-variant="dark">
+                  <span class="mr-2">tarot</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-oxocarbon-dark" data-variant="dark">
+                  <span class="mr-2">Oxocarbon Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-black-metal-gorgoroth" data-variant="dark">
+                  <span class="mr-2">Black Metal (Gorgoroth)</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-edge-light" data-variant="light">
+                  <span class="mr-2">Edge Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-pandora" data-variant="dark">
+                  <span class="mr-2">pandora</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-grayscale-light" data-variant="light">
+                  <span class="mr-2">Grayscale Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-seti" data-variant="dark">
+                  <span class="mr-2">Seti UI</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-sakura" data-variant="light">
+                  <span class="mr-2">Sakura</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-google-dark" data-variant="dark">
+                  <span class="mr-2">Google Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-default-light" data-variant="light">
+                  <span class="mr-2">Default Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-danqing" data-variant="dark">
+                  <span class="mr-2">DanQing</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-macintosh" data-variant="dark">
+                  <span class="mr-2">Macintosh</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-gruvbox-light-medium" data-variant="light">
+                  <span class="mr-2">Gruvbox light, medium</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-gruvbox-dark-pale" data-variant="dark">
+                  <span class="mr-2">Gruvbox dark, pale</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-windows-95-light" data-variant="light">
+                  <span class="mr-2">Windows 95 Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-horizon-terminal-dark" data-variant="dark">
+                  <span class="mr-2">Horizon Terminal Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-measured-light" data-variant="light">
+                  <span class="mr-2">Measured Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-xcode-dusk" data-variant="dark">
+                  <span class="mr-2">XCode Dusk</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-black-metal-venom" data-variant="dark">
+                  <span class="mr-2">Black Metal (Venom)</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-black-metal-bathory" data-variant="dark">
+                  <span class="mr-2">Black Metal (Bathory)</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-classic-light" data-variant="light">
+                  <span class="mr-2">Classic Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-atelier-plateau-light" data-variant="light">
+                  <span class="mr-2">Atelier Plateau Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-greenscreen" data-variant="dark">
+                  <span class="mr-2">Green Screen</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-summerfruit-dark" data-variant="dark">
+                  <span class="mr-2">Summerfruit Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-gruvbox-dark" data-variant="dark">
+                  <span class="mr-2">Gruvbox dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-gruvbox-material-light-medium" data-variant="light">
+                  <span class="mr-2">Gruvbox Material Light, Medium</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-one-light" data-variant="light">
+                  <span class="mr-2">One Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-precious-dark-fifteen" data-variant="dark">
+                  <span class="mr-2">Precious Dark Fifteen</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-kanagawa" data-variant="dark">
+                  <span class="mr-2">Kanagawa</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-precious-light-warm" data-variant="light">
+                  <span class="mr-2">Precious Light Warm</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-atelier-seaside-light" data-variant="light">
+                  <span class="mr-2">Atelier Seaside Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-atelier-heath-light" data-variant="light">
+                  <span class="mr-2">Atelier Heath Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-apathy" data-variant="dark">
+                  <span class="mr-2">Apathy</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-atelier-cave-light" data-variant="light">
+                  <span class="mr-2">Atelier Cave Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-darcula" data-variant="dark">
+                  <span class="mr-2">Darcula</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-tokyo-city-light" data-variant="light">
+                  <span class="mr-2">Tokyo City Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-black-metal-khold" data-variant="dark">
+                  <span class="mr-2">Black Metal (Khold)</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-material-darker" data-variant="dark">
+                  <span class="mr-2">Material Darker</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-horizon-light" data-variant="light">
+                  <span class="mr-2">Horizon Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-equilibrium-gray-dark" data-variant="dark">
+                  <span class="mr-2">Equilibrium Gray Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-eris" data-variant="dark">
+                  <span class="mr-2">eris</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-ocean" data-variant="dark">
+                  <span class="mr-2">Ocean</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-catppuccin-macchiato" data-variant="dark">
+                  <span class="mr-2">Catppuccin Macchiato</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-rose-pine-moon" data-variant="dark">
+                  <span class="mr-2">Rosé Pine Moon</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-windows-highcontrast-light" data-variant="light">
+                  <span class="mr-2">Windows High Contrast Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-ashes" data-variant="dark">
+                  <span class="mr-2">Ashes</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-da-one-white" data-variant="light">
+                  <span class="mr-2">Da One White</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-saga" data-variant="dark">
+                  <span class="mr-2">SAGA</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-digital-rain" data-variant="dark">
+                  <span class="mr-2">Digital Rain</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-gruvbox-dark-soft" data-variant="dark">
+                  <span class="mr-2">Gruvbox dark, soft</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-railscasts" data-variant="dark">
+                  <span class="mr-2">Railscasts</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-icy" data-variant="dark">
+                  <span class="mr-2">Icy Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-hardcore" data-variant="dark">
+                  <span class="mr-2">Hardcore</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-catppuccin-mocha" data-variant="dark">
+                  <span class="mr-2">Catppuccin Mocha</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base16-mellow-purple" data-variant="dark">
+                  <span class="mr-2">Mellow Purple</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-deep-oceanic-next" data-variant="dark">
+                  <span class="mr-2">Deep Oceanic Next</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-ayu-light" data-variant="light">
+                  <span class="mr-2">Ayu Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-unikitty" data-variant="light">
+                  <span class="mr-2">Unikitty</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-espresso-libre" data-variant="dark">
+                  <span class="mr-2">Espresso Libre</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-terminal-basic" data-variant="light">
+                  <span class="mr-2">Terminal Basic</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-github" data-variant="light">
+                  <span class="mr-2">Github</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-hacktober" data-variant="dark">
+                  <span class="mr-2">Hacktober</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-toy-chest" data-variant="dark">
+                  <span class="mr-2">Toy Chest</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-material" data-variant="light">
+                  <span class="mr-2">Material</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-bluloco-light" data-variant="light">
+                  <span class="mr-2">Bluloco Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-ultra-violet" data-variant="dark">
+                  <span class="mr-2">Ultra Violet</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-espresso" data-variant="dark">
+                  <span class="mr-2">Espresso</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-violet-light" data-variant="light">
+                  <span class="mr-2">Violet Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-molokai" data-variant="dark">
+                  <span class="mr-2">Molokai</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-flatland" data-variant="dark">
+                  <span class="mr-2">Flatland</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-batman" data-variant="dark">
+                  <span class="mr-2">Batman</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-clrs" data-variant="light">
+                  <span class="mr-2">CLRS</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-wryan" data-variant="dark">
+                  <span class="mr-2">Wryan</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-shaman" data-variant="dark">
+                  <span class="mr-2">Shaman</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-ollie" data-variant="dark">
+                  <span class="mr-2">Ollie</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-red-sands" data-variant="dark">
+                  <span class="mr-2">Red Sands</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-alien-blood" data-variant="dark">
+                  <span class="mr-2">Alien Blood</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-homebrew" data-variant="dark">
+                  <span class="mr-2">Homebrew</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-vibrant-ink" data-variant="dark">
+                  <span class="mr-2">Vibrant Ink</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-thayer-bright" data-variant="dark">
+                  <span class="mr-2">Thayer Bright</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-one-dark" data-variant="dark">
+                  <span class="mr-2">One Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-royal" data-variant="dark">
+                  <span class="mr-2">Royal</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-operator-mono-dark" data-variant="dark">
+                  <span class="mr-2">Operator Mono Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-builtin-tango-light" data-variant="light">
+                  <span class="mr-2">Builtin Tango Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-cyberdyne" data-variant="dark">
+                  <span class="mr-2">Cyberdyne</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-hybrid" data-variant="dark">
+                  <span class="mr-2">Hybrid</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-slate" data-variant="dark">
+                  <span class="mr-2">Slate</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-kibble" data-variant="dark">
+                  <span class="mr-2">Kibble</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-blue-berry-pie" data-variant="dark">
+                  <span class="mr-2">Blue Berry Pie</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-desert" data-variant="dark">
+                  <span class="mr-2">Desert</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-smyck" data-variant="dark">
+                  <span class="mr-2">Smyck</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-pencil-dark" data-variant="dark">
+                  <span class="mr-2">Pencil Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-hipster-green" data-variant="dark">
+                  <span class="mr-2">Hipster Green</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-spiderman" data-variant="dark">
+                  <span class="mr-2">Spiderman</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-front-end-delight" data-variant="dark">
+                  <span class="mr-2">Front End Delight</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-catppuccin-latte" data-variant="light">
+                  <span class="mr-2">Catppuccin Latte</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-seafoam-pastel" data-variant="dark">
+                  <span class="mr-2">Seafoam Pastel</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-night-lion-v2" data-variant="dark">
+                  <span class="mr-2">Night Lion V2</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-one-half-light" data-variant="light">
+                  <span class="mr-2">One Half Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-twilight" data-variant="dark">
+                  <span class="mr-2">Twilight</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-red-planet" data-variant="dark">
+                  <span class="mr-2">Red Planet</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-shades-of-purple" data-variant="dark">
+                  <span class="mr-2">Shades Of Purple</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-forest-blue" data-variant="dark">
+                  <span class="mr-2">Forest Blue</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-soft-server" data-variant="dark">
+                  <span class="mr-2">Soft Server</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-elementary" data-variant="dark">
+                  <span class="mr-2">Elementary</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-flat" data-variant="dark">
+                  <span class="mr-2">Flat</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-one-black" data-variant="dark">
+                  <span class="mr-2">One Black</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-blazer" data-variant="dark">
+                  <span class="mr-2">Blazer</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-atelier-sulphurpool" data-variant="dark">
+                  <span class="mr-2">Atelier Sulphurpool</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-purple-rain" data-variant="dark">
+                  <span class="mr-2">Purple Rain</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-pro" data-variant="dark">
+                  <span class="mr-2">Pro</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-grape" data-variant="dark">
+                  <span class="mr-2">Grape</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-highway" data-variant="dark">
+                  <span class="mr-2">Highway</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-challenger-deep" data-variant="dark">
+                  <span class="mr-2">Challenger Deep</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-builtin-light" data-variant="light">
+                  <span class="mr-2">Builtin Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-scarlet-protocol" data-variant="dark">
+                  <span class="mr-2">Scarlet Protocol</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-purplepeter" data-variant="dark">
+                  <span class="mr-2">Purplepeter</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-builtin-solarized-light" data-variant="light">
+                  <span class="mr-2">Builtin Solarized Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-dimmed-monokai" data-variant="dark">
+                  <span class="mr-2">Dimmed Monokai</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-spacedust" data-variant="dark">
+                  <span class="mr-2">Spacedust</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-builtin-tango-dark" data-variant="dark">
+                  <span class="mr-2">Builtin Tango Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-space-gray-eighties-dull" data-variant="dark">
+                  <span class="mr-2">Space Gray Eighties Dull</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-misterioso" data-variant="dark">
+                  <span class="mr-2">Misterioso</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-hurtado" data-variant="dark">
+                  <span class="mr-2">Hurtado</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-monokai-vivid" data-variant="dark">
+                  <span class="mr-2">Monokai Vivid</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-arthur" data-variant="dark">
+                  <span class="mr-2">Arthur</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-violet-dark" data-variant="dark">
+                  <span class="mr-2">Violet Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-encom" data-variant="dark">
+                  <span class="mr-2">ENCOM</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-3024-night" data-variant="dark">
+                  <span class="mr-2">3024 Night</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-brogrammer" data-variant="dark">
+                  <span class="mr-2">Brogrammer</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-japanesque" data-variant="dark">
+                  <span class="mr-2">Japanesque</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-hivacruz" data-variant="dark">
+                  <span class="mr-2">Hivacruz</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-zenburn" data-variant="dark">
+                  <span class="mr-2">Zenburn</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-mona-lisa" data-variant="dark">
+                  <span class="mr-2">Mona Lisa</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-deep" data-variant="dark">
+                  <span class="mr-2">deep</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-wombat" data-variant="dark">
+                  <span class="mr-2">Wombat</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-firefox-dev" data-variant="dark">
+                  <span class="mr-2">Firefox Dev</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-wez" data-variant="dark">
+                  <span class="mr-2">Wez</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-nocturnal-winter" data-variant="dark">
+                  <span class="mr-2">Nocturnal Winter</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-framer" data-variant="dark">
+                  <span class="mr-2">Framer</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-jackie-brown" data-variant="dark">
+                  <span class="mr-2">Jackie Brown</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-3024-day" data-variant="light">
+                  <span class="mr-2">3024 Day</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-lovelace" data-variant="dark">
+                  <span class="mr-2">Lovelace</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-under-the-sea" data-variant="dark">
+                  <span class="mr-2">Under The Sea</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-crayon-pony-fish" data-variant="dark">
+                  <span class="mr-2">Crayon Pony Fish</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-cobalt2" data-variant="dark">
+                  <span class="mr-2">Cobalt2</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-builtin-solarized-dark" data-variant="dark">
+                  <span class="mr-2">Builtin Solarized Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-laser" data-variant="dark">
+                  <span class="mr-2">Laser</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-warm-neon" data-variant="light">
+                  <span class="mr-2">Warm Neon</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-breeze" data-variant="dark">
+                  <span class="mr-2">Breeze</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-sea-shells" data-variant="dark">
+                  <span class="mr-2">Sea Shells</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-dracula" data-variant="dark">
+                  <span class="mr-2">Dracula</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-adventure-time" data-variant="dark">
+                  <span class="mr-2">Adventure Time</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-night-owlish-light" data-variant="light">
+                  <span class="mr-2">Night Owlish Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-lavandula" data-variant="dark">
+                  <span class="mr-2">Lavandula</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-builtin-pastel-dark" data-variant="dark">
+                  <span class="mr-2">Builtin Pastel Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-tango-adapted" data-variant="light">
+                  <span class="mr-2">Tango Adapted</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-softstack-dark" data-variant="dark">
+                  <span class="mr-2">Softstack Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-ubuntu" data-variant="dark">
+                  <span class="mr-2">Ubuntu</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-man-page" data-variant="light">
+                  <span class="mr-2">Man Page</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-chalk" data-variant="dark">
+                  <span class="mr-2">Chalk</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-red-alert" data-variant="dark">
+                  <span class="mr-2">Red Alert</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-hopscotch" data-variant="dark">
+                  <span class="mr-2">Hopscotch</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-paul-millr" data-variant="dark">
+                  <span class="mr-2">Paul Millr</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-banana-blueberry" data-variant="dark">
+                  <span class="mr-2">Banana Blueberry</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-sparky" data-variant="dark">
+                  <span class="mr-2">Sparky</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-ic-orange-ppl" data-variant="dark">
+                  <span class="mr-2">IC-Orange-PPL</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-github-dark" data-variant="dark">
+                  <span class="mr-2">Github Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-builtin-dark" data-variant="dark">
+                  <span class="mr-2">Builtin Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-pencil-light" data-variant="light">
+                  <span class="mr-2">Pencil Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-idea" data-variant="dark">
+                  <span class="mr-2">Idea</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-gruvbox-light" data-variant="light">
+                  <span class="mr-2">Gruvbox Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-material-dark" data-variant="dark">
+                  <span class="mr-2">Material Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-floraverse" data-variant="dark">
+                  <span class="mr-2">Floraverse</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-sleepy-hollow" data-variant="dark">
+                  <span class="mr-2">Sleepy Hollow</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-elemental" data-variant="dark">
+                  <span class="mr-2">Elemental</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-obsidian" data-variant="dark">
+                  <span class="mr-2">Obsidian</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-catppuccin-frappe" data-variant="dark">
+                  <span class="mr-2">Catppuccin Frappe</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-ciapre" data-variant="dark">
+                  <span class="mr-2">Ciapre</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-treehouse" data-variant="dark">
+                  <span class="mr-2">Treehouse</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-fideloper" data-variant="dark">
+                  <span class="mr-2">Fideloper</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-ic-green-ppl" data-variant="dark">
+                  <span class="mr-2">IC-Green-PPL</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-tango-half-adapted" data-variant="light">
+                  <span class="mr-2">Tango Half Adapted</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-cobalt-neon" data-variant="dark">
+                  <span class="mr-2">Cobalt Neon</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-rebecca" data-variant="dark">
+                  <span class="mr-2">Rebecca</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-dark-plus" data-variant="dark">
+                  <span class="mr-2">Dark Plus</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-medallion" data-variant="dark">
+                  <span class="mr-2">Medallion</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-pnevma" data-variant="dark">
+                  <span class="mr-2">Pnevma</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-oceanic-material" data-variant="dark">
+                  <span class="mr-2">Oceanic Material</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-idle-toes" data-variant="dark">
+                  <span class="mr-2">Idle Toes</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-night-lion-v1" data-variant="dark">
+                  <span class="mr-2">Night Lion V1</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-space-gray-eighties" data-variant="dark">
+                  <span class="mr-2">Space Gray Eighties</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-embarcadero" data-variant="dark">
+                  <span class="mr-2">Embarcadero</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-square" data-variant="dark">
+                  <span class="mr-2">Square</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-pandora" data-variant="dark">
+                  <span class="mr-2">Pandora</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-blue-matrix" data-variant="dark">
+                  <span class="mr-2">Blue Matrix</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-lab-fox" data-variant="dark">
+                  <span class="mr-2">Lab Fox</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-solarized-dark-higher-contrast" data-variant="dark">
+                  <span class="mr-2">Solarized Dark Higher Contrast</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-chalkboard" data-variant="dark">
+                  <span class="mr-2">Chalkboard</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-mathias" data-variant="dark">
+                  <span class="mr-2">Mathias</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-birds-of-paradise" data-variant="dark">
+                  <span class="mr-2">Birds Of Paradise</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-ayu" data-variant="dark">
+                  <span class="mr-2">ayu</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-broadcast" data-variant="dark">
+                  <span class="mr-2">Broadcast</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-softstack-light" data-variant="light">
+                  <span class="mr-2">Softstack Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-earthsong" data-variant="dark">
+                  <span class="mr-2">Earthsong</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-gruvbox-dark" data-variant="dark">
+                  <span class="mr-2">Gruvbox Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-mission-brogue" data-variant="dark">
+                  <span class="mr-2">Mission Brogue</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-solarized-dark-patched" data-variant="dark">
+                  <span class="mr-2">Solarized Dark Patched</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-borland" data-variant="dark">
+                  <span class="mr-2">Borland</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-one-light" data-variant="light">
+                  <span class="mr-2">One Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-argonaut" data-variant="dark">
+                  <span class="mr-2">Argonaut</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-jellybeans" data-variant="dark">
+                  <span class="mr-2">Jellybeans</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-pro-light" data-variant="light">
+                  <span class="mr-2">Pro Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-later-this-evening" data-variant="dark">
+                  <span class="mr-2">Later This Evening</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-fish-tank" data-variant="dark">
+                  <span class="mr-2">Fish Tank</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-ocean" data-variant="dark">
+                  <span class="mr-2">Ocean</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-jet-brains-darcula" data-variant="dark">
+                  <span class="mr-2">Jet Brains Darcula</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-catppuccin-macchiato" data-variant="dark">
+                  <span class="mr-2">Catppuccin Macchiato</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-the-hulk" data-variant="dark">
+                  <span class="mr-2">The Hulk</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-galaxy" data-variant="dark">
+                  <span class="mr-2">Galaxy</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-wild-cherry" data-variant="dark">
+                  <span class="mr-2">Wild Cherry</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-fun-forrest" data-variant="dark">
+                  <span class="mr-2">Fun Forrest</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-sundried" data-variant="dark">
+                  <span class="mr-2">Sundried</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-rippedcasts" data-variant="dark">
+                  <span class="mr-2">Rippedcasts</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-piatto-light" data-variant="light">
+                  <span class="mr-2">Piatto Light</span>
+                  <span class="text-xs text-base16-500/50">light</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-hardcore" data-variant="dark">
+                  <span class="mr-2">Hardcore</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-catppuccin-mocha" data-variant="dark">
+                  <span class="mr-2">Catppuccin Mocha</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="base24-bluloco-dark" data-variant="dark">
+                  <span class="mr-2">Bluloco Dark</span>
+                  <span class="text-xs text-base16-500/50">dark</span>
+                </button>
+              </div>
+            </div>
+          </nav></div>
+        
+      
     </header>
+    <script>
+      (function() {
+        const defaultLight = "base24-softstack-light";
+        const defaultDark = "base24-softstack-dark";
+        const html = document.documentElement;
+        const btn = document.getElementById("theme-btn");
+        const picker = document.getElementById("theme-picker");
+        const search = document.getElementById("theme-search");
+        const resetBtn = document.getElementById("theme-reset");
+        const options = document.querySelectorAll(".theme-option");
 
-    <main class="flex flex-col basis-auto flex-auto bg-base16-200/20 my-6 rounded-2xl p-2 md:p-8 md:py-12 md:px-10">
-      <div class="basis-full text-base16-700 max-w-none leading-7 hyphens-manual prose prose-code:rounded-xl prose-p:text-base16-700/90 prose-p:mb-10 prose-a:text-base16-cyan/90 prose-a:no-underline prose-ul:-ml-4 prose-ul:list-inside prose-ol:-ml-4 prose-ol:list-inside prose-ul:-mt-8 prose-ul:mb-8 prose-ul:leading-6 prose-ol:-mt-4 prose-ol:mb-4 prose-ol:leading-6 prose-li:marker:text-base16-blue/90"> 
+        function getCurrentTheme() {
+          const classes = Array.from(html.classList);
+          return classes.find(c => c.startsWith("base16-") || c.startsWith("base24-"));
+        }
+
+        function applyTheme(mode) {
+          const savedLight = localStorage.getItem("theme-light") || defaultLight;
+          const savedDark = localStorage.getItem("theme-dark") || defaultDark;
+          const currentTheme = getCurrentTheme();
+
+          let isDark;
+          if (mode === "system") {
+            isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          } else {
+            isDark = mode === "dark";
+          }
+
+          const newTheme = isDark ? savedDark : savedLight;
+          if (currentTheme) html.classList.remove(currentTheme);
+          html.classList.add(newTheme);
+        }
+
+        // Listen for system preference changes when in system mode
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+          const mode = localStorage.getItem("theme-mode") || "system";
+          if (mode === "system") applyTheme("system");
+        });
+
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          picker.classList.toggle("hidden");
+          if (!picker.classList.contains("hidden")) search.focus();
+        });
+
+        document.addEventListener("click", (e) => {
+          if (!picker.contains(e.target) && e.target !== btn) {
+            picker.classList.add("hidden");
+          }
+        });
+
+        search.addEventListener("input", (e) => {
+          const query = e.target.value.toLowerCase();
+          options.forEach((opt) => {
+            const name = opt.querySelector("span").textContent.toLowerCase();
+            opt.style.display = name.includes(query) ? "" : "none";
+          });
+        });
+
+        resetBtn.addEventListener("click", () => {
+          localStorage.setItem("theme-mode", "system");
+          applyTheme("system");
+          picker.classList.add("hidden");
+        });
+
+        options.forEach((opt) => {
+          opt.addEventListener("click", () => {
+            const slug = opt.dataset.slug;
+            const variant = opt.dataset.variant;
+            const currentTheme = getCurrentTheme();
+
+            // Save the theme for its variant
+            localStorage.setItem(variant === "light" ? "theme-light" : "theme-dark", slug);
+
+            // Switch to this mode
+            localStorage.setItem("theme-mode", variant);
+
+            // Apply immediately
+            if (currentTheme) html.classList.remove(currentTheme);
+            html.classList.add(slug);
+
+            picker.classList.add("hidden");
+            search.value = "";
+            options.forEach((o) => o.style.display = "");
+          });
+        });
+      })();
+    </script>
+
+    <main class="flex flex-col basis-auto flex-auto bg-base16-200/45 mt-2 mb-6 rounded-2xl p-4 md:p-8 md:py-8 md:px-10">
+      <div class="basis-full text-base16-700 max-w-none leading-7 hyphens-manual text-sm prose prose-code:rounded-xl prose-p:text-base16-700/85 prose-p:mb-10 prose-a:text-base16-blue prose-a:no-underline prose-a:italic prose-ul:-ml-4 prose-ul:list-inside prose-ul:-mt-8 prose-ul:mb-8 prose-ul:leading-6 prose-ol:-ml-4 prose-ol:list-inside prose-ol:-mt-4 prose-ol:mb-4 prose-ol:leading-6 prose-li:marker:text-base16-blue/90 -mb-2 md:-mb-2 mx-0"> 
         <p>I like to write about things that I’m interested in at any given time! Here’s some recent posts:</p>
 
       </div>
       <ul>
-        <li class="flex flex-col items-start mb-8 md:block">
-          <span class="text-base text-base16-orange/90 font-bold font-stretch-semi-condensed">28 Dec, 2025 </span>
-          <a href="/posts/coding_assistants/" class="text-base text-base16-orange/75">
+        <li class="flex flex-col items-start mb-8">
+          <a href="/posts/coding_assistants/" class="text-sm md:text-base text-base16-orange/90 hyphens-auto">
             Coding assistants, a retrospective
           </a>
+          <p class="text-[10px] md:text-xs italic text-base16-yellow/60"><span>28 Dec, 2025</span><span class="text-base16-400 mx-2 md:mx-3">•</span><span class="text-base16-yellow/60">4 min</span></p>
+          <p class="text-xs md:text-sm text-base16-500 mt-2">What design features matter?</p>
         </li>
-        <li class="flex flex-col items-start mb-8 md:block">
-          <span class="text-base text-base16-orange/90 font-bold font-stretch-semi-condensed">20 Jun, 2025 </span>
-          <a href="/posts/devcontainers/" class="text-base text-base16-orange/75">
+        <li class="flex flex-col items-start mb-8">
+          <a href="/posts/devcontainers/" class="text-sm md:text-base text-base16-orange/90 hyphens-auto">
             Docker images for consistent, persistent SSH sessions
           </a>
+          <p class="text-[10px] md:text-xs italic text-base16-yellow/60"><span>20 Jun, 2025</span><span class="text-base16-400 mx-2 md:mx-3">•</span><span class="text-base16-yellow/60">2 min</span></p>
+          <p class="text-xs md:text-sm text-base16-500 mt-2">Devcontainer-ish</p>
         </li>
       </ul>
     </main>
     
     <footer class="basis-sm flex-none place-content-center text-center">
-      <span class="text-base16-300 text-sm text-center">© 2025 Neev Parikh</span>
+      <span class="text-base16-300 text-xs md:text-sm text-center">© 2025 Neev Parikh</span>
     </footer>
 
   

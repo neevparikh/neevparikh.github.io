@@ -15,18 +15,19 @@
 }
 
 /* Map Shiki CSS variables to base16 theme colors (matches gruvbox mapping) */
+/* Prefer bright variants (base24) with fallback to regular colors (base16) */
 :root {
   --shiki-foreground: rgb(var(--color-base16-700));
   --shiki-background: rgb(var(--color-base16-100));
   --shiki-token-constant: rgb(var(--color-base16-purple));
-  --shiki-token-string: rgb(var(--color-base16-green));
+  --shiki-token-string: rgb(var(--color-base16-green-bright, var(--color-base16-green)));
   --shiki-token-comment: rgb(var(--color-base16-500));
-  --shiki-token-keyword: rgb(var(--color-base16-red));
-  --shiki-token-parameter: rgb(var(--color-base16-blue));
-  --shiki-token-function: rgb(var(--color-base16-yellow));
-  --shiki-token-string-expression: rgb(var(--color-base16-green));
+  --shiki-token-keyword: rgb(var(--color-base16-red-bright, var(--color-base16-red)));
+  --shiki-token-parameter: rgb(var(--color-base16-blue-bright, var(--color-base16-blue)));
+  --shiki-token-function: rgb(var(--color-base16-yellow-bright, var(--color-base16-yellow)));
+  --shiki-token-string-expression: rgb(var(--color-base16-green-bright, var(--color-base16-green)));
   --shiki-token-punctuation: rgb(var(--color-base16-600));
-  --shiki-token-link: rgb(var(--color-base16-cyan));
+  --shiki-token-link: rgb(var(--color-base16-cyan-bright, var(--color-base16-cyan)));
 }
 
 /* Code block language label */

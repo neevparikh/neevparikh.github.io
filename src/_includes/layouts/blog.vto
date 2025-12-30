@@ -4,17 +4,17 @@
   <body class="{{ bodyStyle }}">
     {{ include "layouts/header.vto" }}
     <main class="{{ mainStyle }}">
-      <div class="{{ contentStyle }}"> 
+      <div class="{{ contentStyle }} -mb-2 md:-mb-2 mx-0"> 
         {{ content }}
       </div>
       <ul>
         {{ for page of search.pages("post", "date=desc") }}
         <li class="flex flex-col items-start mb-8">
-          <a href="/posts/{{ page.basename }}/" class="text-base md:text-lg text-base16-orange/90">
+          <a href="/posts/{{ page.basename }}/" class="text-sm md:text-base text-base16-orange/90 hyphens-auto">
             {{ page.title }}
           </a>
-          <p class="text-sm text-base16-orange/75 font-stretch-condensed">{{ page.date |> date('dd MMM, yyyy') }}</p>
-          <p class="text-sm text-base16-500">{{ page.description }}</p>
+          <p class="text-[10px] md:text-xs italic text-base16-yellow/60"><span>{{ page.date |> date('dd MMM, yyyy') }}</span><span class="text-base16-400 mx-2 md:mx-3">•</span><span class="text-base16-yellow/60">{{ page.readingInfo.minutes }} min</span></p>
+          <p class="text-xs md:text-sm text-base16-500 mt-2">{{ page.description }}</p>
         </li>
         {{ /for }}
       </ul>

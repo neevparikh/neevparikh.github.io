@@ -10,33 +10,33 @@
 
 
   <body class="flex flex-col m-auto p-6 max-w-4xl bg-base16-100 text-base16-700 min-h-screen">
-        <header class="flex-none basis-sm mb-2">
-      <div class="flex justify-between items-baseline mb-2">
-        <div class="flex flex-col ml-2 md:ml-10 min-w-0">
-          <h1 class="text-lg md:text-2xl text-base16-800 font-bold">Neev Parikh</h1>
-          <nav class="text-xs md:text-xs flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-3 mt-2">
-            <a href="https://github.com/neevparikh" class="text-base16-500">github</a>
-            <a href="https://x.com/neev_parikh" class="text-base16-500">twitter</a>
-            <a href="https://linkedin.com/in/neev-parikh" class="text-base16-500">linkedin</a>
-            <a href="https://scholar.google.com/citations?user=GUopQmgAAAAJ&amp;hl=en" class="text-base16-500">scholar</a>
-            <a href="mailto:neev.v.parikh@gmail.com" class="text-base16-500">email</a>
+        <header class="flex-none basis-sm bg-base16-200/45 rounded-2xl p-4 md:py-6 md:px-10">
+      <div class="flex justify-between items-baseline">
+        <div class="flex flex-col min-w-0">
+          <h1 class="text-xl md:text-2xl text-base16-600 font-bold">Neev Parikh</h1>
+          <nav class="text-xs md:text-xs flex flex-col md:flex-row italic text-base16-blue/80 space-y-2 md:space-y-0 md:space-x-3 mt-2">
+            <a href="https://github.com/neevparikh">github</a>
+            <a href="https://x.com/neev_parikh">twitter</a>
+            <a href="https://linkedin.com/in/neev-parikh">linkedin</a>
+            <a href="https://scholar.google.com/citations?user=GUopQmgAAAAJ&amp;hl=en">scholar</a>
+            <a href="mailto:neev.v.parikh@gmail.com">email</a>
           </nav>
         </div>
-        <nav class="text-base md:text-lg flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-3 mr-2 md:mr-10 shrink-0 items-end">
-          <a href="/" class="text-base16-600">posts</a>
-          <a href="/about/" class="text-base16-600">about</a>
-          <a href="/assets/files/neev_parikh_resume.pdf" class="text-base16-600">resume</a>
+        <nav class="text-base md:text-lg flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-3 shrink-0 items-end">
+          <a href="/" class="text-base16-cyan">posts</a>
+          <a href="/about/" class="text-base16-cyan">about</a>
+          <a href="/assets/files/neev_parikh_resume.pdf" class="text-base16-cyan">resume</a>
         </nav>
       </div>
     </header>
 
-    <main class="flex flex-col basis-auto flex-auto bg-base16-200/20 mt-2 mb-6 rounded-2xl p-2 md:p-8 md:py-12 md:px-10">
+    <main class="flex flex-col basis-auto flex-auto bg-base16-200/45 mt-2 mb-6 rounded-2xl p-4 md:p-8 md:py-8 md:px-10">
       <div class="mb-8 text-base16-700 flex-none basis-sm">
         <h1 class="text-xl md:text-3xl font-semibold mb-2">Docker images for consistent, persistent SSH sessions</h1>
-        <h3 class="text-[12px] md:text-[16px] mb-4 text-base16-500">Devcontainer-ish</h3>
-        <p class="text-[10px] md:text-[14px] font-bold text-base16-yellow/70 mb-2"><span>20 Jun, 2025</span><span class="text-base16-400 mx-3">•</span><span class="text-base16-yellow/60">2 min read</span></p>
+        <h3 class="text-xs md:text-base mb-4 text-base16-500">Devcontainer-ish</h3>
+        <p class="text-[10px] md:text-sm font-bold text-base16-yellow/70 mb-2"><span>20 Jun, 2025</span><span class="text-base16-400 mx-2 md:mx-3">•</span><span class="text-base16-yellow/60">2 min</span></p>
       </div>
-      <div class="basis-full text-base16-700 max-w-none leading-7 hyphens-manual text-sm md:text-base prose prose-code:rounded-xl prose-p:text-base16-700/90 prose-p:mb-10 prose-a:text-base16-cyan/90 prose-a:no-underline prose-ul:-ml-4 prose-ul:list-inside prose-ol:-ml-4 prose-ol:list-inside prose-ul:-mt-8 prose-ul:mb-8 prose-ul:leading-6 prose-ol:-mt-4 prose-ol:mb-4 prose-ol:leading-6 prose-li:marker:text-base16-blue/90 grow"> 
+      <div class="basis-full text-base16-700 max-w-none leading-7 hyphens-manual text-sm prose prose-code:rounded-xl prose-p:text-base16-700/85 prose-p:mb-10 prose-a:text-base16-blue prose-a:no-underline prose-a:italic prose-ul:-ml-4 prose-ul:list-inside prose-ul:-mt-8 prose-ul:mb-8 prose-ul:leading-6 prose-ol:-ml-4 prose-ol:list-inside prose-ol:-mt-4 prose-ol:mb-4 prose-ol:leading-6 prose-li:marker:text-base16-blue/90 grow"> 
         <p>I’ve finally got around to setting up a personal Docker image for my personal development environment. Interestingly, I thought it’d be substantially more effort than it
 ended up being. I’ve briefly tried to do this several years ago and did not love the experience. The largest breakthrough was integrating proper dotfiles management via
 <a href="https://yadm.io/">YADM</a> and correctly setting configurations up in different OS environments.</p>

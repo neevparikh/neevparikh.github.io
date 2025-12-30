@@ -78,19 +78,16 @@ site.data(
 );
 site.data(
   "mainStyle",
-  "flex flex-col basis-auto flex-auto bg-base16-200/20 mt-2 mb-6 rounded-2xl p-2 md:p-8 md:py-12 md:px-10",
+  "flex flex-col basis-auto flex-auto bg-base16-200/45 mt-2 mb-6 rounded-2xl p-4 md:p-8 md:py-8 md:px-10",
 );
 site.data(
   "contentStyle",
-  "basis-full text-base16-700 max-w-none leading-7 hyphens-manual text-sm md:text-base " +
-    "prose " +
+  "basis-full text-base16-700 max-w-none leading-7 hyphens-manual text-sm prose " +
     "prose-code:rounded-xl " +
-    "prose-p:text-base16-700/90 prose-p:mb-10 " +
-    "prose-a:text-base16-cyan/90 prose-a:no-underline " +
-    "prose-ul:-ml-4 prose-ul:list-inside " +
-    "prose-ol:-ml-4 prose-ol:list-inside " +
-    "prose-ul:-mt-8 prose-ul:mb-8 prose-ul:leading-6 " +
-    "prose-ol:-mt-4 prose-ol:mb-4 prose-ol:leading-6 " +
+    "prose-p:text-base16-700/85 prose-p:mb-10 " +
+    "prose-a:text-base16-blue prose-a:no-underline prose-a:italic " +
+    "prose-ul:-ml-4 prose-ul:list-inside prose-ul:-mt-8 prose-ul:mb-8 prose-ul:leading-6 " +
+    "prose-ol:-ml-4 prose-ol:list-inside prose-ol:-mt-4 prose-ol:mb-4 prose-ol:leading-6 " +
     "prose-li:marker:text-base16-blue/90",
 );
 

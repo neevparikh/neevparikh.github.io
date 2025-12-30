@@ -6,8 +6,17 @@ import date from "lume/plugins/date.ts";
 import { base16Tailwind, base16Schemes } from "./src/base16-tailwind/lib.ts";
 import typography from "npm:@tailwindcss/typography";
 import Shiki from "@shikijs/markdown-it";
+import { createCssVariablesTheme } from "npm:shiki";
 import footnote from "npm:markdown-it-footnote";
 import katex from "lume/plugins/katex.ts";
+
+// Create a CSS variables theme that maps to base16 colors
+const base16ShikiTheme = createCssVariablesTheme({
+  name: "base16-css",
+  variablePrefix: "--shiki-",
+  variableDefaults: {},
+  fontStyle: true,
+});
 
 // Configure base16 options
 const base16Options = {
@@ -18,12 +27,19 @@ const base16Options = {
   prefix: "base16",
 };
 
-// Get all available themes
-const themes = base16Schemes(base16Options).map((scheme) => ({
-  name: scheme.name,
-  slug: scheme.slug,
-  variant: scheme.variant,
-}));
+// Get all available themes, sorted by variant (dark first) then name
+const themes = base16Schemes(base16Options)
+  .map((scheme) => ({
+    name: scheme.name,
+    slug: scheme.slug,
+    variant: scheme.variant,
+  }))
+  .sort((a, b) => {
+    if (a.variant !== b.variant) {
+      return a.variant === "dark" ? -1 : 1;
+    }
+    return a.name.localeCompare(b.name);
+  });
 
 // Configure the markdown plugin
 const markdown = {
@@ -35,10 +51,14 @@ const markdown = {
   plugins: [
     footnote,
     await Shiki({
-      themes: {
-        dark: "gruvbox-dark-hard",
-        light: "gruvbox-light-soft",
-      },
+      theme: base16ShikiTheme,
+      transformers: [
+        {
+          pre(node) {
+            node.properties["data-language"] = this.options.lang || "";
+          },
+        },
+      ],
     }),
   ],
   keepDefaultPlugins: true,
@@ -85,12 +105,6 @@ site.ignore("base16-tailwind/schemes");
 // Add themes data for the theme picker
 site.data("themes", themes);
 
-// Generate themes.json for the theme picker
-site.page({
-  url: "/themes.json",
-  content: JSON.stringify(themes),
-});
-
 site.data("defaultTheme", "base24-softstack-light");
 site.data("defaultDarkTheme", "base24-softstack-dark");
 site.data(
@@ -110,6 +124,7 @@ site.data(
   "basis-full text-base16-700 max-w-none leading-7 hyphens-manual text-sm prose " +
     "prose-code:rounded-xl " +
     "prose-p:text-base16-700/85 prose-p:mb-10 " +
+    "prose-pre:-mt-6 prose-pre:mb-10 " +
     "prose-a:text-base16-blue prose-a:no-underline prose-a:italic " +
     "prose-ul:-ml-4 prose-ul:list-inside prose-ul:-mt-8 prose-ul:mb-8 prose-ul:leading-6 " +
     "prose-ol:-ml-4 prose-ol:list-inside prose-ol:-mt-4 prose-ol:mb-4 prose-ol:leading-6 " +

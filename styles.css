@@ -12937,16 +12937,16 @@ video {
   --tw-text-opacity: 1;
   color: rgb(var(--color-base16-400) / var(--tw-text-opacity, 1));
 }
-/* Map Shiki CSS variables to base16 theme colors */
+/* Map Shiki CSS variables to base16 theme colors (matches gruvbox mapping) */
 :root {
   --shiki-foreground: rgb(var(--color-base16-700));
   --shiki-background: rgb(var(--color-base16-100));
-  --shiki-token-constant: rgb(var(--color-base16-orange));
+  --shiki-token-constant: rgb(var(--color-base16-purple));
   --shiki-token-string: rgb(var(--color-base16-green));
   --shiki-token-comment: rgb(var(--color-base16-500));
-  --shiki-token-keyword: rgb(var(--color-base16-purple));
-  --shiki-token-parameter: rgb(var(--color-base16-red));
-  --shiki-token-function: rgb(var(--color-base16-blue));
+  --shiki-token-keyword: rgb(var(--color-base16-red));
+  --shiki-token-parameter: rgb(var(--color-base16-blue));
+  --shiki-token-function: rgb(var(--color-base16-yellow));
   --shiki-token-string-expression: rgb(var(--color-base16-green));
   --shiki-token-punctuation: rgb(var(--color-base16-600));
   --shiki-token-link: rgb(var(--color-base16-cyan));

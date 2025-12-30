@@ -70,7 +70,7 @@ site.ignore("base16-tailwind/schemes");
 
 site.data(
   "overallSiteStyle",
-  "base24-softstack-light dark:base24-softstack-dark font-mono scroll-smooth [scrollbar-width:thin] [scrollbar-color:rgb(var(--color-base16-300))_transparent]",
+  "base24-softstack-light dark:base24-softstack-dark font-mono scroll-smooth [scrollbar-width:thin] [scrollbar-gutter:stable] [scrollbar-color:rgb(var(--color-base16-300))_transparent]",
 );
 site.data(
   "bodyStyle",
@@ -78,11 +78,11 @@ site.data(
 );
 site.data(
   "mainStyle",
-  "flex flex-col basis-auto flex-auto bg-base16-200/20 my-6 rounded-2xl p-2 md:p-8 md:py-12 md:px-10",
+  "flex flex-col basis-auto flex-auto bg-base16-200/20 mt-2 mb-6 rounded-2xl p-2 md:p-8 md:py-12 md:px-10",
 );
 site.data(
   "contentStyle",
-  "basis-full text-base16-700 max-w-none leading-7 hyphens-manual " +
+  "basis-full text-base16-700 max-w-none leading-7 hyphens-manual text-sm md:text-base " +
     "prose " +
     "prose-code:rounded-xl " +
     "prose-p:text-base16-700/90 prose-p:mb-10 " +

@@ -3,8 +3,11 @@ title: Coding assistants, a retrospective
 date: 2025-12-29
 description: What design features matter?
 draft: false
-tags: 
+tags:
  - post
+ - ai
+ - tools
+ - development
 ---
 
 Last July, I wrote an unpublished draft post that described why I thought coding assistants were going to look more like autonomous code-monkeys and less like IDE integrations.[^1] I had two basic reasons:

@@ -9,11 +9,12 @@
       </div>
       <ul>
         {{ for page of search.pages("post", "date=desc") }}
-        <li class="flex flex-col items-start mb-8 md:block">
-          <span class="text-base text-base16-orange/90 font-bold font-stretch-semi-condensed">{{ page.date |> date('dd MMM, yyyy') }} </span>
-          <a href="/posts/{{ page.basename }}/" class="text-base text-base16-orange/75">
+        <li class="flex flex-col items-start mb-8">
+          <a href="/posts/{{ page.basename }}/" class="text-base md:text-lg text-base16-orange/90">
             {{ page.title }}
           </a>
+          <p class="text-sm text-base16-orange/75 font-stretch-condensed">{{ page.date |> date('dd MMM, yyyy') }}</p>
+          <p class="text-sm text-base16-500">{{ page.description }}</p>
         </li>
         {{ /for }}
       </ul>

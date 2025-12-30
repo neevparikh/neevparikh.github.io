@@ -14,6 +14,111 @@
           <a href="/" class="text-base16-cyan">posts</a>
           <a href="/about/" class="text-base16-cyan">about</a>
           <a href="/assets/files/neev_parikh_resume.pdf" class="text-base16-cyan">resume</a>
+          <div class="relative">
+            <button id="theme-btn" class="text-base16-red hover:text-base16-purple/70 cursor-pointer" title="Change theme">theme</button>
+            <div id="theme-picker" class="hidden absolute right-0 top-full mt-2 w-64 bg-base16-100 border border-base16-300 rounded-lg shadow-lg z-50 max-h-80 overflow-hidden flex flex-col">
+              <input id="theme-search" type="text" placeholder="search themes..." class="w-full px-3 py-2 text-sm bg-base16-200 border-b border-base16-300 text-base16-700 placeholder-base16-500/50 outline-none" />
+              <button id="theme-reset" class="w-full px-3 py-1.5 text-left text-sm hover:bg-base16-200 text-base16-purple border-b border-base16-300"k
+                system preference
+              </button>
+              <div id="theme-list" class="overflow-y-auto flex-1">
+                {{ for theme of themes }}
+                <button class="theme-option w-full px-3 py-1.5 text-left text-xs lowercase hover:bg-base16-200 text-base16-600 flex justify-between items-center" data-slug="{{ theme.slug }}" data-variant="{{ theme.variant }}">
+                  <span class="mr-2">{{ theme.name }}</span>
+                  <span class="text-xs text-base16-500/50">{{ theme.variant }}</span>
+                </button>
+                {{ /for }}
+              </div>
+            </div>
+          </div>
         </nav>
       </div>
     </header>
+    <script>
+      (function() {
+        const defaultLight = "{{ defaultTheme }}";
+        const defaultDark = "{{ defaultDarkTheme }}";
+        const html = document.documentElement;
+        const btn = document.getElementById("theme-btn");
+        const picker = document.getElementById("theme-picker");
+        const search = document.getElementById("theme-search");
+        const resetBtn = document.getElementById("theme-reset");
+        const options = document.querySelectorAll(".theme-option");
+
+        function getCurrentTheme() {
+          const classes = Array.from(html.classList);
+          return classes.find(c => c.startsWith("base16-") || c.startsWith("base24-"));
+        }
+
+        function applyTheme(mode) {
+          const savedLight = localStorage.getItem("theme-light") || defaultLight;
+          const savedDark = localStorage.getItem("theme-dark") || defaultDark;
+          const currentTheme = getCurrentTheme();
+
+          let isDark;
+          if (mode === "system") {
+            isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          } else {
+            isDark = mode === "dark";
+          }
+
+          const newTheme = isDark ? savedDark : savedLight;
+          if (currentTheme) html.classList.remove(currentTheme);
+          html.classList.add(newTheme);
+        }
+
+        // Listen for system preference changes when in system mode
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+          const mode = localStorage.getItem("theme-mode") || "system";
+          if (mode === "system") applyTheme("system");
+        });
+
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          picker.classList.toggle("hidden");
+          if (!picker.classList.contains("hidden")) search.focus();
+        });
+
+        document.addEventListener("click", (e) => {
+          if (!picker.contains(e.target) && e.target !== btn) {
+            picker.classList.add("hidden");
+          }
+        });
+
+        search.addEventListener("input", (e) => {
+          const query = e.target.value.toLowerCase();
+          options.forEach((opt) => {
+            const name = opt.querySelector("span").textContent.toLowerCase();
+            opt.style.display = name.includes(query) ? "" : "none";
+          });
+        });
+
+        resetBtn.addEventListener("click", () => {
+          localStorage.setItem("theme-mode", "system");
+          applyTheme("system");
+          picker.classList.add("hidden");
+        });
+
+        options.forEach((opt) => {
+          opt.addEventListener("click", () => {
+            const slug = opt.dataset.slug;
+            const variant = opt.dataset.variant;
+            const currentTheme = getCurrentTheme();
+
+            // Save the theme for its variant
+            localStorage.setItem(variant === "light" ? "theme-light" : "theme-dark", slug);
+
+            // Switch to this mode
+            localStorage.setItem("theme-mode", variant);
+
+            // Apply immediately
+            if (currentTheme) html.classList.remove(currentTheme);
+            html.classList.add(slug);
+
+            picker.classList.add("hidden");
+            search.value = "";
+            options.forEach((o) => o.style.display = "");
+          });
+        });
+      })();
+    </script>

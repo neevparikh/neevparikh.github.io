@@ -5,4 +5,27 @@
     <link href="/styles.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="/assets/images/icon.png" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.css" />
+    <script>
+      (function() {
+        const defaultLight = "{{ defaultTheme }}";
+        const defaultDark = "{{ defaultDarkTheme }}";
+        const html = document.documentElement;
+
+        // Get saved preferences
+        const savedLight = localStorage.getItem("theme-light") || defaultLight;
+        const savedDark = localStorage.getItem("theme-dark") || defaultDark;
+        const savedMode = localStorage.getItem("theme-mode") || "system";
+
+        // Determine if we should use dark mode
+        let isDark;
+        if (savedMode === "system") {
+          isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        } else {
+          isDark = savedMode === "dark";
+        }
+
+        // Apply the appropriate theme
+        html.classList.add(isDark ? savedDark : savedLight);
+      })();
+    </script>
   </head>

@@ -3,11 +3,27 @@ import tailwindcss from "lume/plugins/tailwindcss.ts";
 import postcss from "lume/plugins/postcss.ts";
 import readingInfo from "lume/plugins/reading_info.ts";
 import date from "lume/plugins/date.ts";
-import { base16Tailwind } from "./src/base16-tailwind/lib.ts";
+import { base16Tailwind, base16Schemes } from "./src/base16-tailwind/lib.ts";
 import typography from "npm:@tailwindcss/typography";
 import Shiki from "@shikijs/markdown-it";
 import footnote from "npm:markdown-it-footnote";
 import katex from "lume/plugins/katex.ts";
+
+// Configure base16 options
+const base16Options = {
+  customPath: "./src/base16-tailwind/schemes",
+  system: "base24" as const,
+  invert: true,
+  withTypography: true,
+  prefix: "base16",
+};
+
+// Get all available themes
+const themes = base16Schemes(base16Options).map((scheme) => ({
+  name: scheme.name,
+  slug: scheme.slug,
+  variant: scheme.variant,
+}));
 
 // Configure the markdown plugin
 const markdown = {
@@ -39,6 +55,10 @@ const site = lume(
 site.use(
   tailwindcss({
     options: {
+      safelist: [
+        { pattern: /^base24-/ },
+        { pattern: /^base16-/ },
+      ],
       theme: {
         extend: {
           typography: () => ({
@@ -50,13 +70,7 @@ site.use(
       },
       plugins: [
         typography,
-        base16Tailwind({
-          customPath: "./src/base16-tailwind/schemes",
-          system: "base24",
-          invert: true,
-          withTypography: true,
-          prefix: "base16",
-        }),
+        base16Tailwind(base16Options),
       ],
     },
   }),
@@ -68,9 +82,20 @@ site.use(katex());
 
 site.ignore("base16-tailwind/schemes");
 
+// Add themes data for the theme picker
+site.data("themes", themes);
+
+// Generate themes.json for the theme picker
+site.page({
+  url: "/themes.json",
+  content: JSON.stringify(themes),
+});
+
+site.data("defaultTheme", "base24-softstack-light");
+site.data("defaultDarkTheme", "base24-softstack-dark");
 site.data(
-  "overallSiteStyle",
-  "base24-softstack-light dark:base24-softstack-dark font-mono scroll-smooth [scrollbar-width:thin] [scrollbar-gutter:stable] [scrollbar-color:rgb(var(--color-base16-300))_transparent]",
+  "baseStyle",
+  "font-mono scroll-smooth [scrollbar-width:thin] [scrollbar-gutter:stable] [scrollbar-color:rgb(var(--color-base16-300))_transparent]",
 );
 site.data(
   "bodyStyle",

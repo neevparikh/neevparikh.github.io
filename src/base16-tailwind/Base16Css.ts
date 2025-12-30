@@ -43,7 +43,7 @@ export class Base16Css {
       this.variables.push(`${Base16Css._colors[0]}-bright`);
 
       for (let i = 19; i < 24; i++) {
-        this.variables.push(`${Base16Css._colors[i - 17]}-bright`);
+        this.variables.push(`${Base16Css._colors[i - 18]}-bright`);
       }
     }
 

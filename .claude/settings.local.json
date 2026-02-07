@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:localhost)",
+      "Bash(curl:*)",
+      "Bash(deno task build:*)",
+      "Bash(pkill:*)",
+      "Bash(cat:*)",
+      "Bash(git -C /Users/neev/repos/neevparikh.github.io log --oneline --all -- src/base16-tailwind)",
+      "WebFetch(domain:raw.githubusercontent.com)"
+    ]
+  }
+}

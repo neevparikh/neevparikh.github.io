@@ -2,6 +2,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ title }}</title>
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/RobotoSlab-VF.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/ZillaSlab-Regular.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/FiraCode-VF.woff2" crossorigin />
     <link href="/styles.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="/assets/images/icon.png" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.css" />
@@ -26,6 +29,10 @@
 
         // Apply the appropriate theme
         html.classList.add(isDark ? savedDark : savedLight);
+
+        // Apply body font preference (sans | serif). Serif is the default.
+        const savedFont = localStorage.getItem("font-mode") || "serif";
+        html.setAttribute("data-font", savedFont);
       })();
     </script>
   </head>

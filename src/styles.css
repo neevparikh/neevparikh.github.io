@@ -2,6 +2,121 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---------------------------------------------------------------- */
+/* Fonts                                                            */
+/* ---------------------------------------------------------------- */
+
+/* Nunito — variable, rounded humanist sans (toggle option) */
+@font-face {
+  font-family: "Nunito";
+  src: url("/assets/fonts/Nunito-VF.woff2") format("woff2-variations"),
+       url("/assets/fonts/Nunito-VF.woff2") format("woff2");
+  font-weight: 200 1000;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("/assets/fonts/Nunito-VF-Italic.woff2") format("woff2-variations"),
+       url("/assets/fonts/Nunito-VF-Italic.woff2") format("woff2");
+  font-weight: 200 1000;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Zilla Slab — used for all headings (applied universally, independent of toggle) */
+@font-face {
+  font-family: "Zilla Slab";
+  src: url("/assets/fonts/ZillaSlab-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Zilla Slab";
+  src: url("/assets/fonts/ZillaSlab-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Zilla Slab";
+  src: url("/assets/fonts/ZillaSlab-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Zilla Slab";
+  src: url("/assets/fonts/ZillaSlab-MediumItalic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Zilla Slab";
+  src: url("/assets/fonts/ZillaSlab-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Zilla Slab";
+  src: url("/assets/fonts/ZillaSlab-BoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Roboto Slab — variable, serif body font (default) */
+@font-face {
+  font-family: "Roboto Slab";
+  src: url("/assets/fonts/RobotoSlab-VF.woff2") format("woff2-variations"),
+       url("/assets/fonts/RobotoSlab-VF.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Fira Code — variable, mono with ligatures */
+@font-face {
+  font-family: "Fira Code";
+  src: url("/assets/fonts/FiraCode-VF.woff2") format("woff2-variations"),
+       url("/assets/fonts/FiraCode-VF.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Body font is controlled by a CSS var flipped by [data-font] on <html>. */
+/* Body font: Roboto Slab (serif, default) or Fira Sans (sans). Headings always use Zilla. */
+:root {
+  --font-body: "Roboto Slab", ui-serif, Georgia, Cambria, "Times New Roman", serif;
+  --font-body-weight: 400;
+  --font-body-tracking: 0;
+}
+html[data-font="sans"] {
+  --font-body: "Nunito", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body-weight: 400;
+  --font-body-tracking: 0;
+}
+body {
+  font-family: var(--font-body);
+  font-weight: var(--font-body-weight);
+  letter-spacing: var(--font-body-tracking);
+}
+
+/* Zilla Slab is the voice of the site — used on every heading in both modes. */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Zilla Slab", ui-serif, Georgia, Cambria, "Times New Roman", serif;
+}
+
+/* Fira Code programming ligatures in any code/pre element. */
+pre, code, kbd, samp {
+  font-variant-ligatures: contextual;
+  font-feature-settings: "calt" 1;
+}
+
 .footnotes {
   @apply text-xs;
 }

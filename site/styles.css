@@ -142,7 +142,7 @@ html,
   -moz-tab-size: 4; /* 3 */
   -o-tab-size: 4;
      tab-size: 4; /* 3 */
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 4 */
+  font-family: "Nunito", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; /* 4 */
   font-feature-settings: normal; /* 5 */
   font-variation-settings: normal; /* 6 */
   -webkit-tap-highlight-color: transparent; /* 7 */
@@ -222,7 +222,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; /* 1 */
+  font-family: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; /* 1 */
   font-feature-settings: normal; /* 2 */
   font-variation-settings: normal; /* 3 */
   font-size: 1em; /* 4 */
@@ -642,7 +642,7 @@ video {
 .prose :where(h1):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
   color: var(--tw-prose-headings);
   font-weight: 800;
-  font-size: 2.25em;
+  font-size: 2.5em;
   margin-top: 0;
   margin-bottom: 0.8888889em;
   line-height: 1.1111111;
@@ -654,7 +654,7 @@ video {
 .prose :where(h2):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
   color: var(--tw-prose-headings);
   font-weight: 700;
-  font-size: 1.5em;
+  font-size: 1.75em;
   margin-top: 2em;
   margin-bottom: 1em;
   line-height: 1.3333333;
@@ -666,7 +666,7 @@ video {
 .prose :where(h3):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
   color: var(--tw-prose-headings);
   font-weight: 600;
-  font-size: 1.25em;
+  font-size: 1.4em;
   margin-top: 1.6em;
   margin-bottom: 0.6em;
   line-height: 1.6;
@@ -681,6 +681,7 @@ video {
   margin-top: 1.5em;
   margin-bottom: 0.5em;
   line-height: 1.5;
+  font-size: 1.15em;
 }
 .prose :where(h4 strong):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
   font-weight: 700;
@@ -1071,6 +1072,9 @@ video {
 .justify-between {
   justify-content: space-between;
 }
+.gap-1 {
+  gap: 0.25rem;
+}
 .gap-2 {
   gap: 0.5rem;
 }
@@ -1095,6 +1099,9 @@ video {
 .hyphens-auto {
   -webkit-hyphens: auto;
           hyphens: auto;
+}
+.rounded {
+  border-radius: 0.25rem;
 }
 .rounded-2xl {
   border-radius: 1rem;
@@ -1129,9 +1136,17 @@ video {
 .p-6 {
   padding: 1.5rem;
 }
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+}
+.py-0\.5 {
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
 }
 .py-1\.5 {
   padding-top: 0.375rem;
@@ -1147,8 +1162,9 @@ video {
 .text-center {
   text-align: center;
 }
-.font-mono {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 .text-\[10px\] {
   font-size: 10px;
@@ -1199,6 +1215,9 @@ video {
 .text-base16-500\/50 {
   color: rgb(var(--color-base16-500) / 0.5);
 }
+.text-base16-500\/70 {
+  color: rgb(var(--color-base16-500) / 0.7);
+}
 .text-base16-600 {
   --tw-text-opacity: 1;
   color: rgb(var(--color-base16-600) / var(--tw-text-opacity, 1));
@@ -1206,6 +1225,10 @@ video {
 .text-base16-700 {
   --tw-text-opacity: 1;
   color: rgb(var(--color-base16-700) / var(--tw-text-opacity, 1));
+}
+.text-base16-blue {
+  --tw-text-opacity: 1;
+  color: rgb(var(--color-base16-blue) / var(--tw-text-opacity, 1));
 }
 .text-base16-blue\/80 {
   color: rgb(var(--color-base16-blue) / 0.8);
@@ -12925,6 +12948,113 @@ video {
 .\[scrollbar-width\:thin\] {
   scrollbar-width: thin;
 }
+/* ---------------------------------------------------------------- */
+/* Fonts                                                            */
+/* ---------------------------------------------------------------- */
+/* Nunito — variable, rounded humanist sans (toggle option) */
+@font-face {
+  font-family: "Nunito";
+  src: url("/assets/fonts/Nunito-VF.woff2") format("woff2-variations"),
+       url("/assets/fonts/Nunito-VF.woff2") format("woff2");
+  font-weight: 200 1000;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("/assets/fonts/Nunito-VF-Italic.woff2") format("woff2-variations"),
+       url("/assets/fonts/Nunito-VF-Italic.woff2") format("woff2");
+  font-weight: 200 1000;
+  font-style: italic;
+  font-display: swap;
+}
+/* Zilla Slab — used for all headings (applied universally, independent of toggle) */
+@font-face {
+  font-family: "Zilla Slab";
+  src: url("/assets/fonts/ZillaSlab-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Zilla Slab";
+  src: url("/assets/fonts/ZillaSlab-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Zilla Slab";
+  src: url("/assets/fonts/ZillaSlab-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Zilla Slab";
+  src: url("/assets/fonts/ZillaSlab-MediumItalic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Zilla Slab";
+  src: url("/assets/fonts/ZillaSlab-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Zilla Slab";
+  src: url("/assets/fonts/ZillaSlab-BoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+/* Roboto Slab — variable, serif body font (default) */
+@font-face {
+  font-family: "Roboto Slab";
+  src: url("/assets/fonts/RobotoSlab-VF.woff2") format("woff2-variations"),
+       url("/assets/fonts/RobotoSlab-VF.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+/* Fira Code — variable, mono with ligatures */
+@font-face {
+  font-family: "Fira Code";
+  src: url("/assets/fonts/FiraCode-VF.woff2") format("woff2-variations"),
+       url("/assets/fonts/FiraCode-VF.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+/* Body font is controlled by a CSS var flipped by [data-font] on <html>. */
+/* Body font: Roboto Slab (serif, default) or Fira Sans (sans). Headings always use Zilla. */
+:root {
+  --font-body: "Roboto Slab", ui-serif, Georgia, Cambria, "Times New Roman", serif;
+  --font-body-weight: 400;
+  --font-body-tracking: 0;
+}
+html[data-font="sans"] {
+  --font-body: "Nunito", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body-weight: 400;
+  --font-body-tracking: 0;
+}
+body {
+  font-family: var(--font-body);
+  font-weight: var(--font-body-weight);
+  letter-spacing: var(--font-body-tracking);
+}
+/* Zilla Slab is the voice of the site — used on every heading in both modes. */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Zilla Slab", ui-serif, Georgia, Cambria, "Times New Roman", serif;
+}
+/* Fira Code programming ligatures in any code/pre element. */
+pre, code, kbd, samp {
+  font-variant-ligatures: contextual;
+  font-feature-settings: "calt" 1;
+}
 .footnotes {
   font-size: 0.75rem;
   line-height: 1rem;
@@ -12992,11 +13122,17 @@ pre.shiki[data-language]::before {
 .prose-code\:rounded-xl :is(:where(code):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   border-radius: 0.75rem;
 }
+.prose-code\:font-mono :is(:where(code):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  font-family: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
 .prose-pre\:-mt-6 :is(:where(pre):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   margin-top: -1.5rem;
 }
 .prose-pre\:mb-10 :is(:where(pre):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   margin-bottom: 2.5rem;
+}
+.prose-pre\:font-mono :is(:where(pre):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  font-family: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 .prose-ol\:-ml-4 :is(:where(ol):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   margin-left: -1rem;
@@ -13093,9 +13229,9 @@ pre.shiki[data-language]::before {
     line-height: 2rem;
   }
 
-  .md\:text-3xl {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
+  .md\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
   }
 
   .md\:text-base {

@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" class="font-mono scroll-smooth [scrollbar-width:thin] [scrollbar-gutter:stable] [scrollbar-color:rgb(var(--color-base16-300))_transparent]"><head>
+<html lang="en" class="scroll-smooth [scrollbar-width:thin] [scrollbar-gutter:stable] [scrollbar-color:rgb(var(--color-base16-300))_transparent]"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coding assistants, a retrospective</title>
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/RobotoSlab-VF.woff2" crossorigin="">
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/ZillaSlab-Regular.woff2" crossorigin="">
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/FiraCode-VF.woff2" crossorigin="">
     <link href="/styles.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/assets/images/icon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.css">
@@ -27,6 +30,10 @@
 
         // Apply the appropriate theme
         html.classList.add(isDark ? savedDark : savedLight);
+
+        // Apply body font preference (sans | serif). Serif is the default.
+        const savedFont = localStorage.getItem("font-mode") || "serif";
+        html.setAttribute("data-font", savedFont);
       })();
     </script>
   </head>
@@ -53,6 +60,13 @@
             <button id="theme-btn" class="text-base16-red hover:text-base16-purple/70 cursor-pointer" title="Change theme">theme</button>
             <div id="theme-picker" class="hidden absolute right-0 top-full mt-2 w-64 bg-base16-100 border border-base16-300 rounded-lg shadow-lg z-50 max-h-80 overflow-hidden flex flex-col">
               <input id="theme-search" type="text" placeholder="search themes..." class="w-full px-3 py-2 text-sm bg-base16-200 border-b border-base16-300 text-base16-700 placeholder-base16-500/50 outline-none">
+              <div class="flex items-center justify-between px-3 py-1.5 border-b border-base16-300 text-sm text-base16-500/70">
+                <span>font</span>
+                <div class="flex gap-1">
+                  <button class="font-option px-2 py-0.5 rounded text-xs lowercase hover:bg-base16-200 text-base16-600" data-font="sans">sans</button>
+                  <button class="font-option px-2 py-0.5 rounded text-xs lowercase hover:bg-base16-200 text-base16-600" data-font="serif">serif</button>
+                </div>
+              </div>
               <button id="theme-reset" class="w-full px-3 py-1.5 text-left text-sm hover:bg-base16-200 text-base16-500/50 border-b border-base16-300">
                 system dark mode
               </button>
@@ -1761,6 +1775,7 @@
         const search = document.getElementById("theme-search");
         const resetBtn = document.getElementById("theme-reset");
         const options = document.querySelectorAll(".theme-option");
+        const fontOptions = document.querySelectorAll(".font-option");
 
         function getCurrentTheme() {
           const classes = Array.from(html.classList);
@@ -1837,16 +1852,38 @@
             options.forEach((o) => o.style.display = "");
           });
         });
+
+        // Font toggle (sans | serif). Persisted in localStorage, applied via
+        // the data-font attribute on <html> (CSS flips the --font-body var).
+        function highlightActiveFont() {
+          const current = html.getAttribute("data-font") || "sans";
+          fontOptions.forEach((o) => {
+            const active = o.dataset.font === current;
+            o.classList.toggle("bg-base16-200", active);
+            o.classList.toggle("text-base16-blue", active);
+            o.classList.toggle("text-base16-600", !active);
+          });
+        }
+        highlightActiveFont();
+        fontOptions.forEach((o) => {
+          o.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const font = o.dataset.font;
+            localStorage.setItem("font-mode", font);
+            html.setAttribute("data-font", font);
+            highlightActiveFont();
+          });
+        });
       })();
     </script>
 
     <main class="flex flex-col basis-auto flex-auto bg-base16-200/45 mt-2 mb-6 rounded-2xl p-4 md:p-8 md:py-8 md:px-10">
       <div class="mb-8 text-base16-700 flex-none basis-sm">
-        <h1 class="text-xl md:text-3xl font-semibold mb-2">Coding assistants, a retrospective</h1>
+        <h1 class="text-2xl md:text-4xl font-semibold mb-2">Coding assistants, a retrospective</h1>
         <h3 class="text-xs md:text-base mb-4 text-base16-500">What design features matter?</h3>
         <p class="text-[10px] md:text-sm font-bold text-base16-yellow/70 mb-2"><span>28 Dec, 2025</span><span class="text-base16-400 mx-2 md:mx-3">•</span><span class="text-base16-yellow/60">4 min</span></p>
       </div>
-      <div class="basis-full text-base16-700 max-w-none leading-7 hyphens-manual text-sm prose prose-code:rounded-xl prose-p:text-base16-700/85 prose-p:mb-10 prose-pre:-mt-6 prose-pre:mb-10 prose-a:text-base16-blue prose-a:no-underline prose-a:italic prose-ul:-ml-4 prose-ul:list-inside prose-ul:-mt-8 prose-ul:mb-8 prose-ul:leading-6 prose-ol:-ml-4 prose-ol:list-inside prose-ol:-mt-4 prose-ol:mb-4 prose-ol:leading-6 prose-li:marker:text-base16-blue/90 grow"> 
+      <div class="basis-full text-base16-700 max-w-none leading-7 hyphens-manual text-sm prose prose-code:font-mono prose-pre:font-mono prose-code:rounded-xl prose-p:text-base16-700/85 prose-p:mb-10 prose-pre:-mt-6 prose-pre:mb-10 prose-a:text-base16-blue prose-a:no-underline prose-a:italic prose-ul:-ml-4 prose-ul:list-inside prose-ul:-mt-8 prose-ul:mb-8 prose-ul:leading-6 prose-ol:-ml-4 prose-ol:list-inside prose-ol:-mt-4 prose-ol:mb-4 prose-ol:leading-6 prose-li:marker:text-base16-blue/90 grow"> 
         <p>Last July, I wrote an unpublished draft post that described why I thought coding assistants were going to look more like autonomous code-monkeys and less like IDE integrations.<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> I had two basic reasons:</p>
 <ol>
 <li>You’re going to want to run <em>many</em> instances at a time.</li>

@@ -91,9 +91,50 @@ site.use(
       ],
       theme: {
         extend: {
+          fontFamily: {
+            sans: [
+              '"Nunito"',
+              "ui-sans-serif",
+              "system-ui",
+              "-apple-system",
+              '"Segoe UI"',
+              "sans-serif",
+            ],
+            serif: [
+              '"Roboto Slab"',
+              "ui-serif",
+              "Georgia",
+              "Cambria",
+              '"Times New Roman"',
+              "serif",
+            ],
+            display: [
+              '"Zilla Slab"',
+              "ui-serif",
+              "Georgia",
+              "Cambria",
+              '"Times New Roman"',
+              "serif",
+            ],
+            mono: [
+              '"Fira Code"',
+              "ui-monospace",
+              "SFMono-Regular",
+              "Menlo",
+              "Monaco",
+              "Consolas",
+              "monospace",
+            ],
+          },
           typography: () => ({
             DEFAULT: {
-              css: {},
+              css: {
+                // Bump prose heading sizes ~10–15% for more presence.
+                h1: { fontSize: "2.5em" },   // default 2.25em
+                h2: { fontSize: "1.75em" },  // default 1.5em
+                h3: { fontSize: "1.4em" },   // default 1.25em  (used in posts)
+                h4: { fontSize: "1.15em" },  // default 1em
+              },
             },
           }),
         },
@@ -119,7 +160,7 @@ site.data("defaultTheme", "base24-softstack-light");
 site.data("defaultDarkTheme", "base24-softstack-dark");
 site.data(
   "baseStyle",
-  "font-mono scroll-smooth [scrollbar-width:thin] [scrollbar-gutter:stable] [scrollbar-color:rgb(var(--color-base16-300))_transparent]",
+  "scroll-smooth [scrollbar-width:thin] [scrollbar-gutter:stable] [scrollbar-color:rgb(var(--color-base16-300))_transparent]",
 );
 site.data(
   "bodyStyle",
@@ -132,6 +173,7 @@ site.data(
 site.data(
   "contentStyle",
   "basis-full text-base16-700 max-w-none leading-7 hyphens-manual text-sm prose " +
+    "prose-code:font-mono prose-pre:font-mono " +
     "prose-code:rounded-xl " +
     "prose-p:text-base16-700/85 prose-p:mb-10 " +
     "prose-pre:-mt-6 prose-pre:mb-10 " +

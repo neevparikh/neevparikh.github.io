@@ -38,6 +38,7 @@
     </script>
   </head>
 
+
   <body class="flex flex-col m-auto p-6 max-w-4xl bg-base16-100 text-base16-700 min-h-screen">
         <header class="flex-none basis-sm bg-base16-200/45 rounded-2xl p-4 md:py-6 md:px-10">
       <div class="flex justify-between items-baseline">
@@ -189,33 +190,24 @@
     </script>
 
     <main class="flex flex-col basis-auto flex-auto bg-base16-200/45 mt-2 mb-6 rounded-2xl p-4 md:p-8 md:py-8 md:px-10">
-      <div class="basis-full text-base16-700 max-w-none leading-7 hyphens-manual text-sm prose prose-code:font-mono prose-pre:font-mono prose-code:rounded-xl prose-p:text-base16-700/85 prose-p:mb-10 prose-pre:-mt-6 prose-pre:mb-10 prose-a:text-base16-blue prose-a:no-underline prose-a:italic prose-ul:-ml-4 prose-ul:list-inside prose-ul:-mt-8 prose-ul:mb-8 prose-ul:leading-6 prose-ol:-ml-4 prose-ol:list-inside prose-ol:-mt-4 prose-ol:mb-4 prose-ol:leading-6 prose-li:marker:text-base16-blue/90 -mb-2 md:-mb-2 mx-0"> 
-        <p>I like to write about things that I’m interested in at any given time! Here’s some recent posts:</p>
+      <div class="basis-full text-base16-700 max-w-none leading-7 hyphens-manual text-sm prose prose-code:font-mono prose-pre:font-mono prose-code:rounded-xl prose-p:text-base16-700/85 prose-p:mb-10 prose-pre:-mt-6 prose-pre:mb-10 prose-a:text-base16-blue prose-a:no-underline prose-a:italic prose-ul:-ml-4 prose-ul:list-inside prose-ul:-mt-8 prose-ul:mb-8 prose-ul:leading-6 prose-ol:-ml-4 prose-ol:list-inside prose-ol:-mt-4 prose-ol:mb-4 prose-ol:leading-6 prose-li:marker:text-base16-blue/90"> 
+          <p>I like to make computers do interesting things, deeply understand concepts and build interesting,
+useful tools. I’m currently thinking about AI alignment, control, and evaluations, and work with
+frontier models at METR. I’ve worked at Stripe and CSM in the past. I went to Brown for a concurrent BSc/MSc in Computer Science.</p>
+<p>Here’s some research that I’m especially proud of:</p>
+<ul>
+<li><a href="https://arxiv.org/abs/2411.15114">RE-Bench</a>: Frontier AI R&amp;D evaluations (ICML spotlight)</li>
+<li><a href="https://arxiv.org/abs/2106.04379">Learning Markov State Abstractions for Deep Reinforcement Learning</a>: Markovian abstractions for deep RL</li>
+</ul>
+<p>Here’s some fun projects I did:</p>
+<ul>
+<li><a href="https://github.com/neevparikh/hierarchical-doom">hierarchical RL on Doom</a>: Extending async-PPO implementation to learn options (higher-level skills/actions, <a href="https://www.sciencedirect.com/science/article/pii/S0004370299000521">learn more</a>)</li>
+<li><a href="https://github.com/neevparikh/rpt">volumetric path tracing</a>: Extending <a href="https://github.com/ekzhang/rpt">rpt</a> to use volumetric path tracing and photon mapping. Based on <a href="https://cs.dartmouth.edu/~wjarosz/publications/bitterli17beyond.pdf">Bitterli et. al.</a> and bonus <a href="https://docs.google.com/presentation/d/1h0Vn7eVyL9Qohx-D-bj2NBwiZy2h51XnHh4el7orleE/edit?slide=id.g129fe622917_1_5#slide=id.g129fe622917_1_5">class presentation</a>.</li>
+<li><a href="https://github.com/neevparikh/spaceport">spaceport</a>: Tiny MacOS utility written in Rust (with
+Obj-C bindings) to partly replace the <a href="https://www.intuitibits.com/2024/03/14/goodbye-airport/">deprecated <em>airport</em> utility</a>.</li>
+</ul>
 
       </div>
-      <ul>
-        <li class="flex flex-col items-start mb-8">
-          <a href="/posts/pi_coding_agent/" class="text-sm md:text-base text-base16-orange/90 hyphens-auto">
-            Pi, the Neovim of coding scaffolds
-          </a>
-          <p class="text-[10px] md:text-xs italic text-base16-yellow/60"><span>27 Apr, 2026</span><span class="text-base16-400 mx-2 md:mx-3">•</span><span class="text-base16-yellow/60">1 min</span></p>
-          <p class="text-xs md:text-sm text-base16-500 mt-2">Pi is what I've been looking for</p>
-        </li>
-        <li class="flex flex-col items-start mb-8">
-          <a href="/posts/coding_assistants/" class="text-sm md:text-base text-base16-orange/90 hyphens-auto">
-            Coding assistants, a retrospective
-          </a>
-          <p class="text-[10px] md:text-xs italic text-base16-yellow/60"><span>28 Dec, 2025</span><span class="text-base16-400 mx-2 md:mx-3">•</span><span class="text-base16-yellow/60">4 min</span></p>
-          <p class="text-xs md:text-sm text-base16-500 mt-2">What design features matter?</p>
-        </li>
-        <li class="flex flex-col items-start mb-8">
-          <a href="/posts/devcontainers/" class="text-sm md:text-base text-base16-orange/90 hyphens-auto">
-            Docker images for consistent, persistent SSH sessions
-          </a>
-          <p class="text-[10px] md:text-xs italic text-base16-yellow/60"><span>20 Jun, 2025</span><span class="text-base16-400 mx-2 md:mx-3">•</span><span class="text-base16-yellow/60">2 min</span></p>
-          <p class="text-xs md:text-sm text-base16-500 mt-2">Devcontainer-ish</p>
-        </li>
-      </ul>
     </main>
     
     <footer class="basis-sm flex-none place-content-center text-center">

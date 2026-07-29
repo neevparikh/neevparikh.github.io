@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth [scrollbar-width:thin] [scrollbar-gutter:stable] [scrollbar-color:rgb(var(--color-base16-300))_transparent]"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker images for consistent, persistent SSH sessions</title>
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/RobotoSlab-VF.woff2" crossorigin="">
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/ZillaSlab-Regular.woff2" crossorigin="">
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/FiraCode-VF.woff2" crossorigin="">
+    <link href="/styles.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/assets/images/icon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.css">
+    <script>
+      (function() {
+        const defaultLight = "base24-softstack-light";
+        const defaultDark = "base24-softstack-dark";
+        const html = document.documentElement;
+
+        // Get saved preferences
+        const savedLight = localStorage.getItem("theme-light") || defaultLight;
+        const savedDark = localStorage.getItem("theme-dark") || defaultDark;
+        const savedMode = localStorage.getItem("theme-mode") || "system";
+
+        // Determine if we should use dark mode
+        let isDark;
+        if (savedMode === "system") {
+          isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        } else {
+          isDark = savedMode === "dark";
+        }
+
+        // Apply the appropriate theme
+        html.classList.add(isDark ? savedDark : savedLight);
+
+        // Apply body font preference (sans | serif). Serif is the default.
+        const savedFont = localStorage.getItem("font-mode") || "serif";
+        html.setAttribute("data-font", savedFont);
+      })();
+    </script>
+  </head>
+
+
+  <body class="flex flex-col m-auto p-6 max-w-4xl bg-base16-100 text-base16-700 min-h-screen">
+        <header class="flex-none basis-sm bg-base16-200/45 rounded-2xl p-4 md:py-6 md:px-10">
+      <div class="flex justify-between items-baseline">
+        <div class="flex flex-col min-w-0">
+          <h1 class="text-xl md:text-2xl text-base16-600 font-bold">Neev Parikh</h1>
+          <nav class="text-xs md:text-xs flex flex-col md:flex-row italic text-base16-blue/80 space-y-2 md:space-y-0 md:space-x-3 mt-2">
+            <a href="https://github.com/neevparikh">github</a>
+            <a href="https://x.com/neev_parikh">twitter</a>
+            <a href="https://linkedin.com/in/neev-parikh">linkedin</a>
+            <a href="https://scholar.google.com/citations?user=GUopQmgAAAAJ&amp;hl=en">scholar</a>
+            <a href="mailto:neev.v.parikh@gmail.com">email</a>
+          </nav>
+        </div>
+        <nav class="text-base md:text-lg flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-3 shrink-0 items-end">
+          <a href="/" class="text-base16-cyan">posts</a>
+          <a href="/about/" class="text-base16-cyan">about</a>
+          <a href="/assets/files/neev_parikh_resume.pdf" class="text-base16-cyan">resume</a>
+          <div class="relative">
+            <button id="theme-btn" class="text-base16-red hover:text-base16-purple/70 cursor-pointer" title="Change theme">theme</button>
+            <div id="theme-picker" class="hidden absolute right-0 top-full mt-2 w-64 bg-base16-100 border border-base16-300 rounded-lg shadow-lg z-50 max-h-80 overflow-hidden flex flex-col">
+              <input id="theme-search" type="text" placeholder="search themes..." class="w-full px-3 py-2 text-sm bg-base16-200 border-b border-base16-300 text-base16-700 placeholder-base16-500/50 outline-none">
+              <div class="flex items-center justify-between px-3 py-1.5 border-b border-base16-300 text-sm text-base16-500/70">
+                <span>font</span>
+                <div class="flex gap-1">
+                  <button class="font-option px-2 py-0.5 rounded text-xs lowercase hover:bg-base16-200 text-base16-600" data-font="sans">sans</button>
+                  <button class="font-option px-2 py-0.5 rounded text-xs lowercase hover:bg-base16-200 text-base16-600" data-font="serif">serif</button>
+                </div>
+              </div>
+              <button id="theme-reset" class="w-full px-3 py-1.5 text-left text-sm hover:bg-base16-200 text-base16-500/50 border-b border-base16-300">
+                system dark mode
+              </button>
+              <div id="theme-list" class="overflow-y-auto flex-1">
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <script>
+      (function() {
+        const defaultLight = "base24-softstack-light";
+        const defaultDark = "base24-softstack-dark";
+        const html = document.documentElement;
+        const btn = document.getElementById("theme-btn");
+        const picker = document.getElementById("theme-picker");
+        const search = document.getElementById("theme-search");
+        const resetBtn = document.getElementById("theme-reset");
+        const options = document.querySelectorAll(".theme-option");
+        const fontOptions = document.querySelectorAll(".font-option");
+
+        function getCurrentTheme() {
+          const classes = Array.from(html.classList);
+          return classes.find(c => c.startsWith("base16-") || c.startsWith("base24-"));
+        }
+
+        function applyTheme(mode) {
+          const savedLight = localStorage.getItem("theme-light") || defaultLight;
+          const savedDark = localStorage.getItem("theme-dark") || defaultDark;
+          const currentTheme = getCurrentTheme();
+
+          let isDark;
+          if (mode === "system") {
+            isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          } else {
+            isDark = mode === "dark";
+          }
+
+          const newTheme = isDark ? savedDark : savedLight;
+          if (currentTheme) html.classList.remove(currentTheme);
+          html.classList.add(newTheme);
+        }
+
+        // Listen for system preference changes when in system mode
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+          const mode = localStorage.getItem("theme-mode") || "system";
+          if (mode === "system") applyTheme("system");
+        });
+
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          picker.classList.toggle("hidden");
+          if (!picker.classList.contains("hidden")) search.focus();
+        });
+
+        document.addEventListener("click", (e) => {
+          if (!picker.contains(e.target) && e.target !== btn) {
+            picker.classList.add("hidden");
+          }
+        });
+
+        search.addEventListener("input", (e) => {
+          const query = e.target.value.toLowerCase();
+          options.forEach((opt) => {
+            const name = opt.querySelector("span").textContent.toLowerCase();
+            opt.style.display = name.includes(query) ? "" : "none";
+          });
+        });
+
+        resetBtn.addEventListener("click", () => {
+          localStorage.setItem("theme-mode", "system");
+          applyTheme("system");
+          picker.classList.add("hidden");
+        });
+
+        options.forEach((opt) => {
+          opt.addEventListener("click", () => {
+            const slug = opt.dataset.slug;
+            const variant = opt.dataset.variant;
+            const currentTheme = getCurrentTheme();
+
+            // Save the theme for its variant
+            localStorage.setItem(variant === "light" ? "theme-light" : "theme-dark", slug);
+
+            // Switch to this mode
+            localStorage.setItem("theme-mode", variant);
+
+            // Apply immediately
+            if (currentTheme) html.classList.remove(currentTheme);
+            html.classList.add(slug);
+
+            picker.classList.add("hidden");
+            search.value = "";
+            options.forEach((o) => o.style.display = "");
+          });
+        });
+
+        // Font toggle (sans | serif). Persisted in localStorage, applied via
+        // the data-font attribute on <html> (CSS flips the --font-body var).
+        function highlightActiveFont() {
+          const current = html.getAttribute("data-font") || "sans";
+          fontOptions.forEach((o) => {
+            const active = o.dataset.font === current;
+            o.classList.toggle("bg-base16-200", active);
+            o.classList.toggle("text-base16-blue", active);
+            o.classList.toggle("text-base16-600", !active);
+          });
+        }
+        highlightActiveFont();
+        fontOptions.forEach((o) => {
+          o.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const font = o.dataset.font;
+            localStorage.setItem("font-mode", font);
+            html.setAttribute("data-font", font);
+            highlightActiveFont();
+          });
+        });
+      })();
+    </script>
+
+    <main class="flex flex-col basis-auto flex-auto bg-base16-200/45 mt-2 mb-6 rounded-2xl p-4 md:p-8 md:py-8 md:px-10">
+      <div class="mb-8 text-base16-700 flex-none basis-sm">
+        <h1 class="text-2xl md:text-4xl font-semibold mb-2">Docker images for consistent, persistent SSH sessions</h1>
+        <h3 class="text-xs md:text-base mb-4 text-base16-500">Devcontainer-ish</h3>
+        <p class="text-[10px] md:text-sm font-bold text-base16-yellow/70 mb-2"><span>20 Jun, 2025</span><span class="text-base16-400 mx-2 md:mx-3">•</span><span class="text-base16-yellow/60">2 min</span></p>
+      </div>
+      <div class="basis-full text-base16-700 max-w-none leading-7 hyphens-manual text-sm prose prose-code:font-mono prose-pre:font-mono prose-code:rounded-xl prose-p:text-base16-700/85 prose-p:mb-10 prose-pre:-mt-6 prose-pre:mb-10 prose-a:text-base16-blue prose-a:no-underline prose-a:italic prose-ul:-ml-4 prose-ul:list-inside prose-ul:-mt-8 prose-ul:mb-8 prose-ul:leading-6 prose-ol:-ml-4 prose-ol:list-inside prose-ol:-mt-4 prose-ol:mb-4 prose-ol:leading-6 prose-li:marker:text-base16-blue/90 grow"> 
+        <p>I’ve finally got around to setting up a personal Docker image for my personal development environment. Interestingly, I thought it’d be substantially more effort than it
+ended up being. I’ve briefly tried to do this several years ago and did not love the experience. The largest breakthrough was integrating proper dotfiles management via
+<a href="https://yadm.io/">YADM</a> and correctly setting configurations up in different OS environments.</p>
+<p>The Dockerfile is surprisingly short:</p>
+<pre class="shiki base16-css" style="background-color:var(--shiki-background);color:var(--shiki-foreground)" tabindex="0" data-language="dockerfile"><code class="language-dockerfile"><span class="line"><span style="color:var(--shiki-token-keyword)">FROM</span><span style="color:var(--shiki-foreground)"> archlinux:multilib-devel </span><span style="color:var(--shiki-token-keyword)">AS</span><span style="color:var(--shiki-foreground)"> unfetched </span></span>
+<span class="line"><span style="color:var(--shiki-token-keyword)">RUN</span><span style="color:var(--shiki-foreground)"> pacman -Syu --noconfirm git cargo inetutils zsh </span></span>
+<span class="line"><span style="color:var(--shiki-token-keyword)">ARG</span><span style="color:var(--shiki-foreground)"> username</span></span>
+<span class="line"><span style="color:var(--shiki-token-keyword)">RUN</span><span style="color:var(--shiki-foreground)"> useradd -m -G wheel -s /bin/zsh $username \</span></span>
+<span class="line"><span style="color:var(--shiki-foreground)">    &amp;&amp; echo </span><span style="color:var(--shiki-token-string-expression)">"$username ALL=(ALL) NOPASSWD: ALL"</span><span style="color:var(--shiki-foreground)"> &gt;&gt; /etc/sudoers </span></span>
+<span class="line"><span style="color:var(--shiki-token-keyword)">USER</span><span style="color:var(--shiki-foreground)"> $username</span></span>
+<span class="line"><span style="color:var(--shiki-token-keyword)">WORKDIR</span><span style="color:var(--shiki-foreground)"> /home/$username</span></span>
+<span class="line"><span style="color:var(--shiki-token-keyword)">RUN</span><span style="color:var(--shiki-foreground)"> cd /tmp \</span></span>
+<span class="line"><span style="color:var(--shiki-foreground)">   &amp;&amp; git clone https://aur.archlinux.org/paru.git \</span></span>
+<span class="line"><span style="color:var(--shiki-foreground)">   &amp;&amp; cd paru \</span></span>
+<span class="line"><span style="color:var(--shiki-foreground)">   &amp;&amp; makepkg -si --noconfirm </span></span>
+<span class="line"><span style="color:var(--shiki-token-keyword)">RUN</span><span style="color:var(--shiki-foreground)"> paru -S --noconfirm \</span></span>
+<span class="line"><span style="color:var(--shiki-foreground)">   neovim \</span></span>
+<span class="line"><span style="color:var(--shiki-foreground)">   yadm \</span></span>
+<span class="line"><span style="color:var(--shiki-foreground)">   fzf \</span></span>
+<span class="line"><span style="color:var(--shiki-foreground)">   ripgrep \</span></span>
+<span class="line"><span style="color:var(--shiki-foreground)">   fd \</span></span>
+<span class="line"><span style="color:var(--shiki-foreground)">   bat \</span></span>
+<span class="line"><span style="color:var(--shiki-foreground)">   htop \</span></span>
+<span class="line"><span style="color:var(--shiki-foreground)">   uv \</span></span>
+<span class="line"><span style="color:var(--shiki-foreground)">   jujutsu \</span></span>
+<span class="line"><span style="color:var(--shiki-foreground)">   neovim-remote \</span></span>
+<span class="line"><span style="color:var(--shiki-foreground)">   tailscale \</span></span>
+<span class="line"><span style="color:var(--shiki-foreground)">   openssh \</span></span>
+<span class="line"><span style="color:var(--shiki-foreground)">   luarocks \</span></span>
+<span class="line"><span style="color:var(--shiki-foreground)">   nvidia-open \</span></span>
+<span class="line"><span style="color:var(--shiki-foreground)">   gosu</span></span>
+<span class="line"><span style="color:var(--shiki-token-keyword)">RUN</span><span style="color:var(--shiki-foreground)"> uv tool install llm </span></span>
+<span class="line"><span style="color:var(--shiki-token-keyword)">RUN</span><span style="color:var(--shiki-foreground)"> mkdir -p -m 700 ~/.ssh &amp;&amp; ssh-keyscan github.com &gt;&gt; ~/.ssh/known_hosts </span></span>
+<span class="line"><span style="color:var(--shiki-token-keyword)">RUN</span><span style="color:var(--shiki-foreground)"> sh -c </span><span style="color:var(--shiki-token-string-expression)">"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"</span><span style="color:var(--shiki-foreground)"> \</span></span>
+<span class="line"><span style="color:var(--shiki-token-string-expression)">   ""</span><span style="color:var(--shiki-foreground)"> --unattended </span></span>
+<span class="line"><span style="color:var(--shiki-token-keyword)">RUN</span><span style="color:var(--shiki-foreground)"> git clone https://github.com/zsh-users/zsh-autosuggestions \</span></span>
+<span class="line"><span style="color:var(--shiki-foreground)">   ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions </span></span>
+<span class="line"><span style="color:var(--shiki-token-keyword)">COPY</span><span style="color:var(--shiki-foreground)"> &lt;&lt;EOF ./entrypoint.sh</span></span>
+<span class="line"><span style="color:var(--shiki-token-comment)">#!/bin/bash</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--shiki-foreground)">yadm clone git@github.com:&lt;dotfiles-repo&gt;.git &amp;&amp; yadm alt &amp;&amp; yadm checkout -- ~/</span></span>
+<span class="line"><span style="color:var(--shiki-foreground)">exec zsh</span></span>
+<span class="line"><span style="color:var(--shiki-foreground)">EOF</span></span>
+<span class="line"><span style="color:var(--shiki-token-keyword)">ENTRYPOINT</span><span style="color:var(--shiki-foreground)"> [</span><span style="color:var(--shiki-token-string-expression)">"/bin/bash"</span><span style="color:var(--shiki-foreground)">, </span><span style="color:var(--shiki-token-string-expression)">"./entrypoint.sh"</span><span style="color:var(--shiki-foreground)">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--shiki-token-keyword)">FROM</span><span style="color:var(--shiki-foreground)"> unfetched </span><span style="color:var(--shiki-token-keyword)">AS</span><span style="color:var(--shiki-foreground)"> prefetched</span></span>
+<span class="line"><span style="color:var(--shiki-token-keyword)">RUN</span><span style="color:var(--shiki-foreground)"> --mount=type=ssh,uid=1000 yadm clone git@github.com:&lt;dotfiles-repo&gt;.git \</span></span>
+<span class="line"><span style="color:var(--shiki-foreground)">   &amp;&amp; yadm alt \</span></span>
+<span class="line"><span style="color:var(--shiki-foreground)">   &amp;&amp; yadm checkout -- ~/ </span></span>
+<span class="line"><span style="color:var(--shiki-token-keyword)">ENTRYPOINT</span><span style="color:var(--shiki-foreground)"> [</span><span style="color:var(--shiki-token-string-expression)">"/bin/zsh"</span><span style="color:var(--shiki-foreground)">]</span></span></code></pre>
+<p>Based of off Arch Linux, this replicates my Linux desktop experience, with all my development tools and configurations. This approach uses SSH agent forwarding to handle
+authentication for both updating dotfiles when starting the container and for interacting with repos and the like during development. Sometimes, I’ve had issues with
+cloud providers having weird virtualization that affects SSH agent forwarding into the container. For those settings (or more generally, ones where I can’t or don’t need
+SSH), I have a prefetched image that bakes in the dotfiles.</p>
+<p>I tend to use a command like this to mount my server’s working home directory in the container (NVIDIA runtime optional).</p>
+<pre class="shiki base16-css" style="background-color:var(--shiki-background);color:var(--shiki-foreground)" tabindex="0" data-language="bash"><code class="language-bash"><span class="line"><span style="color:var(--shiki-token-function)">docker</span><span style="color:var(--shiki-token-string)"> run</span><span style="color:var(--shiki-token-string)"> --rm</span><span style="color:var(--shiki-token-string)"> -it</span><span style="color:var(--shiki-foreground)"> \</span></span>
+<span class="line"><span style="color:var(--shiki-token-string)">   --platform</span><span style="color:var(--shiki-token-string)"> linux/amd64</span><span style="color:var(--shiki-foreground)"> \</span></span>
+<span class="line"><span style="color:var(--shiki-token-comment)">   # --runtime=nvidia \</span></span>
+<span class="line"><span style="color:var(--shiki-token-function)">   --mount</span><span style="color:var(--shiki-token-string)"> type=bind,src=</span><span style="color:var(--shiki-foreground)">$HOME</span><span style="color:var(--shiki-token-string)">/.ssh/agent.sock,dst=/agent.sock</span><span style="color:var(--shiki-foreground)"> \</span></span>
+<span class="line"><span style="color:var(--shiki-token-string)">   -e</span><span style="color:var(--shiki-token-string)"> SSH_AUTH_SOCK=/agent.sock</span><span style="color:var(--shiki-foreground)"> \</span></span>
+<span class="line"><span style="color:var(--shiki-token-string)">   -e</span><span style="color:var(--shiki-token-string)"> TERM=</span><span style="color:var(--shiki-foreground)">$TERM \</span></span>
+<span class="line"><span style="color:var(--shiki-token-string)">   -e</span><span style="color:var(--shiki-token-string)"> SHELL=/bin/zsh</span><span style="color:var(--shiki-foreground)"> \</span></span>
+<span class="line"><span style="color:var(--shiki-token-string)">   --mount</span><span style="color:var(--shiki-token-string)"> type=bind,src=</span><span style="color:var(--shiki-foreground)">$HOME</span><span style="color:var(--shiki-token-string)">/,dst=/home/</span><span style="color:var(--shiki-foreground)">$USER</span><span style="color:var(--shiki-token-string)">/host-dir</span><span style="color:var(--shiki-foreground)"> \</span></span>
+<span class="line"><span style="color:var(--shiki-foreground)">   $IMAGE</span></span></code></pre>
+<p>A great workflow has been to detach from the container once I’ve launched a long-lived data job or training run and follow logs via <code>docker logs &lt;container id&gt;</code>. I can
+safely handle disconnecting from the instance while also having all my preferred configuration and tooling.</p>
+<p>Note that <code>$SSH_AUTH_SOCK</code> can change every time you login. This means if you have a long-running container, and SSH in several times, the container’s mount path will
+break. In order to avoid this, I create a symlink from the actual path to a fixed path on login on the host, and then mount that to the container.</p>
+
+      </div>
+    </main>
+    <footer class="basis-sm flex-none flex flex-col md:flex-row md:justify-between text-base16-300 text-xs md:text-sm gap-2 md:gap-0">
+      <span>tags: tools, development</span>
+      <span>© 2025 Neev Parikh</span>
+    </footer>
+  
+
+</body></html>

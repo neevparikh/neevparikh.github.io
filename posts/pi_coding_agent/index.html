@@ -2,7 +2,7 @@
 <html lang="en" class="scroll-smooth [scrollbar-width:thin] [scrollbar-gutter:stable] [scrollbar-color:rgb(var(--color-base16-300))_transparent]"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neev Parikh</title>
+    <title>Pi, the Neovim of coding scaffolds</title>
     <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/RobotoSlab-VF.woff2" crossorigin="">
     <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/ZillaSlab-Regular.woff2" crossorigin="">
     <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/FiraCode-VF.woff2" crossorigin="">
@@ -37,6 +37,7 @@
       })();
     </script>
   </head>
+
 
   <body class="flex flex-col m-auto p-6 max-w-4xl bg-base16-100 text-base16-700 min-h-screen">
         <header class="flex-none basis-sm bg-base16-200/45 rounded-2xl p-4 md:py-6 md:px-10">
@@ -189,39 +190,22 @@
     </script>
 
     <main class="flex flex-col basis-auto flex-auto bg-base16-200/45 mt-2 mb-6 rounded-2xl p-4 md:p-8 md:py-8 md:px-10">
-      <div class="basis-full text-base16-700 max-w-none leading-7 hyphens-manual text-sm prose prose-code:font-mono prose-pre:font-mono prose-code:rounded-xl prose-p:text-base16-700/85 prose-p:mb-10 prose-pre:-mt-6 prose-pre:mb-10 prose-a:text-base16-blue prose-a:no-underline prose-a:italic prose-ul:-ml-4 prose-ul:list-inside prose-ul:-mt-8 prose-ul:mb-8 prose-ul:leading-6 prose-ol:-ml-4 prose-ol:list-inside prose-ol:-mt-4 prose-ol:mb-4 prose-ol:leading-6 prose-li:marker:text-base16-blue/90 -mb-2 md:-mb-2 mx-0"> 
-        <p>I like to write about things that I’m interested in at any given time! Here’s some recent posts:</p>
+      <div class="mb-8 text-base16-700 flex-none basis-sm">
+        <h1 class="text-2xl md:text-4xl font-semibold mb-2">Pi, the Neovim of coding scaffolds</h1>
+        <h3 class="text-xs md:text-base mb-4 text-base16-500">Pi is what I've been looking for</h3>
+        <p class="text-[10px] md:text-sm font-bold text-base16-yellow/70 mb-2"><span>27 Apr, 2026</span><span class="text-base16-400 mx-2 md:mx-3">•</span><span class="text-base16-yellow/60">1 min</span></p>
+      </div>
+      <div class="basis-full text-base16-700 max-w-none leading-7 hyphens-manual text-sm prose prose-code:font-mono prose-pre:font-mono prose-code:rounded-xl prose-p:text-base16-700/85 prose-p:mb-10 prose-pre:-mt-6 prose-pre:mb-10 prose-a:text-base16-blue prose-a:no-underline prose-a:italic prose-ul:-ml-4 prose-ul:list-inside prose-ul:-mt-8 prose-ul:mb-8 prose-ul:leading-6 prose-ol:-ml-4 prose-ol:list-inside prose-ol:-mt-4 prose-ol:mb-4 prose-ol:leading-6 prose-li:marker:text-base16-blue/90 grow"> 
+        <p>I’ve been using <a href="https://neovim.io/">Neovim</a> since college. I love the extreme customizability, the efficiency of using only a keyboard, and being able to write configurations in Lua. <a href="https://github.com/badlogic/pi-mono/tree/main/packages/coding-agent">pi</a> is that for coding scaffolds. I started with Claude Code but quickly grew frustrated with the limited vim-mode (though, I am immensely grateful that it was there in the first place and deeply upset when I realized Codex doesn’t have one), the lack of visibility into what exactly went into the context and the frequent, often show-stopping, <a href="https://www.anthropic.com/engineering/april-23-postmortem">bugs</a>.</p>
+<p>Pi is modularly designed, written in Typescript, and designed to be mucked around with. I quickly was able to spin up a sophisticated vim mode (<a href="https://github.com/neevparikh/pi-vim#">pi-vim</a>), a subagents extension (<a href="https://github.com/neevparikh/pi-subagent">pi-subagent</a>) and an OAuth provider (<a href="https://github.com/neevparikh/pi-hawk-provider">pi-hawk</a>) for Okta, which is what we use at METR for internal proxies. The SDK is really convenient to design against, especially when you want a unified interface with multi-provider AI company backends. The ethos is simplicity, extensibility, and meticulous context management, and eschews things like plan or team mode (just talk to the model).</p>
+<p>It’s well-maintained, frequently updated, and the developer is <a href="https://x.com/badlogicgames/status/2036801820626952269">delightfully curmudgeonly</a> (meant with all the respect in the world and in the best way). Go try it out!</p>
 
       </div>
-      <ul>
-        <li class="flex flex-col items-start mb-8">
-          <a href="/posts/pi_coding_agent/" class="text-sm md:text-base text-base16-orange/90 hyphens-auto">
-            Pi, the Neovim of coding scaffolds
-          </a>
-          <p class="text-[10px] md:text-xs italic text-base16-yellow/60"><span>27 Apr, 2026</span><span class="text-base16-400 mx-2 md:mx-3">•</span><span class="text-base16-yellow/60">1 min</span></p>
-          <p class="text-xs md:text-sm text-base16-500 mt-2">Pi is what I've been looking for</p>
-        </li>
-        <li class="flex flex-col items-start mb-8">
-          <a href="/posts/coding_assistants/" class="text-sm md:text-base text-base16-orange/90 hyphens-auto">
-            Coding assistants, a retrospective
-          </a>
-          <p class="text-[10px] md:text-xs italic text-base16-yellow/60"><span>28 Dec, 2025</span><span class="text-base16-400 mx-2 md:mx-3">•</span><span class="text-base16-yellow/60">4 min</span></p>
-          <p class="text-xs md:text-sm text-base16-500 mt-2">What design features matter?</p>
-        </li>
-        <li class="flex flex-col items-start mb-8">
-          <a href="/posts/devcontainers/" class="text-sm md:text-base text-base16-orange/90 hyphens-auto">
-            Docker images for consistent, persistent SSH sessions
-          </a>
-          <p class="text-[10px] md:text-xs italic text-base16-yellow/60"><span>20 Jun, 2025</span><span class="text-base16-400 mx-2 md:mx-3">•</span><span class="text-base16-yellow/60">2 min</span></p>
-          <p class="text-xs md:text-sm text-base16-500 mt-2">Devcontainer-ish</p>
-        </li>
-      </ul>
     </main>
-    
-    <footer class="basis-sm flex-none place-content-center text-center">
-      <span class="text-base16-300 text-xs md:text-sm text-center">© 2025 Neev Parikh</span>
+    <footer class="basis-sm flex-none flex flex-col md:flex-row md:justify-between text-base16-300 text-xs md:text-sm gap-2 md:gap-0">
+      <span>tags: ai, coding assistants, pi</span>
+      <span>© 2025 Neev Parikh</span>
     </footer>
-
   
 
 </body></html>
